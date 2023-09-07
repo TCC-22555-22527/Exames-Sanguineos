@@ -1,27 +1,26 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
 # Create your views here.
 def home(request):
-    return HttpResponse('HOME')
+    return render(request, 'lab/pages/home.html')
 
 
 def cadastro(request):
-    return HttpResponse('CADASTRO')
+    return render(request, 'cadastro.html')
 
 
 def cadastro_paciente(request):
-    return HttpResponse('CADASTRO PACIENTE')
+    return render(request, 'cadastro_paciente.html')
 
 
 def login(request):
-    return HttpResponse('LOGIN')
+    return render(request, 'login.html')
 
 
 def laudo(request):
-    return HttpResponse('LAUDO')
+    return render(request, 'laudo.html')
 
 
 def laudo_enviar(request):
-    return HttpResponse('LAUDO PESQUISAR')
+    return render(request, 'laudo_enviar.html')
