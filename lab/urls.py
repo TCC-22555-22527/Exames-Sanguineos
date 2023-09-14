@@ -1,14 +1,15 @@
-from django.contrib import admin
 from django.urls import path
 
-from lab import views
+from . import views
+
+app_name = 'lab'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home),
-    path('cadastro/', views.cadastro),
-    path('cadastro-paciente/', views.cadastro_paciente),
-    path('laudo/', views.laudo),
-    path('laudo-enviar/', views.laudo_enviar),
-    path('login/', views.login),
+    path('', views.home, name='home'),
+    path('lab/cadastro-paciente/', views.cadastro_paciente,
+         name='cadastro_paciente'),
+    path('lab/laudo/', views.laudo, name='laudo'),
+    path('lab/laudo-enviar/', views.laudo_enviar, name='envio_laudo'),
+    path('lab/pesquisa/', views.pesquisa, name='pesquisa'),
+    path('lab/alterar-dados', views.alterar_dados, name='alterar_dados')
 ]

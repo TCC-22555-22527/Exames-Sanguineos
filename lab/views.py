@@ -6,21 +6,21 @@ def home(request):
     return render(request, 'lab/pages/home.html')
 
 
-def cadastro(request):
-    return render(request, 'cadastro.html')
-
-
 def cadastro_paciente(request):
-    return render(request, 'cadastro_paciente.html')
-
-
-def login(request):
-    return render(request, 'login.html')
+    return render(request, 'lab/pages/cadastro_paciente.html')
 
 
 def laudo(request):
-    return render(request, 'laudo.html')
+    return render(request, 'lab/pages/laudo.html')
 
 
 def laudo_enviar(request):
-    return render(request, 'laudo_enviar.html')
+    return render(request, 'lab/pages/laudo_enviar.html')
+
+
+def pesquisa(request):
+    return render(request, 'lab/pages/pesquisa.html')
+
+
+def alterar_dados(request):
+    return render(request, 'lab/pages/alterar_dados.html')
