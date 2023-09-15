@@ -1,9 +1,12 @@
 <header class="main-header-container">
     <div class="main-header container">
+        <div class="image-logo">
+            <img src="{{ lab.logo.url }}" alt="Temporário">
+        </div>
         <h1>
-            <a class="main-logo" href= "#">
+            <a class="main-logo" href= "{% url 'lab:home' %}">
                 
-                <span class="main-logo-text">laboratório</span>
+                <span class="main-logo-text">Laboratório</span>
             </a>
         </h1>
     </div>

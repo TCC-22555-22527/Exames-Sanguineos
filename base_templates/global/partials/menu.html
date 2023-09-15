@@ -1,0 +1,29 @@
+<button class="button-show-menu button-show-menu-visible">
+    <i class="fas fa-bars"></i>
+    <span class="hidden-text"></span>
+  </button>
+  
+  <div class="menu-container menu-hidden">
+    <button class="button-close-menu button-close-menu-visible">
+      <i class="fas fa-times-circle"></i>
+      <span class="hidden-text"></span>
+    </button>
+  
+    <div class="menu-content">
+      <nav class="menu-nav">
+        <a href="{% url 'lab:home' %}">Página inicial</a>
+  
+        {% if user.is_authenticated %}
+         
+        
+        <a class="authors-logout-link" href="{% url 'authors:logout' %}">Sair</a>
+        {% include 'authors/partials/form_logout.html' %}
+        <a href="{%url 'lab:cadastro_paciente'}"></a>
+
+        {% else %}
+          <a href="{% url 'authors:login' %}">Login</a>
+          <a href="{% url 'authors:register' %}">Cadastrar</a>
+      {% endif %}
+      </nav>
+    </div>
+  </div>
