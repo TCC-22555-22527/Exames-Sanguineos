@@ -57,21 +57,9 @@ body {
     font-family: var(--font-primary);
     background-color: var(--color-gray-1);
     color: var(--color-dark-text);
-    height: auto;
-}
-html, body {
-    height: 100%;
 }
 
-#content {
-    flex: 1;
-}
 
-.main-content-container {
-    padding-bottom: var(--spacing-gutter-medium);
-    margin-bottom: var(--spacing-gutter-large);
-    flex: 1;
-}
 
 h1,
 h2,
@@ -298,6 +286,7 @@ h5 {
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-bottom: 0;
 }
 
 .main-footer a {
