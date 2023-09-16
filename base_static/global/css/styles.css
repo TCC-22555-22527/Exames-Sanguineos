@@ -95,10 +95,10 @@ h5 {
 }
 
 .image-logo {
-    width: 143.5px; height: 88.5px;
+    width: 143.5px;
+    height: 88.5px;
     margin-left: 6rem;
     margin-top: 1rem;
-    
 }
 
 .main-logo-text {
@@ -168,8 +168,7 @@ h5 {
 /*  TUDO DA RECEITA  */
 .main-content {
     padding-top: 0;
-    
-    
+    margin: 3rem;
 }
 
 .main-content-list {
@@ -551,3 +550,22 @@ h5 {
       grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
   }
+
+@media (max-width: 600px) {
+    .main-logo {
+        flex-flow: column nowrap; /* Alinha a imagem e o texto verticalmente */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .image-logo {
+        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+        margin-top: 1rem;
+        margin-left: 14rem;
+        justify-content: center;
+    }
+
+    .main-logo-text {
+        margin-top: 0.3rem; /* Remove o recuo superior no texto */
+        margin-bottom: 1rem;
+    }
+}

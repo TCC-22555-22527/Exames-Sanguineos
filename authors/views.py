@@ -61,7 +61,7 @@ def login_create(request):
         raise Http404()
 
     form = LoginForm(request.POST)
-    login_url = reverse('authors:login')
+    login_to_home = reverse('lab:home')
 
     if form.is_valid():
         authenticated_user = authenticate(
@@ -70,14 +70,14 @@ def login_create(request):
         )
 
         if authenticated_user is not None:
-            messages.success(request, 'Você está logado')
+            # messages.success(request, 'Você está logado')
             login(request, authenticated_user)
         else:
             messages.error(request, 'Credenciais inválidas')
     else:
         messages.error(request, 'Nome de usuário e senha inválidos')
 
-    return redirect(login_url)
+    return redirect(login_to_home)
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
