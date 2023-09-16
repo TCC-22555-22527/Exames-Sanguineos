@@ -51,6 +51,9 @@
 html {
     font-size: 62%;
 }
+html, body {
+    height: 100%; /* Garante que o html e o body ocupem toda a altura da tela */
+}
 
 body {
     font-size: 1.6rem;
@@ -59,7 +62,9 @@ body {
     color: var(--color-dark-text);
 }
 
-
+body, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
 
 h1,
 h2,
@@ -82,7 +87,7 @@ h5 {
 .container {
     max-width: 144rem;
     margin: 0 auto;
-    height: 12rem;
+    
 }
 
 .main-header-container {
@@ -439,8 +444,8 @@ h5 {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 260px;
-    min-height: 100vh;
+    width: 262px;
+    min-height: 110vh;
     overflow-y: auto;
     background: var(--color-primary-dark);
     z-index: 2;
@@ -504,9 +509,12 @@ h5 {
     flex-flow: column wrap;
     font-family: var(--font-headings);
     font-size: 2rem;
+    margin-left: 3rem;
+    margin-top: 2rem;
 }
   
 .menu-nav a {
+    margin-top: 1rem;
     width: 100%;
     padding: 1rem;
     text-decoration: none;
@@ -515,6 +523,11 @@ h5 {
 .menu-nav a:hover {
     transition: all 300ms ease-in-out;
     color: #959595;
+}
+.menu-nav a.authors-logout-link {
+    color: var(--color-error-dark);
+    margin-top: 18rem;
+    margin-left: 5rem;
 }
 
 
