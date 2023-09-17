@@ -10,11 +10,18 @@ from .forms import LoginForm, RegisterForm
 
 # funcao de cadastro
 def register_view(request):
+    is_registration_page = request.path == reverse('authors:register')
+
+    # URL de redirecionamento para a página de login
+    back_url = reverse('authors:login')
+
     register_form_data = request.session.get('register_form_data', None)
     form = RegisterForm(register_form_data)
     return render(request, 'authors/pages/register_view.html', {
         'form': form,
         'form_action': reverse('authors:register_create'),
+        'is_registration_page': is_registration_page,
+        'back_url': back_url,
     })
 
 # funcao de pos cadastro
@@ -48,7 +55,7 @@ def login_view(request):
     form = LoginForm()
     return render(request, 'authors/pages/login.html', {
         'form': form,
-        'form_action': reverse('authors:login_create')
+        'form_action': reverse('authors:login_create'),
     })
 
 # funcao pos login

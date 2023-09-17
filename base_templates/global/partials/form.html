@@ -27,11 +27,25 @@
       </div>
       {% endif %}
 
-      <div class="form-content form-content-grid">
+      <div class="form-content form-content-grid button-container">
+        <!-- botao para se logar -->
         <div class="form-group">
-          <button type="submit" >Enviar</button>
+          <button type="submit">Enviar</button>
         </div>
+        
+        <!-- botao para se cadastrar precisa estilizar -->
+        {% if is_registration_page %}
+          <div class="form-group form-button-group">
+            <a href="{{ back_url}}" class="btn-voltar">Voltar</a>
+          </div>
+        {% else %}
+          <div class="form-group form-button-group">
+            <a href="{% url 'authors:register' %}" class="btn-register">Cadastrar-se</a>
+          </div>  
+        {% endif %}
+        
       </div>
+
      {% include "global/partials/space.html" %}
     </form>
 </div>
