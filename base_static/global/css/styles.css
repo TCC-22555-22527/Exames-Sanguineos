@@ -47,6 +47,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+.body-blue {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(69, 143, 255, 0.35);
+}
 
 html {
     font-size: 62%;
@@ -87,7 +92,6 @@ h5 {
 .container {
     max-width: 144rem;
     margin: 0 auto;
-    
 }
 
 .main-header-container {
@@ -102,7 +106,7 @@ h5 {
 }
 
 .main-logo-text {
-    margin-top: -7rem;
+    margin-top: -6rem;
 }
 
 .main-logo {
@@ -168,7 +172,11 @@ h5 {
 /*  TUDO DA RECEITA  */
 .main-content {
     padding-top: 0;
-    margin: 3rem;
+    margin: 3rem; /* Espaço entre o container e todas as direções*/
+}
+
+.main-content-login {
+    padding-top: 0;
 }
 
 .main-content-list {
@@ -390,6 +398,10 @@ h5 {
     transition: background-color 0.3s ease;
     height: 4rem;
 }
+.form-content btn-register:hover {
+    background-color: #2086c2; /* Cor de fundo do botão ao passar o mouse */
+}
+
 .btn-voltar {
     display: inline-block;
     padding: 1rem 2rem;
@@ -409,11 +421,6 @@ h5 {
     align-items: center;
 }
 
-.form-content btn-register:hover {
-    background-color: #2086c2; /* Cor de fundo do botão ao passar o mouse */
-}
-
-
 .inline-form {
     display: inline;
 }
@@ -426,6 +433,150 @@ h5 {
     color: var(--color-primary);
     font-size: 1.6rem;
 }
+
+/* Form login personalizado */
+.login-container {
+    position: relative;
+}
+
+.login-card {
+    position: absolute;
+    top: 50%; /* Ajuste verticalmente conforme necessário */
+    left: 50%; /* Centralize horizontalmente conforme necessário */
+    transform: translate(-50%, 20%);
+    width: 600px; /* Largura do card de login */
+    height: 400px; /* Altura do card de login */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); /* Sombra no card de login */
+    border-radius: 2rem;
+}
+.card-intro {
+    color: white;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-left: 1rem;
+}
+.card-info {
+    color: white;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-left: 1rem;
+}
+
+.image-logo-login{
+    width: 143.5px;
+    height: 88.5px;
+    margin-top: 7rem;
+}
+
+.retangulo-esquerda {
+    width: 200px; /* Largura do retângulo azul à esquerda */
+    height: 100%; /* Altura igual ao card de login */
+    background-color:rgba(69, 143, 255, 1); /* Cor de fundo do retângulo azul */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 1.4rem 0rem 0rem 1.4rem;
+}
+.wrapper {
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    padding: 3rem 4rem;
+    border-radius: 0rem 1.4rem 1.4rem 0rem;
+}
+.wrapper h3 {
+   text-align: center;
+   margin-top: 1rem;
+   color: #269fe6;
+}
+
+.wrapper .btn-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    margin: 3rem 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: rgb(232, 240, 254);
+    color: var(--color-primary-dark);
+    font-weight: 400;
+    border:none;
+    outline: none;
+    border: 2px solid var(--color-gray-3) ;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    padding: 2rem 4.5rem 2rem 2rem;
+    font-size: 1.5rem;
+}
+
+.input-box::placeholder {
+    color: var(--color-gray-3);
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.btn-register-temp {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    margin-top: 2rem;
+    width: 13rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: #269fe6;/* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 4rem;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}
+.wrapper .btn-register-temp:hover {
+    background-color: #2086c2; /* Cor de fundo do botão ao passar o mouse */
+}
+
+.wrapper #btn-temp {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    width: 13rem;
+    text-align: center;
+    padding: 1rem;
+    border: none;
+    background-color: var(--color-success-dark); 
+    color: var(--color-white);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 4rem;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#btn-temp:hover {
+    background-color: rgb(61, 126, 61);
+}
+
+
 
 /* Messages */
 .messages-container {

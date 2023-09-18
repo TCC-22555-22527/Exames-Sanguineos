@@ -9,7 +9,10 @@ class LoginForm(forms.Form):
         add_placeholder(self.fields['username'], 'Digite seu usuário')
         add_placeholder(self.fields['password'], 'Digite sua senha')
 
-    username = forms.CharField()
+    username = forms.CharField(
+        label="Usuário"
+    )
     password = forms.CharField(
+        label="Senha",
         widget=forms.PasswordInput()
     )

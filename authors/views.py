@@ -53,7 +53,7 @@ def register_create(request):
 
 def login_view(request):
     form = LoginForm()
-    return render(request, 'authors/pages/login.html', {
+    return render(request, 'authors/pages/login_temp.html', {
         'form': form,
         'form_action': reverse('authors:login_create'),
     })
@@ -79,12 +79,13 @@ def login_create(request):
         if authenticated_user is not None:
             # messages.success(request, 'Você está logado')
             login(request, authenticated_user)
+            return redirect(login_to_home)
         else:
             messages.error(request, 'Credenciais inválidas')
     else:
         messages.error(request, 'Nome de usuário e senha inválidos')
 
-    return redirect(login_to_home)
+    return redirect('authors:login')
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
