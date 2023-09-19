@@ -85,7 +85,7 @@ h5 {
     margin: 0 auto;
     align-items: center;
     justify-content: center;
-    width: fit-content; 
+    width: fit-content;     
 }
 
 /*  Header  */
@@ -93,6 +93,7 @@ h5 {
     max-width: 144rem;
     margin: 0 auto;
 }
+
 
 .main-header-container {
     background-color: rgba(69, 143, 255, 1);

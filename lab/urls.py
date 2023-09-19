@@ -6,13 +6,14 @@ from . import views
 app_name = 'lab'
 
 urlpatterns = [
-    path('home', login_required(views.home), name='home'),
-    path('lab/cadastro-paciente/',
+    path('home',  login_required(views.home), name='home'),
+    path('cadastro-paciente/',
          login_required(views.cadastro_paciente), name='cadastro_paciente'),
-    path('lab/laudo/', login_required(views.laudo), name='laudo'),
-    path('lab/laudo-enviar/', login_required(views.laudo_enviar),
-         name='envio_laudo'),
-    path('lab/pesquisa/', login_required(views.pesquisa), name='pesquisa'),
-    path('lab/alterar-dados', login_required(views.alterar_dados),
+    path('laudo-consultar/', login_required(views.laudo_consultar),
+         name='laudo_consultar'),
+    path('laudo-enviar/', login_required(views.laudo_enviar),
+         name='laudo_enviar'),
+    path('pesquisa/', login_required(views.pesquisa), name='pesquisa'),
+    path('alterar-dados', login_required(views.alterar_dados),
          name='alterar_dados')
 ]
