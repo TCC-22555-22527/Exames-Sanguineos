@@ -1,25 +1,16 @@
-"""from django import forms
+from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from utils.django_forms import add_placeholder, strong_password
 
 
-class RegisterFormNoUsed(forms.ModelForm):
+class RegisterFormPatient(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        add_placeholder(self.fields['first_name'], 'Digite o primeiro nome')
-        add_placeholder(self.fields['last_name'], 'Digite o sobrenome')
-        add_placeholder(self.fields['cpf'], 'Digite o CPF')
-        add_placeholder(self.fields['birthday'], 'Digite a data de nascimento')
-        add_placeholder(self.fields['street'], 'Digite a rua')
-        add_placeholder(self.fields['house_number'], 'Digite o nº')
-        add_placeholder(self.fields['village'], 'Digite o bairro')
-        add_placeholder(self.fields['town'], 'Digite a cidade')
-        add_placeholder(self.fields['sex'], 'Digite o sexo')
-        add_placeholder(self.fields['username'], 'Digite o nome de usuário')
-        add_placeholder(self.fields['email'], 'Digite o e-mail')
-        add_placeholder(self.fields['password'], 'Digite a senha')
-        add_placeholder(self.fields['password2'], 'Confirme a senha')
+        add_placeholder(self.fields['username'], 'Digite seu nome de usuário')
+        add_placeholder(self.fields['first_name'], 'Digite seu primeiro nome')
+        add_placeholder(self.fields['last_name'], 'Digite seu sobrenome')
+        add_placeholder(self.fields['email'], 'Digite seu e-mail')
 
     first_name = forms.CharField(
         error_messages={
@@ -28,49 +19,18 @@ class RegisterFormNoUsed(forms.ModelForm):
         label='Nome'
     )
 
+    # Sobrenome
     last_name = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Sobrenome'
     )
 
-    cpf = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='CPF'
-    )
-
     birthday = forms.DateField(
         error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Data de nascimento'
-    )
-    street = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        max_length=100,
-        label='Rua'
-    )
-    house_number = forms.IntegerField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        max_length=100,
-        label='Rua'
+        label='Data'
     )
 
-    village = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        max_length=100,
-        label='Bairro'
-    )
-
-    town = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        max_length=50,
-        label='Cidade'
-    )
-
-    sex = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        max_length=30,
-        label='Sexo'
-    )
-
+    # Nome do usuário
     username = forms.CharField(
         error_messages={
             'required': 'Este campo não pode estar vazio',
@@ -86,6 +46,7 @@ class RegisterFormNoUsed(forms.ModelForm):
         min_length=4, max_length=150,
     )
 
+    # Email
     email = forms.EmailField(
         error_messages={
             'required': 'E-mail é obrigatório'
@@ -124,17 +85,50 @@ class RegisterFormNoUsed(forms.ModelForm):
         label='Confirme sua senha',
     )
 
+    street = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Rua',
+        max_length=65
+    )
+    number = forms.IntegerField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Número da residência'
+    )
+    city = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Cidade',
+        max_length=50
+    )
+    state = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Estado',
+        max_length=50
+    )
+    cpf = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='CPF',
+        max_length=16
+    )
+
     class Meta:
         model = User
         fields = [
             'first_name',
             'last_name',
+            'birthday',
             'username',
             'email',
             'password',
+            'password',
+            'street',
+            'number',
+            'city',
+            'state',
+            'cpf'
         ]
 
     # Funcao que levanta erro se for cadastrar com o mesmo email
+
     def clean_email(self):
         email = self.cleaned_data.get('email', '')
         exists = User.objects.filter(email=email).exists()
@@ -163,4 +157,4 @@ class RegisterFormNoUsed(forms.ModelForm):
                 'password2': [
                     password_confirmation_error,
                 ],
-            })"""
+            })

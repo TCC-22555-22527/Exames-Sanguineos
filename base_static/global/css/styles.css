@@ -97,6 +97,7 @@ h5 {
 
 .main-header-container {
     background-color: rgba(69, 143, 255, 1);
+    padding-bottom: 1.5rem;
 }
 
 .image-logo {
@@ -120,6 +121,8 @@ h5 {
     justify-content: center;
     width: fit-content;
     margin: 0 auto;
+    margin-top: -4rem;
+    
 }
 
 .main-logo-icon {

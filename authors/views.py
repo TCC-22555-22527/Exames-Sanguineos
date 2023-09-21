@@ -5,7 +5,8 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from .forms import LoginForm, RegisterForm
+from .forms import (LoginForm, RegisterForm, RegisterFormLabTec,
+                    RegisterFormPatient, RegisterFormReception)
 
 
 # funcao de cadastro
@@ -17,6 +18,7 @@ def register_view(request):
 
     register_form_data = request.session.get('register_form_data', None)
     form = RegisterForm(register_form_data)
+
     return render(request, 'authors/pages/register_view.html', {
         'form': form,
         'form_action': reverse('authors:register_create'),
@@ -24,9 +26,8 @@ def register_view(request):
         'back_url': back_url,
     })
 
+
 # funcao de pos cadastro
-
-
 def register_create(request):
     if not request.POST:
         raise Http404()
@@ -98,3 +99,119 @@ def logout_view(request):
 
     logout(request)
     return redirect(reverse('authors:login'))
+
+
+# vou ter que criar funcoes para cada tipo de funcionario de  - VIEW
+def register_tec_view(request):
+    is_lab_tec_registration_page = request.path == reverse(
+        'authors:register_tec')
+
+    back_url = reverse('lab:home')
+    register_form_data = request.session.get('register_form_data', None)
+    form = RegisterFormLabTec(register_form_data)
+
+    return render(request, 'authors/pages/register_view_tec.html', {
+        'form': form,
+        'form_action': reverse('authors:register_tec_create'),
+        'is_lab_tec_registration': is_lab_tec_registration_page,
+        'back_url': back_url,
+    })
+
+
+# tec CREATE
+def register_tec_create(request):
+    if not request.POST:
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    form = RegisterFormLabTec(POST)
+
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        messages.success(
+            request, 'O usuário com função de técnico está criado'
+        )
+
+        del (request.session['register_form_data'])
+        return redirect(reverse('authors:login'))
+
+    return redirect('authors:register_tec')
+
+
+def register_recpt_view(request):
+    is_recpt_registration_page = request.path == reverse(
+        'authors:register_recpt')
+
+    register_form_data = request.session.get('register_form_data', None)
+    form = RegisterFormReception(register_form_data)
+    return render(request, 'authors/pages/register_view_recpt.html', {
+        'form': form,
+        'form_action': reverse('authors:register_recpt_create'),
+        'is_recpt_registration': is_recpt_registration_page
+    })
+
+
+def register_patient_view(request):
+    is_patient_registration_page = request.path == reverse(
+        'authors:register_patient')
+
+    register_form_data = request.session.get('register_form_data', None)
+    form = RegisterFormPatient(register_form_data)
+    return render(request, 'authors/pages/register_view_patient.html', {
+        'form': form,
+        'form_action': reverse('authors:register_patient_create'),
+        'is_recpt_registration': is_patient_registration_page
+    })
+
+
+# vou ter que criar funcoes para cada tipo de funcionario de - CREATE
+
+
+def register_recpt_create(request):
+    if not request.POST:
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    form = RegisterFormReception(POST)
+
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        messages.success(
+            request, 'O usuário com função de recepcionista está criado'
+        )
+
+        del (request.session['register_form_data'])
+        return redirect(reverse('authors:login'))
+
+    return redirect('authors:register_recpt')
+
+
+def register_patient_create(request):
+    if not request.POST:
+        raise Http404()
+
+    POST = request.POST
+    request.session['register_form_data'] = POST
+    form = RegisterFormPatient(POST)
+
+    if form.is_valid():
+        user = form.save(commit=False)
+        user.set_password(user.password)
+        user.save()
+
+        messages.success(
+            request, 'O usuário com função de paciente está criado'
+        )
+
+        del (request.session['register_form_data'])
+        return redirect(reverse('authors:login'))
+
+    return redirect('authors:register_patient')
