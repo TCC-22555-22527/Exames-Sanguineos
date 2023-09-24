@@ -337,6 +337,49 @@ h5 {
     background-color: var(--color-primary-dark);
 }
 
+/* Página de escolha de cadastro*/
+.access-register-page {
+    max-width: 84rem;   
+    height: 15rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8rem;
+}
+.btn-access {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--color-success-dark);/* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 4rem;
+    width: 20rem;
+}
+.btn-access:hover {
+    display: inline-block;
+    background-color: rgb(6, 100, 6);   
+}
+.btn-access-dcption {
+    margin-top: 2rem;
+    width: 20rem;
+    height: 100%;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.btn-access-dcption h4 {
+    margin: 1rem;
+}
+
+.btn-access-dcption .info-br-color {
+    color: var(--color-gray-5)
+}
 /* Forms */
 
 .form-content {

@@ -1,0 +1,14 @@
+{% extends 'global/base_search_page.html' %}    
+
+{% block title %}Pesquisa |{% endblock title %}
+
+{% block content %}
+{% include 'global/partials/messages.html' %}
+
+<!--# user.is_superuser-->
+    {% if not is_tec_user %}
+        <h1>OK</h1>
+    {% else %}
+        <h1>VOCE NAO TEM ACESSO A ESSA TEMPLATE</h1>
+    {% endif %}
+{% endblock content %}

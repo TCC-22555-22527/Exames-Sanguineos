@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'authors',
     'patients',
     'autoslug',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,5 @@ MESSAGE_TAGS = {
     constants.SUCCESS: 'message-success',
     constants.WARNING: 'message-warning',
 }
+
+ROLEPERMISSIONS_MODULE = "project.roles"

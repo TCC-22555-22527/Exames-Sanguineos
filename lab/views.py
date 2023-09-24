@@ -4,12 +4,16 @@ from django.shortcuts import redirect, render
 
 
 # Create your views here.
+def teste(request):
+    return render(request, 'lab/pages/template_test_user.html')
+
+
 def home(request):
     return render(request, 'lab/pages/home.html')
 
 
 def cadastro_paciente(request):
-    return render(request, 'lab/pages/cadastro_paciente.html')
+    return render(request, 'lab/pages/cadastro_usuario.html')
 
 
 def laudo_consultar(request):
