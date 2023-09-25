@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.urls import path
 
 from . import views
@@ -6,10 +6,11 @@ from . import views
 app_name = 'lab'
 
 urlpatterns = [
-    path('teste/', views.teste, name='teste'),
     path('home',  login_required(views.home), name='home'),
-    path('cadastro-usuario/',
-         login_required(views.cadastro_paciente), name='cadastro_usuario'),
+    path('cadastro-usuario/', user_passes_test(lambda u: u.is_superuser)
+         (login_required(views.cadastro_usuario)), name='cadastro_usuario'),
+    path('cadastro-paciente/', login_required(views.cadastro_paciente),
+         name='cadastro_paciente'),
     path('laudo-consultar/', login_required(views.laudo_consultar),
          name='laudo_consultar'),
     path('laudo-enviar/', login_required(views.laudo_enviar),
