@@ -9,8 +9,8 @@ urlpatterns = [
     path('home',  login_required(views.home), name='home'),
     path('cadastro-usuario/', user_passes_test(lambda u: u.is_superuser)
          (login_required(views.cadastro_usuario)), name='cadastro_usuario'),
-    path('cadastro-paciente/', login_required(views.cadastro_paciente),
-         name='cadastro_paciente'),
+    # path('cadastro-paciente/', login_required(views.cadastro_paciente),
+    # name='cadastro_paciente'),
     path('laudo-consultar/', login_required(views.laudo_consultar),
          name='laudo_consultar'),
     path('laudo-enviar/', login_required(views.laudo_enviar),

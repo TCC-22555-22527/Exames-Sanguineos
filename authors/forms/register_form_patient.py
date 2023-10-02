@@ -1,5 +1,5 @@
+from authors.models import CustomUser
 from django import forms
-from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from utils.django_forms import add_placeholder, strong_password
 
@@ -111,7 +111,7 @@ class RegisterFormPatient(forms.ModelForm):
     )
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = [
             'first_name',
             'last_name',
@@ -119,7 +119,7 @@ class RegisterFormPatient(forms.ModelForm):
             'username',
             'email',
             'password',
-            'password',
+            'password2',
             'street',
             'number',
             'city',
@@ -131,7 +131,7 @@ class RegisterFormPatient(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email', '')
-        exists = User.objects.filter(email=email).exists()
+        exists = CustomUser.objects.filter(email=email).exists()
 
         if exists:
             raise ValidationError(

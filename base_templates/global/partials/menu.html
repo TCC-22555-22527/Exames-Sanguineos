@@ -18,8 +18,12 @@
             <a href="{%url 'lab:home' %}"> Página inicial </a>
           {% endif %}
 
-          {% if user|can:'cadastrar_paciente'%}
+          {% if user.is_superuser %}
             <a href="{%url 'lab:cadastro_usuario'%}"> Cadastro de usuário </a>
+          {% endif %}
+
+          {% if user|can:'cadastrar_paciente'%}
+            <a href="{%url 'authors:register_patient'%}"> Cadastro de paciente </a>
           {% endif %}
 
           {% if user|can:'pesquisar_paciente'%}

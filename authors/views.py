@@ -5,10 +5,12 @@ from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from project.roles import PatientUser, RecptUSer, TecUser
+from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterForm, RegisterFormLabTec,
                     RegisterFormPatient, RegisterFormReception)
+from .models import Patient
 
 # funcao de cadastro
 
@@ -138,7 +140,7 @@ def register_tec_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('authors:register_tec'), {
+        return redirect(reverse('lab:cadastro_usuario'), {
         })
 
     return redirect('authors:register_tec')
@@ -178,12 +180,13 @@ def register_recpt_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('authors:register_recpt'))
+        return redirect(reverse('lab:cadastro_usuario'))
 
     return redirect('authors:register_recpt')
 
 
 # PATIENT
+@has_permission_decorator('cadastrar_paciente')
 def register_patient_view(request):
     is_patient_registration_page = request.path == reverse(
         'authors:register_patient')
@@ -210,6 +213,20 @@ def register_patient_create(request):
         user.set_password(user.password)
         user.is_patient_user = True
         user.save()
+
+        patient = Patient(
+            user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
+            birthday=form.cleaned_data['birthday'],
+            street=form.cleaned_data['street'],
+            number=form.cleaned_data['number'],
+            city=form.cleaned_data['city'],
+            state=form.cleaned_data['state'],
+            cpf=form.cleaned_data['cpf']
+        )
+        patient.save()
+
         assign_role(user, PatientUser)
 
         messages.success(
@@ -217,6 +234,6 @@ def register_patient_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('authors:login'))
+        return redirect(reverse('lab:cadastro_usuario'))
 
     return redirect('authors:register_patient')

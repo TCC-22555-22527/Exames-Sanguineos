@@ -23,8 +23,8 @@ urlpatterns = [
     path('register-recpt/create/', views.register_recpt_create,
          name='register_recpt_create'),
     # registro de paciente
-    path('register-patient/', user_passes_test(lambda u: u.is_superuser)
-         (views.register_patient_view), name='register_patient'),
+    path('register-patient/', views.register_patient_view,
+         name='register_patient'),
     path('register-patient/create/', views.register_patient_create,
          name='register_patient_create'),
 ]

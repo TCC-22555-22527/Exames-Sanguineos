@@ -148,3 +148,4 @@ MESSAGE_TAGS = {
 }
 
 ROLEPERMISSIONS_MODULE = "project.roles"
+AUTH_USER_MODEL = 'authors.CustomUser'
