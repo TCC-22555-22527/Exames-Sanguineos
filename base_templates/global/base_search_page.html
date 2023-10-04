@@ -10,13 +10,16 @@
     <body>
         {%include 'global/partials/menu.html' %}
         {%include 'global/partials/header.html'%}
-        
+        {%include 'global/partials/search.html'%}
 
-        <main class="main-content-container">
+        <main class="main-content-container"> 
             {% block content %}{% endblock content %}
-            {%include 'global/partials/search.html'%}
             {% include 'global/partials/pagination.html' %}
         </main>
+
+        {% include "global/partials/space.html" %} <!-- Está improvisado. ARRUMAR ISSO!-->
+        {% include "global/partials/space.html" %}
+        {% include "global/partials/space.html" %}
 
         {%include 'global/partials/footer.html'%}
 

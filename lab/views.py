@@ -1,10 +1,11 @@
 import os
 
-from authors.forms import AuthorReportForm
+from authors.forms import AuthorReportForm, EditProfileForm
 from authors.forms.register_form_patient import RegisterFormPatient
+from authors.models import CustomUser
 from django.contrib import messages
 from django.db.models import Q
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
 
@@ -76,5 +77,31 @@ def pesquisa(request):
 
 
 @has_permission_decorator('alterar_dados')
-def alterar_dados(request):
-    return render(request, 'lab/pages/alterar_dados.html')
+def usuario_detalhes(request, usuario_id):
+    user = get_object_or_404(CustomUser, pk=usuario_id)
+    # Substitua "Patient" pelo seu modelo de usuário
+    return render(request, 'lab/pages/usuario_detalhes.html', {'user': user})
+
+
+@has_permission_decorator('alterar_dados')
+def editar_perfil(request, usuario_id):
+    user = get_object_or_404(CustomUser, pk=usuario_id)
+
+    return render(request, 'lab/pages/alterar_dados.html', {'user': user})
+
+
+@has_permission_decorator('alterar_dados')
+def alterar_dados(request, usuario_id):
+    user = get_object_or_404(CustomUser, pk=usuario_id)
+
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=user)  # Corrigido aqui
+        if form.is_valid():
+            form.save()
+            # Redirecionar para a página de perfil após a edição
+            return redirect('lab:usuario_detalhes', usuario_id=usuario_id)
+    else:
+        form = EditProfileForm(instance=user)
+
+    return render(request, 'lab/pages/alterar_dados.html', {
+        'user': user, 'form': form})

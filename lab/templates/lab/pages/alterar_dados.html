@@ -1,10 +1,12 @@
-{% extends 'global/base.html' %}    
+{% extends 'global/base_register.html' %}    
 
-{% block title %}Alterar |{% endblock title %}
+{% block title %}Alterar dados |{% endblock title %}
 
 {% block content %}
-{% include 'global/partials/messages.html' %}
-    <div class="main-content">
-        <h2 class="teste-home">Alterar dados</h2>
-    </div>
+<div class="main-content center container">
+    <h2 class="teste-home">Editar perfil de {{ user.first_name }} {{ user.last_name }}</h2>
+</div>
+    {% include 'global/partials/messages.html' %}  
+    {% include 'global/partials/form.html' %}
+
 {% endblock content %}

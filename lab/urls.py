@@ -16,6 +16,10 @@ urlpatterns = [
     path('laudo-enviar/', login_required(views.laudo_enviar),
          name='laudo_enviar'),
     path('pesquisa/', login_required(views.pesquisa), name='pesquisa'),
-    path('alterar-dados', login_required(views.alterar_dados),
+    # traduzir para português
+    path('usuario/<int:usuario_id>/', login_required(views.usuario_detalhes),
+         name='usuario_detalhes'),
+    path('alterar-dados/<int:usuario_id>/',
+         login_required(views.alterar_dados),
          name='alterar_dados')
 ]

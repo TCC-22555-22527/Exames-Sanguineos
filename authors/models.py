@@ -34,7 +34,7 @@ class Patient(models.Model):
 
 class Tec(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    crm = models.IntegerField()
+    crm = models.CharField(max_length=16)
 
 
 class Recpt(models.Model):

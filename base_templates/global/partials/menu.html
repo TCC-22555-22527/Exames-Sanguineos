@@ -30,10 +30,6 @@
             <a href="{%url 'lab:pesquisa'%}"> Pesquisar paciente </a>
           {% endif %}
 
-          {% if user|can:'alterar_dados'%}
-            <a href="{%url 'lab:alterar_dados'%}"> Alterar dados </a>
-          {% endif %}
-
           {% if user|can:'laudo_enviar_permission'%}
             <a href="{%url 'lab:laudo_enviar'%}"> Enviar laudo </a>
           {% endif %}

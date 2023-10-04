@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'lab',
     'authors',
     'patients',
-    'autoslug',
+    # 'autoslug',
     'rolepermissions',
 ]
 
