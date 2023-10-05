@@ -4,6 +4,8 @@
         <p><strong> CPF: </strong> {{ patient.cpf }}</p>
         <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
         <p><strong> ID: </strong> {{ patient.id }}</p>
-        <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}">Acessar perfil</a>
+        <div class="button-access-user-space">
+            <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}" class="btn-access">Acessar perfil</a>
+        </div>
     </div>
 </div>

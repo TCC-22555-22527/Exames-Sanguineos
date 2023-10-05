@@ -13,7 +13,8 @@
         <main class="main-content-container">
             {% block content %}{% endblock content %}
         </main>
-
+        
+        {%include 'global/partials/footer_other_base.html'%}
         <script src="{% static 'global/js/scripts.js' %}"></script>
     </body>
 </html>
