@@ -1,12 +1,28 @@
 <div class="main-content container">
     <form 
     class ="main-form" 
-    action="{{ form_action }}"  
+    action="{{ form_action }}" 
     method="POST"
     enctype="multipart/form-data">
       {% csrf_token %}
 
-      <div class="form-content form-content-grid">
+      <div class="patient-list">
+        {% if patients %}
+            <h3>Lista de Pacientes:</h3>
+            <ul>
+                {% for patient in patients %}
+                    <li>
+                        <input type="radio" name="selected_patient" value="{{ patient.id }}">
+                        {{ patient.first_name }} {{ patient.last_name }} - CPF: {{ patient.cpf }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhum paciente encontrado.</p>
+        {% endif %}
+        
+    </div>
+      <div class="form-content form-content-grid">  
         {% for field in form %}
           <div class="form-group">
             <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -32,7 +48,7 @@
       {% endif %}
 
       <div class="form-content form-content-grid button-container">
-        <!-- botao para se logar -->
+        <!-- botao para se enviar -->
         <div class="form-group">
           <button type="submit">Enviar</button>
         </div>

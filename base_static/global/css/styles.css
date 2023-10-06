@@ -171,6 +171,9 @@ h5 {
     top: 0;
     right: 0;
 }
+.search-button:hover {
+    cursor: pointer;
+}
 .search-button:focus {
     outline: 1px solid var(--color-primary);
     background: rgba(0, 0, 0, .05);

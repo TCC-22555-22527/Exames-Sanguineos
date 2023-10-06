@@ -23,8 +23,12 @@
                 <p><strong>ID:</strong> {{ user.id }}</p>
                 <div class="button-access-user-space">
                     <a href="{% url 'lab:alterar_dados' usuario_id=user.id %}" class="btn-access">
+                        Visualizar laudos
+                    </a>
+                    <a href="{% url 'lab:alterar_dados' usuario_id=user.id %}" class="btn-access">
                         Editar perfil
                     </a>
+                    
                 </div>
             </div>
         </div>
