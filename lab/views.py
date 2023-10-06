@@ -1,7 +1,7 @@
 import os
 
 from authors.forms import AuthorReportForm, EditProfileForm
-from authors.models import CustomUser, Patient
+from authors.models import Patient
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
@@ -107,7 +107,7 @@ def pesquisa(request):
 
 @has_permission_decorator('alterar_dados')
 def usuario_detalhes(request, usuario_id):
-    user = get_object_or_404(CustomUser, pk=usuario_id)
+    user = get_object_or_404(Patient, pk=usuario_id)
     # Substitua "Patient" pelo seu modelo de usuário
     return render(request, 'lab/pages/usuario_detalhes.html', {'user': user})
 
@@ -122,7 +122,7 @@ def usuario_detalhes(request, usuario_id):
 
 @has_permission_decorator('alterar_dados')
 def alterar_dados(request, usuario_id):
-    user = get_object_or_404(CustomUser, pk=usuario_id)
+    user = get_object_or_404(Patient, pk=usuario_id)
 
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=user)  # Corrigido aqui
