@@ -1,34 +1,39 @@
 {% extends 'global/base_user.html' %}    
+{% load permission_tags %}
 
 {% block title %}Perfil |{% endblock title %}
 
 {% block content %}
 {% include 'global/partials/messages.html' %}
     <div class="main-content">
-        <h3 class="teste-home">
-            Perfil de 
-            <span class="user-profile-name">
-               '{{ user.first_name}} {{user.last_name}}'
-            </span> 
-        </h3>
+        <div class="profile-from-name ">
+            <h3 class="teste-home">
+                Perfil de 
+                <span class="user-profile-name">
+                    {{ profile_user.first_name}} {{profile_user.last_name}}
+                </span> 
+                <i class="fas fa-user"></i>
+            </h3>
+        </div>
         <div class="recipe recipe-list-item">
             <div class="recipe-content">
-                <p><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
-                <p><strong>CPF:</strong> {{ user.cpf }}</p>
-                <p><strong>Nascimento:</strong> {{ user.birthday }}</p>
-                <p><strong>Rua:</strong> {{ user.street }}</p>
-                <p><strong>Número da residência:</strong> {{ user.number }}</p>
-                <p><strong>Cidade:</strong> {{ user.city }}</p>
-                <p><strong>Estado:</strong> {{ user.state }}</p>
-                <p><strong>ID:</strong> {{ user.id }}</p>
+                <p><strong>Nome:</strong> {{ profile_user.first_name }} {{ profile_user.last_name }}</p>
+                <p><strong>CPF:</strong> {{ profile_user.cpf }}</p>
+                <p><strong>Nascimento:</strong> {{ profile_user.birthday }}</p>
+                <p><strong>Rua:</strong> {{ profile_user.street }}</p>
+                <p><strong>Número da residência:</strong> {{ profile_user.number }}</p>
+                <p><strong>Cidade:</strong> {{ profile_user.city }}</p>
+                <p><strong>Estado:</strong> {{ profile_user.state }}</p>
+                <p><strong>ID:</strong> {{ profile_user.id }}</p>
                 <div class="button-access-user-space">
-                    <a href="{% url 'lab:alterar_dados' usuario_id=user.id %}" class="btn-access">
-                        Visualizar laudos
+                    <a href="{% url 'lab:laudo_detalhes' usuario_id=profile_user.id %}" class="btn-access">
+                       <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
                     </a>
-                    <a href="{% url 'lab:alterar_dados' usuario_id=user.id %}" class="btn-access">
-                        Editar perfil
-                    </a>
-                    
+                    {% if user|can:'alterar_dados'%}
+                        <a href="{% url 'lab:alterar_dados' usuario_id=profile_user.id %}" class="btn-access">
+                            <i class='bx bx-pencil'></i>‎ ‎Editar perfil
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

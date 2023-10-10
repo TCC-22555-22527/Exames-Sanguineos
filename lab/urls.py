@@ -21,5 +21,7 @@ urlpatterns = [
          name='usuario_detalhes'),
     path('alterar-dados/<int:usuario_id>/',
          login_required(views.alterar_dados),
-         name='alterar_dados')
+         name='alterar_dados'),
+    path('laudo-detalhes/<int:usuario_id>/',
+         views.laudo_detalhes, name="laudo_detalhes")
 ]

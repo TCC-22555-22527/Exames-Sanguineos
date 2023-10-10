@@ -1,0 +1,20 @@
+{% extends "global/base_report.html" %}
+{% block title %}Laudo |{% endblock title %}
+
+{% block content %}
+{% include 'global/partials/messages.html' %}
+    <div class="main-content">
+        {% if laudos %}
+            <h1 class="teste-home">
+                Laudos de {{ profile_user.first_name }} {{ profile_user.last_name}}: 
+            </h1>
+            <div class="report-container">
+                {% for laudo in laudos %}
+                    {% include 'lab/partials/report.html' %}
+                {% endfor %}
+            {% else %}
+                <h1>Esse paciente não possui laudos </h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

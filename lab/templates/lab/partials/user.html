@@ -5,7 +5,10 @@
         <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
         <p><strong> ID: </strong> {{ patient.id }}</p>
         <div class="button-access-user-space">
-            <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}" class="btn-access">Acessar perfil</a>
+            <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}" class="btn-access">
+                <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
+                Visualizar perfil
+            </a>
         </div>
     </div>
 </div>

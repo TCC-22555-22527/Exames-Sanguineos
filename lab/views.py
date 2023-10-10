@@ -3,6 +3,7 @@ import os
 from authors.forms import AuthorReportForm, EditProfileForm
 from authors.models import Patient
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
@@ -13,9 +14,8 @@ from .models import Lab
 # vou precisar import
 PER_PAGE = os.environ.get('PER_PAGE', 6)
 
+
 # funcao específica do superusuário
-
-
 def cadastro_usuario(request):
     return render(request, 'lab/pages/cadastro_usuario.html')
 
@@ -24,12 +24,8 @@ def cadastro_usuario(request):
 def home(request):
     return render(request, 'lab/pages/home.html')
 
-# isso acho que nao vou usar
-# @has_permission_decorator('cadastrar_paciente')
-# def cadastro_paciente(request):
-# return render(request, 'lab/pages/cadastro_paciente.html')
 
-
+# pesquisar laudos criados
 @has_permission_decorator('visualizar_laudo')
 def laudo_consultar(request):
     return render(request, 'lab/pages/laudo_consultar.html')
@@ -80,6 +76,7 @@ def laudo_enviar(request):
                    'selected_patient': selected_patient})
 
 
+# pesquisar paciente por nome e cpf
 @has_permission_decorator('pesquisar_paciente')
 def pesquisa(request):
     search_term = request.GET.get('q', '').strip()
@@ -87,7 +84,7 @@ def pesquisa(request):
     patients = []
 
     if search_term:
-        patients = Patient.objects.filter(
+        patients = Patient.objects.filter(  # trocar customuser
             Q(first_name__icontains=search_term) |
             Q(last_name__icontains=search_term) |
             Q(cpf__icontains=search_term)
@@ -105,33 +102,43 @@ def pesquisa(request):
     })
 
 
-@has_permission_decorator('alterar_dados')
+# detalhes do usuario com opcoes de alterar dado e visu laudo
+@login_required
+@has_permission_decorator('pesquisar_paciente')
 def usuario_detalhes(request, usuario_id):
-    user = get_object_or_404(Patient, pk=usuario_id)
-    # Substitua "Patient" pelo seu modelo de usuário
-    return render(request, 'lab/pages/usuario_detalhes.html', {'user': user})
+    profile_user = get_object_or_404(
+        Patient, pk=usuario_id)  # trocar customuser
+
+    return render(request, 'lab/pages/usuario_detalhes.html',
+                  {'profile_user': profile_user})
 
 
-# NAO ESTA SENDO USADO
-# @has_permission_decorator('alterar_dados')
-# def editar_perfil(request, usuario_id):
-#    user = get_object_or_404(CustomUser, pk=usuario_id)
-
-#   return render(request, 'lab/pages/alterar_dados.html', {'user': user})
-
-
+# alterar dados de um perfil selecionado
+@login_required
 @has_permission_decorator('alterar_dados')
 def alterar_dados(request, usuario_id):
-    user = get_object_or_404(Patient, pk=usuario_id)
+    profile_user = get_object_or_404(
+        Patient, pk=usuario_id)  # trocar customuser
 
     if request.method == 'POST':
-        form = EditProfileForm(request.POST, instance=user)  # Corrigido aqui
+        form = EditProfileForm(request.POST, instance=profile_user)
         if form.is_valid():
             form.save()
-            # Redirecionar para a página de perfil após a edição
+
             return redirect('lab:usuario_detalhes', usuario_id=usuario_id)
     else:
-        form = EditProfileForm(instance=user)
+        form = EditProfileForm(instance=profile_user)
 
     return render(request, 'lab/pages/alterar_dados.html', {
-        'user': user, 'form': form})
+        'profile_user': profile_user, 'form': form})
+
+
+# consultar laudos de um perfil
+def laudo_detalhes(request, usuario_id):
+    profile_user = get_object_or_404(Patient,
+                                     pk=usuario_id)
+    laudos = Lab.objects.filter(patient=profile_user)
+
+    return render(request, 'lab/pages/laudo_detalhes.html',
+                  {'profile_user': profile_user,
+                   'laudos': laudos})

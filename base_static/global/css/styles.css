@@ -101,6 +101,7 @@ h5 {
     display: inline;
     color: rgb(142, 120, 221);
     font-size: 3rem;
+    margin: 0 0.3rem;
 }
 
 
@@ -136,6 +137,9 @@ h5 {
     margin: 0 auto;
     margin-top: -4rem;
     
+}
+.logo-link {
+    text-decoration: none;
 }
 .main-logo-icon {
     margin-right: 2rem;
@@ -218,7 +222,7 @@ h5 {
     height: fit-content;
 }
 .recipe-list-item:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .3);
 }
 .recipe-title-container {
@@ -297,9 +301,59 @@ h5 {
     align-items: center;
     width: fit-content;
     margin-top: 2rem;
-}            
+    text-align: center;
+} 
+.profile-from-name {
+    padding: 1rem 1rem;
+    min-height: 2rem;
+    /* max-width: 100rem;*/
+    background-color:rgb(31, 15, 61);
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+}           
+.profile-from-name .teste-home {
+    color: white;
+}
+.btn-access .bx {
+    font-size: 17px;
+}
 
-
+                    /*  REPORTS DETAILS (DETALHES DOS LAUDOS) */
+.report-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--spacing-gutter-large);
+}
+.report{
+    background: var(--color-white);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, .2);
+    transform: scale(1);
+    transition: all 300ms ease-in-out;
+    border-radius: .7rem;
+    overflow: hidden;
+    margin: 2rem 0;
+    padding:0.2rem;
+}
+.report-list-item {
+    max-width: 55rem;
+    height: fit-content;
+}
+.report-list-item:hover {
+    transform: scale(1.08);
+    box-shadow: -8px 8px 18px rgba(0, 0, 0, .3);
+}
+.report-content {
+    padding: var(--spacing-gutter-medium);
+    padding-top: 1rem;
+}
+.report img{
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+}
 
                     /*  FOOTER */
 .main-footer {
@@ -771,6 +825,10 @@ h5 {
     color: var(--color-error-dark);
     margin-top: 18rem;
     margin-left: 5rem;
+}
+.blurred {
+    filter: blur(2.5px); 
+    pointer-events: none; 
 }
 
 
