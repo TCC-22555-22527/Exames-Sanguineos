@@ -81,6 +81,7 @@ def laudo_enviar(request):
 def pesquisa(request):
     search_term = request.GET.get('q', '').strip()
 
+    all_patients = Patient.objects.all()
     patients = []
 
     if search_term:
@@ -99,6 +100,7 @@ def pesquisa(request):
         'patients': page_obj,
         'pagination_range': pagination_range,
         'additional_url_query': f'&q={search_term}',
+        'all_patients': all_patients,
     })
 
 
