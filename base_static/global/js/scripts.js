@@ -20,9 +20,10 @@
   const menuContainer = document.querySelector('.menu-container');
   const blurredContent = document.querySelector('.blurred-content'); // Elemento para aplicar o desfoque
 
+
   const buttonShowMenuVisibleClass = 'button-show-menu-visible';
   const menuHiddenClass = 'menu-hidden';
-  const blurredContentClass = 'blurred'; // Classe para aplicar o desfoque
+  const blurredContentClass = 'blurred-content'; // Classe para aplicar o desfoque
 
   const closeMenu = () => {
       buttonShowMenu.classList.add(buttonShowMenuVisibleClass);

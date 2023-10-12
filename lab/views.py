@@ -25,12 +25,6 @@ def home(request):
     return render(request, 'lab/pages/home.html')
 
 
-# pesquisar laudos criados
-@has_permission_decorator('visualizar_laudo')
-def laudo_consultar(request):
-    return render(request, 'lab/pages/laudo_consultar.html')
-
-
 # Dashboard para enviar imagem com dados adicionais
 @has_permission_decorator('laudo_enviar_permission')
 def laudo_enviar(request):
@@ -136,6 +130,7 @@ def alterar_dados(request, usuario_id):
 
 
 # consultar laudos de um perfil
+@has_permission_decorator('visualizar_laudo')
 def laudo_detalhes(request, usuario_id):
     profile_user = get_object_or_404(Patient,
                                      pk=usuario_id)
@@ -144,3 +139,10 @@ def laudo_detalhes(request, usuario_id):
     return render(request, 'lab/pages/laudo_detalhes.html',
                   {'profile_user': profile_user,
                    'laudos': laudos})
+
+# pesquisar laudos criados
+
+
+@has_permission_decorator('visualizar_laudo')
+def laudo_consultar(request):
+    return render(request, 'lab/pages/laudo_consultar.html')

@@ -115,7 +115,7 @@ h5 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.6rem;
 }
 .container {
     max-width: 144rem;
@@ -124,7 +124,7 @@ h5 {
     width: 143.5px;
     height: 88.5px;
     margin-left: 6rem;
-    margin-right: 36rem;
+    margin-right: 35rem;
 }
 .image-title {
     width: 201px;
@@ -133,6 +133,7 @@ h5 {
 .logo-link {
     text-decoration: none;
     display: flex;
+    margin-top: 0.9rem;
 }
 .logo-link .bx {
     margin-left: 0.4rem;
@@ -145,7 +146,6 @@ h5 {
     text-decoration: none;
     margin-left: auto;
 }
-
 .bx .bxs-donate-blood {
     margin-right: 9rem;
     margin-bottom: 0rem;
@@ -165,9 +165,7 @@ h5 {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .hello-user .name {
-    
     font-weight: 500;
-    
 }
 
 
@@ -377,6 +375,12 @@ h5 {
     margin-top: 1rem;
     max-width: 100%;
     height: auto;
+}
+.image-no-report{
+    display: block;
+    margin: 0 auto;
+    width: 28%; 
+    height: 28%;
 }
 
                     /*  FOOTER */
@@ -850,12 +854,10 @@ h5 {
     margin-top: 18rem;
     margin-left: 5rem;
 }
-.blurred {
+.blurred-content {
     filter: blur(2.5px); 
     pointer-events: none; 
 }
-
-
 
 
                     /* Generics */

@@ -8,12 +8,13 @@
             <h1 class="teste-home">
                 Laudos de {{ profile_user.first_name }} {{ profile_user.last_name}}: 
             </h1>
-            <div class="report-container">
+            
+        <div class="report-container">
                 {% for laudo in laudos %}
                     {% include 'lab/partials/report.html' %}
                 {% endfor %}
             {% else %}
-                <h1>Esse paciente não possui laudos </h1>
+                <img src="/media/lab/others/sem-laudo.png" alt="Logo" class="image-no-report">
             {% endif %}
         </div>
     </div>
