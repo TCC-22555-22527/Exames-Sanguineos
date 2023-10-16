@@ -1,0 +1,11 @@
+<div class="report report-list-search">
+    <div class="report-content"> 
+        <p> <strong> CPF do paciente: </strong></p> {{ report.cpf }}  
+        <p> <strong> nome do paciente: </strong></p> {{ report.name }} 
+        <p><strong>Data do Envio:</strong> </p> {{ report.created_at }}
+        <a href= {% url "lab:home" %} class="report-user-access">
+            Detalhes <i class='bx bxs-binoculars'></i>
+        </a>
+    </div>
+</div>
+

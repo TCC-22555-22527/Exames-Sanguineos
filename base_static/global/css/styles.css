@@ -214,6 +214,7 @@ h5 {
 
 
 
+
                     /*  TUDO DO PROJETO PASSADO  */
 .main-content {
     padding-top: 0;
@@ -342,12 +343,24 @@ h5 {
 .btn-access .bx {
     font-size: 17px;
 }
+.no-patient-msg {   
+    color: var(--color-error-dark);
+    margin: 7rem auto;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
 
                     /*  REPORTS DETAILS (DETALHES DOS LAUDOS) */
 .report-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--spacing-gutter-large);
+}
+.report-list-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 0.5rem;
 }
 .report{
     background: var(--color-white);
@@ -356,15 +369,15 @@ h5 {
     transition: all 300ms ease-in-out;
     border-radius: .7rem;
     overflow: hidden;
-    margin: 2rem 0;
-    padding:0.2rem;
+    margin: 1rem 0 0 0 ;
+    padding: 0.2rem;
 }
 .report-list-item {
     max-width: 55rem;
     height: fit-content;
 }
 .report-list-item:hover {
-    transform: scale(1.08);
+    transform: scale(1.03);
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .3);
 }
 .report-content {
@@ -381,6 +394,99 @@ h5 {
     margin: 0 auto;
     width: 28%; 
     height: 28%;
+}
+                    
+
+
+
+                /* REPORT SEARCH - PESQUISA DE LAUDO */
+.search-container-report {
+    display: flex;
+    flex-flow: column wrap;
+    margin-bottom: 2rem;
+}
+#search_date {
+    color: var(--color-dark-text);
+    font-size: 1.5rem;
+    height: 3rem;
+    background-color: var(--color-gray-1);
+    border: 1px solid var(--color-primary-dark);
+    border-radius: 5px;
+} 
+
+#combined-search-button {
+    float: left;
+    font-size: 1.4rem;   
+    margin: 22.8rem 35.7rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border: 10px var(--color-primary-dark);
+    background-color:var(--color-success-dark);
+    font-style: bold;
+    color: white;
+    padding: 1rem 5rem;
+    transition: all 300ms ease-in-out;
+}
+#combined-search-button:hover{
+    background-color: rgb(6, 100, 6);
+}
+.search-sec-box-report {
+    font-size: 1.5rem;
+    margin-left: 33rem;
+    margin-top: 2rem;
+}
+.heading-report-top {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+.heading-report-searched,
+.heading-report-all {
+    margin: 5rem auto 0 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 49rem;
+    width: fit-content;
+    background-color: rgb(77, 68, 160);
+    color: white;
+    border-radius: 3px;
+}
+.no-report-msg {
+    color: var(--color-error-dark);
+    margin: 10rem auto 18.1rem;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+.report-list-search {
+    max-width: 31rem;
+    height: fit-content;
+}
+.report-user-access {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    margin-top: 2rem;
+    margin-left: 20rem;
+    padding: 0.51rem;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: var(--color-primary-dark);
+    color: #fff; 
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.bxs-binoculars {
+    margin-top: 5px;
+    font-size: 1.5rem;
+}
+.report-user-access:hover {
+    display: inline-block;
+    background-color: rgb(6, 100, 6);   
 }
 
                     /*  FOOTER */

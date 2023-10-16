@@ -1,13 +1,38 @@
-{% extends 'global/base_search_page.html' %}    
+{% extends 'global/base_report_search.html' %}    
 
-{% block title %}Laudo |{% endblock title %}
+{% block title %}{{ page_title }}{% endblock title %}
 
 {% block content %}
 {% include 'global/partials/messages.html' %}
-    <div class="main-content">
-        <h3 class="teste-home">
-            Pesquisar laudo por paciente, data ou identficador
-        </h3>
 
+    <div class="main-content">
+        <h3 class="heading-report-top">
+           Você pode filtrar busca de laudos por data, CPF ou nome do paciente
+        </h3>
+        {%include 'global/partials/search_report.html'%}
+        {% if search_term or search_date %}  
+            {% if reports %} <!-- se existe laudo--> 
+                <h4 class="heading-report-searched">
+                    Resultados da pesquisa realizada:
+                </h4>
+                <div class="report-list-container">
+                    {% for report in reports %} <!-- mostra todos os laudos--> 
+                        {% include "lab/partials/report_searched.html" %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <h3 class="no-report-msg"> Não existe nenhum laudo com o termo "{{ search_term }} {{search_date}}" </h3>
+            {% endif %}
+        {% else %}
+            <h4 class="heading-report-all">
+                Abaixo estão todos os laudos existentes:
+            </h4>
+            <div class="report-list-container">
+                {% for report in all_reports %} <!-- mostra todos os laudos--> 
+                    {% include "lab/partials/report_searched.html" %}
+                {% endfor %}
+            </div>
+        {% endif %}
+       
     </div>
 {% endblock content %}

@@ -6,19 +6,16 @@
     <div class="main-content main-content-list container">
 
         {% if search_term %}
-        
             {% if patients %}
                 {% for patient in patients %}
                     {% include 'lab/partials/user.html' %}
                 {% endfor %}
                 {% else %}
                 <div class="center m-y">
-                    <h1>Nenhum paciente encontrado</h1>
+                    <h2 class="no-patient-msg">Nenhum paciente encontrado</h2>
                 </div>
             {% endif %}
-
         {% else %}
-                
             {% for patient in all_patients %}
                 {% include 'lab/partials/user.html' %}
             {% endfor %}

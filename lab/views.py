@@ -145,4 +145,32 @@ def laudo_detalhes(request, usuario_id):
 
 @has_permission_decorator('visualizar_laudo')
 def laudo_consultar(request):
-    return render(request, 'lab/pages/laudo_consultar.html')
+    search_term = request.GET.get('q', '').strip()
+    search_date = request.GET.get('search_date')
+
+    all_reports = Lab.objects.all()
+    reports = []
+
+    if search_term:
+        reports = Lab.objects.filter(
+            Q(name__icontains=search_term) |
+            Q(cpf__icontains=search_term)
+        ).order_by('-id')
+
+    if search_date:
+        reports = Lab.objects.filter(
+            created_at__date=search_date
+        ).order_by('-id')
+
+    page_obj, pagination_range = make_pagination(
+        request, reports, PER_PAGE)
+
+    return render(request, 'lab/pages/laudo_consultar.html', {
+        'page_title': f'Pesquisar por "{search_term}" |',
+        'search_term': search_term,
+        'search_date': search_date,
+        'all_reports': all_reports,
+        'reports': page_obj,
+        'pagination_range': pagination_range,
+        'additional_url_query': f'&q={search_term}&search_date={search_date}',
+    })
