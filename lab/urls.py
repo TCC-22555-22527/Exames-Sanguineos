@@ -22,6 +22,8 @@ urlpatterns = [
     path('alterar-dados/<int:usuario_id>/',
          login_required(views.alterar_dados),
          name='alterar_dados'),
-    path('laudo-detalhes/<int:usuario_id>/',
-         login_required(views.laudo_detalhes), name="laudo_detalhes")
+    path('laudo-perfil/<int:usuario_id>/',
+         login_required(views.laudo_perfil), name="laudo_perfil"),
+    path('laudo-detalhes/<int:laudo_id>/',
+         views.laudo_detalhes, name="laudo_detalhes")
 ]

@@ -3,9 +3,8 @@
         <p> <strong> CPF do paciente: </strong></p> {{ report.cpf }}  
         <p> <strong> nome do paciente: </strong></p> {{ report.name }} 
         <p><strong>Data do Envio:</strong> </p> {{ report.created_at }}
-        <a href= {% url "lab:home" %} class="report-user-access">
-            Detalhes <i class='bx bxs-binoculars'></i>
+        <a href= {% url "lab:laudo_detalhes" laudo_id=report.id  %} class="report-user-access"> <!-- link para laudo_detalhes, provavelmente irá precisar de id -->
+            Detalhes <i class='bx bxs-binoculars'></i> 
         </a>
     </div>
 </div>
-

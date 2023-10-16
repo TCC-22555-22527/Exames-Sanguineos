@@ -1,8 +1,8 @@
 <div class="report report-list-item">
     <div class="report-content">    
-        <p><strong>Data de Envio:</strong> {{ laudo.cpf }}</p>
         <p><strong>Data de Envio:</strong> {{ laudo.created_at }}</p>
-        <p><strong>Imagem do Laudo:</strong></p>   
+        {{ laudo.cpf }}
+        <p><strong>Imagem do Laudo:</strong></p> 
         <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
     </div>
 </div>

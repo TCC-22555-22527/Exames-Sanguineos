@@ -5,6 +5,7 @@ from authors.models import Patient
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
@@ -131,18 +132,28 @@ def alterar_dados(request, usuario_id):
 
 # consultar laudos de um perfil
 @has_permission_decorator('visualizar_laudo')
-def laudo_detalhes(request, usuario_id):
+def laudo_perfil(request, usuario_id):
     profile_user = get_object_or_404(Patient,
                                      pk=usuario_id)
     laudos = Lab.objects.filter(patient=profile_user)
 
-    return render(request, 'lab/pages/laudo_detalhes.html',
+    return render(request, 'lab/pages/laudo_perfil.html',
                   {'profile_user': profile_user,
                    'laudos': laudos})
 
+
+def laudo_detalhes(request, laudo_id):
+    try:
+        laudo = Lab.objects.get(id=laudo_id)
+    except Lab.DoesNotExist:
+        raise Http404("O laudo não foi encontrado.")
+
+    return render(request, 'lab/pages/laudo_detalhes.html', {
+        'laudo': laudo,
+    })
+
+
 # pesquisar laudos criados
-
-
 @has_permission_decorator('visualizar_laudo')
 def laudo_consultar(request):
     search_term = request.GET.get('q', '').strip()
