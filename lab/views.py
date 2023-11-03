@@ -142,6 +142,7 @@ def laudo_perfil(request, usuario_id):
                    'laudos': laudos})
 
 
+@has_permission_decorator('visualizar_laudo')
 def laudo_detalhes(request, laudo_id):
     try:
         laudo = Lab.objects.get(id=laudo_id)

@@ -4,10 +4,36 @@
 {% block content %}
 {% include 'global/partials/messages.html' %}
     <div class="main-content center">
-        <p><strong>Data de Envio:</strong> {{ laudo.created_at }}</p>
-        <p> <strong> CPF do paciente: </strong></p> {{ laudo.cpf }}  
-        <p> <strong> nome do paciente: </strong></p> {{ laudo.name }} 
-        <p><strong>Imagem do Laudo:</strong></p>   
-        <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
+        <div class="report-detail-container">
+            
+            <h3 class="teste-home">Informações do laudo</h3>
+
+            <div class="report-description-container">
+                <div class="table-container">
+                    <table class="report-detail-table">
+                        <tr>
+                            <td class="cell-white"><strong>Data de Envio:</strong></td>
+                            <td class="cell-black">{{ laudo.created_at }}</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-white"><strong>CPF do paciente:</strong></td>
+                            <td class="cell-black">{{ laudo.cpf }}</td>
+                        </tr>
+                        <tr>
+                            <td class="cell-white"><strong>Nome do paciente:</strong></td>
+                            <td class="cell-black">{{ laudo.name }}</td>
+                        </tr>   
+                    </table>
+                </div>
+            </div>
+
+            <div class="report-image-box">
+                <h4> Imagem analisada:</h4>   
+                <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
+            </div>
+
+            
+
+        </div>
     </div>
 {% endblock content %}
