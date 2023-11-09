@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from authors.forms import AuthorReportForm, EditProfileForm
 from authors.models import Patient
@@ -11,6 +12,9 @@ from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
 
 from .models import Lab
+
+# from yolov5.Inference_files.detect import detect
+
 
 # vou precisar import
 PER_PAGE = os.environ.get('PER_PAGE', 6)
@@ -27,10 +31,13 @@ def home(request):
 
 
 # Dashboard para enviar imagem com dados adicionais
-@has_permission_decorator('laudo_enviar_permission')
+
+
+# @has_permission_decorator('laudo_enviar_permission')
 def laudo_enviar(request):
     form = AuthorReportForm()
     selected_patient = None
+    detected_objects = None  # Para armazenar as detecções
 
     if request.method == 'POST':
         image = request.FILES.get('image')
@@ -45,6 +52,22 @@ def laudo_enviar(request):
                           cpf=selected_patient.cpf,
                           image=image)
                 lab.save()
+
+                # Realize a detecção de objetos na imagem
+                # Suponha que 'image_path' seja o caminho para a imagem salva
+                image_path = os.path.join(
+                    'lab/reports/', lab.image.name)
+                detect_command = (
+                    "python yolov5/inference_files/detect.py "
+                    f"--source {image_path} "
+                    "--weights yolov5/inference_files/best_BCCM.pt "
+                    "--output lab_results/"
+                )
+
+                subprocess.run(detect_command, shell=True)
+
+                # Leia as detecções do arquivo de saída
+                detected_objects = os.listdir('lab_results/')
 
                 messages.success(request, 'Sua imagem foi salva com sucesso!')
             except Patient.DoesNotExist:
@@ -68,10 +91,12 @@ def laudo_enviar(request):
     return render(request, 'lab/pages/laudo_enviar.html',
                   {'patients': patients,
                    'form': form,
-                   'selected_patient': selected_patient})
-
+                   'selected_patient': selected_patient,
+                   'detected_objects': detected_objects})
 
 # pesquisar paciente por nome e cpf
+
+
 @has_permission_decorator('pesquisar_paciente')
 def pesquisa(request):
     search_term = request.GET.get('q', '').strip()

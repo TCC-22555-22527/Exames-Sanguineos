@@ -1,4 +1,3 @@
-
 from authors.models import Patient
 from django.db import models
 
@@ -15,11 +14,7 @@ class Lab(models.Model):
         return f"Laboratório de {self.patient.first_name} ({self.cpf})"
 
 
-class DetectionResult(models.Model):
-    lab = models.ForeignKey(Lab, on_delete=models.CASCADE)
-    label = models.CharField(max_length=100)
-    confidence = models.FloatField()
-    x = models.FloatField()
-    y = models.FloatField()
-    width = models.FloatField()
-    height = models.FloatField()
+class DetectedImage(models.Model):
+    detected_img = models.ImageField(
+        upload_to='lab/detects', blank=True, default=''
+    )
