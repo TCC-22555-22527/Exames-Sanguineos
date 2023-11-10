@@ -32,6 +32,13 @@
                 <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
             </div>
 
+            {% for detected_image in detected_images %}
+                <div class="report-image-box">
+                    <h4> Resposta:</h4>   
+                    <img src="{{ detected_image.detected_img.url }}" alt="Deteccao"> 
+                </div>
+            {% endfor %}
+
             
 
         </div>

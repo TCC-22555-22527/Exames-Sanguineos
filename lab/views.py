@@ -186,11 +186,13 @@ def laudo_perfil(request, usuario_id):
 def laudo_detalhes(request, laudo_id):
     try:
         laudo = Lab.objects.get(id=laudo_id)
+        detected_images = DetectedImage.objects.filter(lab=laudo)
     except Lab.DoesNotExist:
         raise Http404("O laudo não foi encontrado.")
 
     return render(request, 'lab/pages/laudo_detalhes.html', {
         'laudo': laudo,
+        'detected_images': detected_images,
     })
 
 
