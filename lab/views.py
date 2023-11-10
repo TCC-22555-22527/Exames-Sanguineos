@@ -1,4 +1,5 @@
 import os
+import shutil
 import subprocess
 
 from authors.forms import AuthorReportForm, EditProfileForm
@@ -11,7 +12,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
 
-from .models import Lab
+from .models import DetectedImage, Lab
 
 # from yolov5.Inference_files.detect import detect
 
@@ -55,8 +56,7 @@ def laudo_enviar(request):
 
                 # Realize a detecção de objetos na imagem
                 # Suponha que 'image_path' seja o caminho para a imagem salva
-                image_path = os.path.join(
-                    'lab/reports/', lab.image.name)
+                image_path = os.path.join('media/' + lab.image.name)
                 detect_command = (
                     "python yolov5/inference_files/detect.py "
                     f"--source {image_path} "
@@ -68,6 +68,21 @@ def laudo_enviar(request):
 
                 # Leia as detecções do arquivo de saída
                 detected_objects = os.listdir('lab_results/')
+
+                # salvar resultado no models
+                if detected_objects:
+                    latest_detection = detected_objects[-1]
+
+                    source_path = os.path.join('lab_results', latest_detection)
+                    destination_path = os.path.join(
+                        'media/lab/detects', latest_detection)
+                    shutil.move(source_path, destination_path)
+
+                    lab = Lab.objects.get(pk=lab.pk)
+                    detection_result = DetectedImage(
+                        lab=lab,
+                        detected_img=f'lab/detects/{latest_detection}')
+                    detection_result.save()
 
                 messages.success(request, 'Sua imagem foi salva com sucesso!')
             except Patient.DoesNotExist:
