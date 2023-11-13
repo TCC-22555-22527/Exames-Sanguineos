@@ -88,7 +88,7 @@ h5 {
 
 
 
-
+                    /*HOME*/
                     /* TESTE dos h1 que estão no lab*/
 .teste-home {
     margin: 0 auto;
@@ -104,7 +104,7 @@ h5 {
     margin: 0 0.3rem;
 }
 
-
+ 
 
 
                     /*  HEADER  */          
@@ -427,6 +427,7 @@ h5 {
 }           
 
 /* table */
+
 .report-description-container {
     background-color: #000;
     width: fit-content;
@@ -456,6 +457,7 @@ h5 {
     background-color: var(--color-primary-dark);
     color: #fff;
 }
+
 
                 /* REPORT SEARCH - PESQUISA DE LAUDO */
 .search-container-report {
@@ -659,6 +661,25 @@ h5 {
 .btn-access:hover {
     display: inline-block;
     background-color: rgb(6, 100, 6);   
+}
+.btn-access-edit {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgb(84, 116, 123);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 4rem;
+    width: 20rem;
+}
+.btn-access-edit:hover {
+    display: inline-block;
+    background-color: rgb(32, 60, 58);   
 }
 .btn-access-dcption {
     margin-top: 2rem;

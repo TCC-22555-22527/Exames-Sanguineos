@@ -30,7 +30,7 @@
                        <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
                     </a>
                     {% if user|can:'alterar_dados'%}
-                        <a href="{% url 'lab:alterar_dados' usuario_id=profile_user.id %}" class="btn-access">
+                        <a href="{% url 'lab:alterar_dados' usuario_id=profile_user.id %}" class="btn-access-edit">
                             <i class='bx bx-pencil'></i>‎ ‎Editar perfil
                         </a>
                     {% endif %}

@@ -1,12 +1,60 @@
-{% extends 'global/base.html' %}    
+{% extends 'global/base_home.html' %}    
 
 {% block title %}Home |{% endblock title %}
 
 {% block content %}
 {% include 'global/partials/messages.html' %}
     <div class="main-content">
-        <h2 class="teste-home">Olá,  {{ user.username }} </h2>
-        <p class="teste-home">Seja bem vindo a minha pagina, sinta se a vontade</p>
+        <h1 class="teste-home">Olá,  {{ user.username }} </h1>
+        <p class="teste-home">Seja bem vindo(a), sinta se a vontade</p>
+        <h2>O que é esse sistema e para quê serve?</h2>
+            <br>
+                <p>Esse sistema é pra ser usado em laboratório, tendo várias funcionalidades, como cadastro, login, alteração de dados e o principal: <strong>Geração de laudo hematológicos
+                    após processamento de imagens sanguíneas microscópicas</strong>.
+                    Essa geração ocorre por meio de diversos algoritmos treinados e complexos que oferecem ao usuário, a oportunidade de ter um primeiro contato com as especificades do sangue 
+                    que está sendo analisado, sendo possível optmizar o tempo e automação dentro de um ambiente laboratorial.
+                </p>
+            <br>
+            <br>
+        <h2>Quem desenvolveu o sistema?</h2>
+            <br>
+            <img src="/media/lab/logo/heliel.png" class="img-eu" alt="titulo" class="image-title">  
+            <br>
+            <br>
+                <p>Esse sistema foi desenvolvido pelo jovem estudante de análise e desenlvovimento de sistemas <strong>Heliel Souza Lima</strong> de 22 anos, na instituição de ensino COTUCA.</p>
+                <p>O projeto que está prestes a ser apresentado, consiste em um Trabalho de Conclusão de Curso (TCC), onde no qual, a idéia surgiu por conta de seu ex-colega de sala, <strong>Anderson</strong>.
+                Anderson, por sua vez, acabou saindo do curso, por conta disso todo o trabalho de desenvolvimento foi atribuído ao Heliel.
+                </p>
+            <br>
+            <br>
+        <h2>Como o projeto foi desenvolvido?</h2>
+            <br>
+                <p>O projeto majoritariamente foi desenvolvido no Framework <strong>Django</strong>, framework desenvolvido em python que permite a criação de sistemas rápidos e escaláveis.
+                Além disso, foram usadas tecnologias como <strong> HTML5, CSS3 e JavaScript</strong> para algumas estilizações e detalhes da estrutura da página. outros frameworks, linguagens e algoritmos
+                também fora utilizados nesse sistema, mas logo adiante serão explicados em detalhes. 
+                </p>
+            <br>
+            <br>
+        <h2>
+            Como funciona esse sistema?
+        </h2>
+        <br>
+            Esse sistema tem 3 tipos de usuários a serem cadastrados: <br><br>
+            <strong>Técnico</strong>: responsável por enviar imagens ao sistema e realizar a geração dos laudos de imagens sanguíneas. <br>
+            <strong>Recepcionista</strong>: Responsável pelo cadastro de pacientes, alteração de dados, consulta de laudos gerados. <br>
+            <strong>Paciente</strong>: Paciente é o usuário que terá seus dados pessoais coletados para seu cadastro e terá um laudo gerado por conta de seu sangue.
+        <br>
+        <br>
+        <p>Existe uma inteligência artificial de detecção de objetos por trás desse sistema, onde um há um peso treinado com mais de 400 imagens sanguíneas
+            de um data-set, com um algoritmo de visão computacional de rede neural convolucional (RNN) chamado <strong> YOLO </strong>(You Once Look Once).
+            <br>
+            <br>
+            Esse modelo levou mais de 14 horas para ser trainado no google Colab, onde todas as imagens do data-set foram rotuladas manualmente, para que a máquina aprendesse
+            a identificar padrões e buscar melhor sua taxa de confiança, até gerar o melhor peso pré-trainado para ser ajustado e utilizado como inferência nesse sistema.
+
+            
+        </p>
+        
     </div>
 {% endblock content %}
 
