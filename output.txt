@@ -1,7 +1,7 @@
-Namespace(weights=['yolov5/Inference_files/best_BCCM.pt'], source='media/lab/reports/sangue_2_penT7yR.jpg', output='lab_results/', img_size=640, conf_thres=0.4, iou_thres=0.5, device='', view_img=False, save_txt=False, classes=None, agnostic_nms=False, augment=False, update=False)
+Namespace(weights=['yolov5/Inference_files/best_BCCM.pt'], source='media/lab/reports/sangue_ndfz1Tr.jpg', output='lab_results/', img_size=640, conf_thres=0.4, iou_thres=0.5, device='', view_img=False, save_txt=True, classes=None, agnostic_nms=False, augment=False, update=False)
 Using CPU
 
 Fusing layers... Model Summary: 140 layers, 7.25191e+06 parameters, 6.61683e+06 gradients
-image 1/1 C:\Users\Heliel\tcc-app\media\lab\reports\sangue_2_penT7yR.jpg: 512x640 10 RBCs, 1 WBCs, Done. (0.404s)
+image 1/1 C:\Users\Heliel\tcc-app\media\lab\reports\sangue_ndfz1Tr.jpg: 512x640 14 RBCs, 1 WBCs, Done. (0.429s)
 Results saved to lab_results
-Done. (0.440s)
+Done. (0.484s)

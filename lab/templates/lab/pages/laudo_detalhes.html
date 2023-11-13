@@ -21,20 +21,56 @@
                         </tr>
                         <tr>
                             <td class="cell-white"><strong>Nome do paciente:</strong></td>
-                            <td class="cell-black">{{ laudo.name }}</td>
+                            <td class="cell-black">{{ laudo.name }} </td>
                         </tr>   
                         {% for detected_image in detected_images %}
                             <tr>
-                                <td class="cell-white"><strong>Número de glóbulos brancos detectados</strong></td>
-                                <td class="cell-black">{{ detected_image.total_wbc }}</td>
+                                <td class="cell-white"><strong>Número células totais detectadas</strong></td>
+                                <td class="cell-black">{{ detected_image.total_deteccoes }}</td>
                             </tr>
                             <tr>
-                                <td class="cell-white"><strong>Número de glóbulos vermelho detectados</strong></td>
+                                <td class="cell-white"><strong>Número de hemácias detectadas</strong></td>
                                 <td class="cell-black">{{ detected_image.total_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Número de leucócitos detectados</strong></td>
+                                <td class="cell-black">{{ detected_image.total_wbc }}</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Número de plaquetas detectadas</strong></td>
                                 <td class="cell-black">{{ detected_image.total_plaquetas }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Concentração em % de hemácias</strong></td>
+                                <td class="cell-black">{{ detected_image.concentracao_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Concentração em % de leucócitos</strong></td>
+                                <td class="cell-black">{{ detected_image.concentracao_wbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Concentração em % de plaquetas</strong></td>
+                                <td class="cell-black">{{ detected_image.concentracao_plaquetas }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Concentração de leucócitos por hemácias</strong></td>
+                                <td class="cell-black">{{ detected_image.concentracao_wbc_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>media do diametro hemacia</strong></td>
+                                <td class="cell-black">{{ detected_image.media_diam_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>media do diametro leucocitos</strong></td>
+                                <td class="cell-black">{{ detected_image.media_diam_wbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>media do circunferencia hemacia</strong></td>
+                                <td class="cell-black">{{ detected_image.media_circun_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>media do circunferencia hemacia</strong></td>
+                                <td class="cell-black">{{ detected_image.media_circun_wbc }}</td>
                             </tr>
                         {% endfor %}
                     </table>
