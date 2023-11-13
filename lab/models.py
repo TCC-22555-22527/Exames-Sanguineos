@@ -21,6 +21,15 @@ class DetectedImage(models.Model):
     total_wbc = models.IntegerField(default=0)
     total_rbc = models.IntegerField(default=0)
     total_plaquetas = models.IntegerField(default=0)
+    total_deteccoes = models.IntegerField(default=0)
+    concentracao_rbc = models.FloatField(default=0.0)
+    concentracao_wbc = models.FloatField(default=0.0)
+    concentracao_plaquetas = models.FloatField(default=0.0)
+    concentracao_wbc_rbc = models.FloatField(default=0.0)
+    media_diam_rbc = models.FloatField(default=0.0)
+    media_diam_wbc = models.FloatField(default=0.0)
+    media_circun_rbc = models.FloatField(default=0.0)
+    media_circun_wbc = models.FloatField(default=0.0)
 
     def __str__(self):
         return f"{self.lab} - {self.detected_img}"
