@@ -17,8 +17,10 @@ class Lab(models.Model):
 class DetectedImage(models.Model):
     lab = models.ForeignKey(Lab, on_delete=models.CASCADE)
     detected_img = models.ImageField(
-        upload_to='lab/detects/', blank=True, default=''
-    )
+        upload_to='lab/detects/', blank=True, default='')
+    total_wbc = models.IntegerField(default=0)
+    total_rbc = models.IntegerField(default=0)
+    total_plaquetas = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.lab} - {self.detected_img}"

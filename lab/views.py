@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import subprocess
 
@@ -6,6 +7,7 @@ from authors.forms import AuthorReportForm, EditProfileForm
 from authors.models import Patient
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+# from django.core.files import File
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
@@ -31,60 +33,111 @@ def home(request):
     return render(request, 'lab/pages/home.html')
 
 
-# Dashboard para enviar imagem com dados adicionais
-
-
 # @has_permission_decorator('laudo_enviar_permission')
 def laudo_enviar(request):
     form = AuthorReportForm()
     selected_patient = None
-    detected_objects = None  # Para armazenar as detecções
+    detected_objects = None
+
+    total_rbc = 0
+    total_wbc = 0
+    total_plaquetas = 0
 
     if request.method == 'POST':
+        # captura a imagem enviada no form
         image = request.FILES.get('image')
+        # captura o paciente selecionado
         selected_patient_id = request.POST.get('selected_patient')
 
+        # caso os valores sejam verdadeiros
         if selected_patient_id and image:
             try:
+                # obtem o id do paciente selecionado
                 selected_patient = Patient.objects.get(id=selected_patient_id)
-
+                # salva a imagem e os dados do paciente no bd
                 lab = Lab(patient=selected_patient,
                           name=selected_patient.first_name,
                           cpf=selected_patient.cpf,
                           image=image)
                 lab.save()
 
-                # Realize a detecção de objetos na imagem
-                # Suponha que 'image_path' seja o caminho para a imagem salva
+                # Defina o caminho do arquivo de saída que vai ter rbc, etc.
+                output_file_path = "output.txt"
+
+                # Obtem o caminho da imagem que foi enviada e salva
                 image_path = os.path.join('media/' + lab.image.name)
+                # comando para detectar objetos na imagem
                 detect_command = (
-                    "python yolov5/inference_files/detect.py "
+                    "python yolov5/Inference_files/detect.py "
                     f"--source {image_path} "
-                    "--weights yolov5/inference_files/best_BCCM.pt "
+                    "--weights yolov5/Inference_files/best_BCCM.pt "
                     "--output lab_results/"
                 )
 
-                subprocess.run(detect_command, shell=True)
+                # Execute o comando e redirecione a saída para o arquivo
+                with open(output_file_path, "w") as output_file:
+                    subprocess.run(detect_command, shell=True,
+                                   stdout=output_file)
 
-                # Leia as detecções do arquivo de saída
+                # Leia a saída do arquivo após o término do processo
+                with open(output_file_path, "r") as output_file:
+                    output_content = output_file.read()
+                    print(
+                        f"Output Content: {output_content}" + "fim da variável")  # noqa: E501
+
+                # Agora, você pode processar 'output_content' para extrair
+                matches = re.findall(r'(\d+)\s+(RBC|WBC|Platelets)', output_content)  # noqa: E501
+                print(f"Matches: {matches}")
+
+                if matches:
+                    # Iterar sobre as correspondências
+                    for match in matches:
+                        count, cell_type = match
+                        # Converter a contagem para um número
+                        count = int(count)
+
+                        # Aqui, você pode adicionar a lógica para salvar os
+                        if cell_type == 'RBC':
+                            total_rbc += count
+                        elif cell_type == 'WBC':
+                            total_wbc += count
+                        elif cell_type == 'Platelets':
+                            total_plaquetas += count
+
+                    print(f"Total RBC: {total_rbc}, Total WBC: {total_wbc}, Total Platelets: {total_plaquetas}")  # noqa: E501
+
+                # move a imagem detectada do lab_results para outro lugar
+
                 detected_objects = os.listdir('lab_results/')
+                print(f"Detected objects: {detected_objects}")
 
-                # salvar resultado no models
-                if detected_objects:
+                if detected_objects:  # Verifica se a lista não está vazia
                     latest_detection = detected_objects[-1]
-
-                    source_path = os.path.join('lab_results', latest_detection)
+                    source_path = os.path.join(
+                        'lab_results', latest_detection)
                     destination_path = os.path.join(
                         'media/lab/detects', latest_detection)
                     shutil.move(source_path, destination_path)
 
+                    # obtem a pk do imagem enviada
                     lab = Lab.objects.get(pk=lab.pk)
+                    # salva os dados obtidos no bd da DetectedImage
                     detection_result = DetectedImage(
                         lab=lab,
-                        detected_img=f'lab/detects/{latest_detection}')
+                        detected_img=f'lab/detects/{latest_detection}',
+                        total_wbc=total_wbc,
+                        total_rbc=total_rbc,
+                        total_plaquetas=total_plaquetas)
                     detection_result.save()
 
-                messages.success(request, 'Sua imagem foi salva com sucesso!')
+                    messages.success(
+                        request, 'Sua imagem foi salva com sucesso!')
+                else:
+                    messages.error(
+                        request, 'Nenhuma detecção encontrada em lab_results/.')  # noqa E501
+
+                # Limpeza: remova o arquivo de saída, se desejar
+
             except Patient.DoesNotExist:
                 messages.error(request, 'Paciente não encontrado.')
         else:
