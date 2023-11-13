@@ -23,24 +23,43 @@
                             <td class="cell-white"><strong>Nome do paciente:</strong></td>
                             <td class="cell-black">{{ laudo.name }}</td>
                         </tr>   
+                        {% for detected_image in detected_images %}
+                            <tr>
+                                <td class="cell-white"><strong>Número de glóbulos brancos detectados</strong></td>
+                                <td class="cell-black">{{ detected_image.total_wbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Número de glóbulos vermelho detectados</strong></td>
+                                <td class="cell-black">{{ detected_image.total_rbc }}</td>
+                            </tr>
+                            <tr>
+                                <td class="cell-white"><strong>Número de plaquetas detectadas</strong></td>
+                                <td class="cell-black">{{ detected_image.total_plaquetas }}</td>
+                            </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>
 
-            <div class="report-image-box">
-                <h4> Imagem analisada:</h4>   
-                <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
+            <div class="before_aft_detect">
+                <div class="report-image-box">
+                    <h3> Imagem analisada:</h3>   
+                    <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
+                </div>
+
+                <div class="blue-arrow">
+                    <img src="/media/lab/others/seta_azul.png" alt="titulo" class="seta">     
+                </div> 
+
+                {% for detected_image in detected_images %}
+                    <div class="report-image-box">
+                        <h3> Resposta de detecção:</h3>   
+                        <img src="{{ detected_image.detected_img.url }}" alt="Deteccao"> 
+                    </div>
+                {% endfor %}
             </div>
 
-            {% for detected_image in detected_images %}
-                <div class="report-image-box">
-                    <h4> Resposta:</h4>   
-                    <img src="{{ detected_image.detected_img.url }}" alt="Deteccao"> 
-                </div>
-            {% endfor %}
-
-            
-
+           
         </div>
     </div>
 {% endblock content %}

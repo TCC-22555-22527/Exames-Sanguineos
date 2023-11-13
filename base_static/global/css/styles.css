@@ -397,7 +397,23 @@ h5 {
     height: 28%;
 } 
 /*detalhes*/
+.before_aft_detect{
+    display: flex;
+    justify-content: space-between;
+}
+.blue-arrow {
+    max-width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+.blue-arrow img {
+    max-width: 100%; 
+    height: auto;
+}
 .report-image-box {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
     max-width: 50rem;
     max-height: 50rem;
 }
