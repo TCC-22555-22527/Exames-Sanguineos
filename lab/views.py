@@ -106,7 +106,7 @@ def laudo_enviar(request):
                     for match in matches:
                         class_id, x_center, y_center, width, height = match
                         # Converter a contagem para um número
-                        print(f"\nClass ID: {class_id}\n")
+                        print(f"Class ID: {class_id}\n")
 
                         x_center = float(x_center)
                         y_center = float(y_center)
@@ -133,18 +133,7 @@ def laudo_enviar(request):
                         elif class_id == '2':
                             total_wbc += 1
 
-                        print(
-                        f"\nTotal RBC: {total_rbc}, Total WBC: {total_wbc}, Total Platelets: {total_plaquetas}\n\n")  # noqa E501
-                        print(
-                            f"Coordenadas normalizadas (x, y, largura, altura): {x_center}, {y_center}, {width}, {height}")  # noqa E501
-                        print(
-                            f"Coordenadas em micrometros (x, y, largura, altura): {x_center_um}, {y_center_um}, {width_um}, {height_um}")   # noqa E501
-                        print(
-                            f"Área da bounding box em micrometros quadrados: {area_um2}, Tamanho médio em micrometros quadrados: {average_size}")  # noqa E501
-
                         total_deteccoes = total_rbc + total_wbc + total_plaquetas  # noqa E501
-                        print(
-                            f"\nTotal de objetos detectados: {total_deteccoes}")  # noqa E501
 
                         concentracao_rbc = round(
                             (total_rbc / total_deteccoes) * 100, 2)
@@ -164,23 +153,33 @@ def laudo_enviar(request):
                         media_circun_rbc = round(media_circun_rbc / 1000, 2)
                         media_circun_wbc = round(media_circun_wbc / 1000, 2)
 
-                        # impressoes no terminal
-                        print(
-                            f"\nConcentracao de RBC detectados: {concentracao_rbc} %")  # noqa E501
-                        print(
-                            f"\nConcentracao de WBC detectados: {concentracao_wbc} %")  # noqa E501
-                        print(
-                            f"\nConcentracao de Plaquetas detectadas: {concentracao_plaquetas} %")  # noqa E501
-                        print(
-                            f"\nConcentracao de WBC por RBC: {concentracao_wbc_rbc}")  # noqa E501
-                        print(
-                            f"\nDiametro medio RBC: {media_diam_rbc} um")
-                        print(
-                            f"\nDiametro medio WBC {media_diam_wbc} um")
-                        print(
-                            f"\nCircunferencia media RBC {media_circun_rbc} um")  # noqa E501
-                        print(
-                            f"\nCircunferencia media WBC {media_circun_wbc} um")  # noqa E501
+                # impressoes no terminal
+                print(
+                    f"\nTotal de objetos detectados: {total_deteccoes}")  # noqa E501
+                print(
+                f"\nTotal RBC: {total_rbc}, Total WBC: {total_wbc}, Total Platelets: {total_plaquetas}")  # noqa E501
+                print(
+                    f"Coordenadas normalizadas (x, y, largura, altura): {x_center}, {y_center}, {width}, {height}")  # noqa E501
+                print(
+                    f"Coordenadas em micrometros (x, y, largura, altura): {x_center_um}, {y_center_um}, {width_um}, {height_um}")   # noqa E501
+                print(
+                    f"Área da bounding box em micrometros quadrados: {area_um2}, Tamanho médio em micrometros quadrados: {average_size}")  # noqa E501
+                print(
+                    f"\nConcentracao de RBC detectados: {concentracao_rbc} %")  # noqa E501
+                print(
+                    f"\nConcentracao de WBC detectados: {concentracao_wbc} %")  # noqa E501
+                print(
+                    f"\nConcentracao de Plaquetas detectadas: {concentracao_plaquetas} %")  # noqa E501
+                print(
+                    f"\nConcentracao de WBC por RBC: {concentracao_wbc_rbc}")  # noqa E501
+                print(
+                    f"\nDiametro medio RBC: {media_diam_rbc} um")
+                print(
+                    f"\nDiametro medio WBC {media_diam_wbc} um")
+                print(
+                    f"\nCircunferencia media RBC {media_circun_rbc} um")  # noqa E501
+                print(
+                    f"\nCircunferencia media WBC {media_circun_wbc} um")  # noqa E501
 
                 detected_objects = os.listdir('lab_results/')
                 print(f"\nDetected objects: {detected_objects}")

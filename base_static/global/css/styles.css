@@ -318,6 +318,22 @@ h5 {
 
 
                     /* USER - DETAILS*/
+.user-profile-details{ /*igual a recipe*/
+    background: var(--color-white);
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, .2);
+    border-radius: .7rem;
+    overflow: hidden;
+   
+}
+.user-profile-list {/*igual a recipe-list-item*/
+    max-width: 64rem;
+    height: fit-content;
+}
+.user-profile-content { /*igual a recipe-content*/
+    padding: var(--spacing-gutter-medium);
+    padding-top: 2rem;
+    max-width: 50rem;
+}
 .button-access-user-space {
     margin: 0 auto;
     justify-content: center;
@@ -325,6 +341,7 @@ h5 {
     width: fit-content;
     margin-top: 2rem;
     text-align: center;
+    
 } 
 .profile-from-name {
     padding: 1rem 1rem;
