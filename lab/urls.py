@@ -13,8 +13,8 @@ urlpatterns = [
     # name='cadastro_paciente'),
     path('laudo-consultar/', login_required(views.laudo_consultar),
          name='laudo_consultar'),
-    path('laudo-enviar/', login_required(views.laudo_enviar),
-         name='laudo_enviar'),
+    path('imagem-enviar/', login_required(views.imagem_enviar),
+         name='imagem_enviar'),
     path('pesquisa/', login_required(views.pesquisa), name='pesquisa'),
     # traduzir para português
     path('usuario/<int:usuario_id>/', login_required(views.usuario_detalhes),

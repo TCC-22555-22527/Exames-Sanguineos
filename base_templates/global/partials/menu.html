@@ -31,7 +31,7 @@
           {% endif %}
 
           {% if user|can:'laudo_enviar_permission'%}
-            <a href="{%url 'lab:laudo_enviar'%}"> Enviar imagem </a>
+            <a href="{%url 'lab:imagem_enviar'%}"> Enviar imagem </a>
           {% endif %}
 
           {% if user|can:'visualizar_laudo'%}

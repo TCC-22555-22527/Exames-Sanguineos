@@ -318,6 +318,7 @@ h5 {
 
 
                     /* USER - DETAILS*/
+                
 .user-profile-details{ /*igual a recipe*/
     background: var(--color-white);
     box-shadow: -5px 5px 10px rgba(0, 0, 0, .2);
@@ -366,6 +367,10 @@ h5 {
     align-items: center;
     justify-content: center;
     width: fit-content;
+}
+.patient-content {
+    padding: var(--spacing-gutter-medium);
+    padding-top: 2rem;
 }
 
                     /*  REPORTS DETAILS (DETALHES DOS LAUDOS) */

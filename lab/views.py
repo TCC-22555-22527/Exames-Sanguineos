@@ -35,7 +35,7 @@ def home(request):
 
 
 @has_permission_decorator('laudo_enviar_permission')
-def laudo_enviar(request):
+def imagem_enviar(request):
     form = AuthorReportForm()
     selected_patient = None
     detected_objects = None
@@ -106,7 +106,7 @@ def laudo_enviar(request):
                     for match in matches:
                         class_id, x_center, y_center, width, height = match
                         # Converter a contagem para um número
-                        print(f"Class ID: {class_id}\n")
+                        print(f"Class ID: {class_id}")
 
                         x_center = float(x_center)
                         y_center = float(y_center)
@@ -192,7 +192,7 @@ def laudo_enviar(request):
                     destination_path = os.path.join(
                         'media/lab/detects', latest_detection)
                     shutil.move(source_path, destination_path)
-                    print(f"\nlatestest detecção: {latest_detection}")
+                    print(f"\nultima detecção: {latest_detection}")
                     # obtem a pk do imagem enviada
                     lab = Lab.objects.get(pk=lab.pk)
                     # salva os dados obtidos no bd da DetectedImage
@@ -225,7 +225,7 @@ def laudo_enviar(request):
             messages.error(
                 request, 'Preencha todos os campos antes de enviar.')
 
-        return redirect('lab:laudo_enviar')
+        return redirect('lab:imagem_enviar')
 
     patients = Patient.objects.all()
 
@@ -237,7 +237,7 @@ def laudo_enviar(request):
             Q(cpf__icontains=search_term)
         )
 
-    return render(request, 'lab/pages/laudo_enviar.html',
+    return render(request, 'lab/pages/imagem_enviar.html',
                   {'patients': patients,
                    'form': form,
                    'selected_patient': selected_patient,
