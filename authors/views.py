@@ -8,51 +8,9 @@ from project.roles import PatientUser, RecptUSer, TecUser
 from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import assign_role
 
-from .forms import (LoginForm, RegisterForm, RegisterFormLabTec,
-                    RegisterFormPatient, RegisterFormReception)
+from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
+                    RegisterFormReception)
 from .models import Patient
-
-# funcao de cadastro
-
-
-def register_view(request):
-    is_registration_page = request.path == reverse('authors:register')
-
-    # URL de redirecionamento para a página de login
-    back_url = reverse('authors:login')
-
-    register_form_data = request.session.get('register_form_data', None)
-    form = RegisterForm(register_form_data)
-
-    return render(request, 'authors/pages/register_view.html', {
-        'form': form,
-        'form_action': reverse('authors:register_create'),
-        'is_registration_page': is_registration_page,
-        'back_url': back_url,
-    })
-
-
-# funcao de pos cadastro
-def register_create(request):
-    if not request.POST:
-        raise Http404()
-
-    POST = request.POST
-    request.session['register_form_data'] = POST
-    form = RegisterForm(POST)
-
-    if form.is_valid():
-        user = form.save(commit=False)
-        user.set_password(user.password)
-        user.save()
-
-        messages.success(
-            request, 'Seu usuário foi criado, por favor, inicia a sessão.')
-
-        del (request.session['register_form_data'])
-        return redirect(reverse('authors:login'))
-
-    return redirect('authors:register')
 
 
 # funcao de login

@@ -10,12 +10,13 @@
     <body>
         {% include 'global/partials/menu.html' %}
         {% include 'global/partials/header.html'%}
+
         <main class="main-content-container">
             {% block content %}{% endblock content %}
-            {%include 'global/partials/pagination.html'%}
+            {% include 'global/partials/pagination.html'%}
+            {% include 'global/partials/footer_other_base.html'%}
         </main>
         
-        {%include 'global/partials/footer_other_base.html'%}
         <script src="{% static 'global/js/scripts.js' %}"></script>
        <!-- <script src="{% static 'global/js/loading.js' %}"></script>-->
     </body>
