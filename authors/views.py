@@ -16,7 +16,7 @@ from .models import Patient
 # funcao de login
 def login_view(request):
     form = LoginForm()
-    return render(request, 'authors/pages/login_temp.html', {
+    return render(request, 'authors/pages/login.html', {
         'form': form,
         'form_action': reverse('authors:login_create'),
     })
