@@ -1,17 +1,25 @@
 <header class="main-header-container">
     <div class="main-header container">
-        <img src="/media/lab/logo/ah-logo.png" alt="Logo" class="image-logo">
+       
+        <div class="imagem-logo-container">
+            <img src="/media/lab/logo/ah-logo.png" alt="Logo" class="image-logo">
+        </div>
+        <div class="image-title-container">
+            <a href="{% url 'lab:home' %}" class="logo-link">
+                <h1 class="main-logo">
+                    <img src="/media/lab/logo/diagnose.png" alt="titulo" class="image-title">      
+                </h1>
+                <i class='bx bxs-donate-blood'></i>
+            </a>
+        </div>
         
-        <a href="{% url 'lab:home' %}" class="logo-link">
-            <h1 class="main-logo">
-                <img src="/media/lab/logo/diagnose.png" alt="titulo" class="image-title">      
-            </h1>
-            <i class='bx bxs-donate-blood'></i>
-        </a>
-
-        <h4 class="hello-user">
-            <span class="hello"> Olá,</span>
-            <span class="name">{{user.username}}!</span>
-        </h4>
+        <div class="header-bottom-responsive">
+            <div class="hello-user-container">
+                <h4 class="hello-user">
+                    <span class="hello"> Olá,</span>
+                    <span class="name">{{user.username}}!</span>
+                </h4>
+            </div>
+        </div>
     </div>
 </header>
