@@ -73,7 +73,7 @@ body {
 }
 
 .container {
-    max-width: 144rem;
+    max-width: 130rem;
     margin: 0 auto;
 }
 
@@ -94,8 +94,8 @@ h5 {
                     /*  TUDO DO PROJETO PASSADO  */
 .main-content {
     padding-top: 0;
-    margin: 3rem; 
-    padding-bottom: 2.5rem;
+    margin-top: 3rem; 
+    padding-bottom: 8rem;
 }
 .main-content-login {
     padding-top: 0;
@@ -104,6 +104,7 @@ h5 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--spacing-gutter-large);
+    margin-bottom: 5rem
 }
 .recipe {
     background: var(--color-white);
@@ -224,11 +225,14 @@ h5 {
     padding: 0.6rem;
 }
 
+
 .image-logo {
     width: 143.5px;
     height: 88.5px;
+    /*
     margin-left: 6rem;
     margin-right: 35rem;
+    */
 }
 .image-title {
     width: 201px;
@@ -275,11 +279,13 @@ h5 {
 
 
                     /*  SEARCH DE PESQUISA  */
+
 .search-form {
     border: .2rem solid var(--color-primary-dark);
     max-width: 64rem;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     border-radius: .4rem;
     position: relative;
     transition: all 300ms ease-in-out;
@@ -383,6 +389,7 @@ h5 {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 0.5rem;
+    margin-bottom: 3rem;
 }
 .report{
     background: var(--color-white);
@@ -422,6 +429,8 @@ h5 {
 .before_aft_detect{
     display: flex;
     justify-content: space-between;
+    margin-right: 10rem;
+    margin-left: 10rem;
 }
 .blue-arrow {
     max-width: 10rem;
@@ -1137,24 +1146,39 @@ h5 {
 .m-y {
     margin: var(--spacing-gutter-medium) 0;
 }
+
+                    /**********************RESPONSIVIDADE*****************/
+
+/*listas*/
 @media (max-width: 600px) {
     .form-content-grid,
     .main-content-list {
       grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
   }
+
+/*Header*/  
 @media (max-width: 600px) {
+    .main-header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+    }
+   
+    
+    .image-logo {
+        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+        margin-top: 1rem;
+        justify-content: center;
+        /* width: 95.67px;
+        height: 59px;*/
+    }
     .main-logo {
         flex-flow: column nowrap; /* Alinha a imagem e o texto verticalmente */
         text-align: center; /* Centraliza o texto */
     }
 
-    .image-logo {
-        margin: 0 auto; /* Centraliza a imagem horizontalmente */
-        margin-top: 1rem;
-        margin-left: 14rem;
-        justify-content: center;
-    }
+    
 
     .main-logo-text {
         margin-top: 0.3rem; /* Remove o recuo superior no texto */

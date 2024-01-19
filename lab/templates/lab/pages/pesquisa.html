@@ -4,7 +4,8 @@
 
 {% block content %}
 {%include 'global/partials/search.html'%}
-    <div class="main-content main-content-list container">
+    <div class="main-content-list container">
+        
         {% if search_term %}
             {% if patients %}
                 {% for patient in patients %}
