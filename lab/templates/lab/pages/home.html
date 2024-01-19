@@ -1,12 +1,12 @@
-{% extends 'global/base_home.html' %}    
+{% extends 'global/base.html' %}    
 
 {% block title %}Home |{% endblock title %}
 
 {% block content %}
 {% include 'global/partials/messages.html' %}
-    <div class="main-content">
-        <h1 class="teste-home">Olá,  {{ user.username }} </h1>
-        <p class="teste-home">Seja bem vindo(a), sinta se a vontade</p>
+    <div class="main-content container">
+        <h1 class="personal-heading">Olá,  {{ user.username }} </h1>
+        <p class="center personal-p-tag">Seja bem vindo(a), sinta se a vontade</p>
         
         <h2>O que é esse sistema e para quê serve?</h2>
             <br>

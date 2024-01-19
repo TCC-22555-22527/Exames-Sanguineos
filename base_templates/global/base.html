@@ -8,16 +8,15 @@
     </head>
 
     <body>
-        {%include 'global/partials/menu.html' %}
         {%include 'global/partials/header.html'%}
-
-        <main class="main-content-container">
+        {% include 'global/partials/menu.html' %}
+        {% include 'global/partials/messages.html' %} 
+        
+        <main>
             {% block content %}{% endblock content %}
-            {% include 'global/partials/pagination.html' %}
-           
         </main>
+
         {% include 'global/partials/footer.html'%}
-    
         <script src="{% static 'global/js/scripts.js' %}"></script>
     </body>
 </html>

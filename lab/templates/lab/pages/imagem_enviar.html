@@ -1,15 +1,16 @@
-{% extends 'global/base_report.html' %}    
+{% extends 'global/base.html' %}    
 
 {% block title %}Envio de imagem |{% endblock title %}
 
 {% block content %}
-{% include 'global/partials/messages.html' %}
-<div class="main-content">
-    <h2 class="teste-home">Envie a imagem microscópica com os seguintes dados</h2>
+
+<div class="main-content container">
+    <h2 class="personal-heading">Envie a imagem microscópica com os seguintes dados</h2>
     <!--<div id="loading-overlay">
         <div class="loader"></div>
     </div>-->
     {% include "global/partials/search_envio.html" %}
-    {% include "global/partials/form_envio.html" %}
+    {% include "lab/partials/form_send_micro_pic.html" %}
+    
 </div>
 {% endblock content %}

@@ -1,11 +1,9 @@
-{% extends 'global/base_report_search.html' %}    
+{% extends 'global/base.html' %}    
 
 {% block title %}{{ page_title }}{% endblock title %}
 
 {% block content %}
-{% include 'global/partials/messages.html' %}
-
-    <div class="main-content">
+    <div class="main-content container">
         <h3 class="heading-report-top">
            Você pode filtrar busca de laudos por data, CPF ou nome do paciente
         </h3>
@@ -33,6 +31,6 @@
                 {% endfor %}
             </div>
         {% endif %}
-       
+        {% include 'global/partials/pagination.html' %}
     </div>
 {% endblock content %}

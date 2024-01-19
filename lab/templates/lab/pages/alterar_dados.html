@@ -1,16 +1,17 @@
-{% extends 'global/base_register.html' %}    
+{% extends 'global/base.html' %}    
 
 {% block title %}Alterar dados |{% endblock title %}
 
 {% block content %}
-<div class="main-content center container">
-    <h2 class="teste-home">Editar perfil de 
-        <span class="user-profile-name">
-            '{{ profile_user.first_name }} {{ profile_user.last_name }}'
-        </span> 
-    </h2>
-</div>
-    {% include 'global/partials/messages.html' %}  
+
+    <div class="main-content center container">
+        <h2 class="personal-heading">Editar perfil de 
+            <span class="user-profile-name">
+                {{ profile_user.first_name }} {{ profile_user.last_name }}
+            </span> 
+        </h2>
+    </div>
+
     {% include 'global/partials/form.html' %}
 
 {% endblock content %}

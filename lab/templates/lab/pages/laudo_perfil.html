@@ -1,12 +1,14 @@
-{% extends "global/base_report_profile.html" %}
+{% extends "global/base.html" %}
 {% block title %}Laudo |{% endblock title %}
 
 {% block content %}
 {% include 'global/partials/messages.html' %}
-    <div class="main-content">
+    <div class="main-content container">
         {% if laudos %}
-            <h1 class="teste-home">
-                Laudos de {{ profile_user.first_name }} {{ profile_user.last_name}}: 
+            <h2 class="personal-heading">Laudos de 
+                <span class="user-profile-name">
+                    {{ profile_user.first_name }} {{ profile_user.last_name}}: 
+                </span> 
             </h1>
             
         <div class="report-container">
@@ -17,5 +19,6 @@
                 <img src="/media/lab/others/sem-laudo.png" alt="Logo" class="image-no-report">
             {% endif %}
         </div>
+        {% include 'global/partials/pagination.html' %}
     </div>
 {% endblock content %}
