@@ -73,7 +73,7 @@ body {
 }
 
 .container {
-    max-width: 130rem;
+    max-width: 120rem;
     margin: 0 auto;
 }
 
@@ -210,6 +210,11 @@ h5 {
 
 .personal-p-tag {
     margin-bottom: 4rem;
+}
+.home-image-container {
+    margin: 0 auto;
+    max-width: 120rem;
+    align-content: flex-start;
 }
 
 
@@ -1147,7 +1152,7 @@ h5 {
     margin: var(--spacing-gutter-medium) 0;
 }
 
-                    /**********************RESPONSIVIDADE*****************/
+                    /**********************RESPONSIVIDADE 600px*****************/
 
 /*listas*/
 @media (max-width: 600px) {
@@ -1159,6 +1164,12 @@ h5 {
 
 /*Header*/  
 @media (max-width: 600px) {
+    .container {
+        max-width: 30rem;
+    }
+    .main-content {
+        padding-bottom: 3rem;
+    }
     .main-header {
         display: flex;
         flex-direction: column;
@@ -1167,21 +1178,60 @@ h5 {
    
     
     .image-logo {
-        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+        margin: 0 auto;
         margin-top: 1rem;
         justify-content: center;
-        /* width: 95.67px;
-        height: 59px;*/
     }
     .main-logo {
-        flex-flow: column nowrap; /* Alinha a imagem e o texto verticalmente */
-        text-align: center; /* Centraliza o texto */
+        flex-flow: column nowrap; 
+        text-align: center; 
     }
 
     
 
     .main-logo-text {
-        margin-top: 0.3rem; /* Remove o recuo superior no texto */
+        margin-top: 0.3rem;
         margin-bottom: 1rem;
+    }
+
+/*Main Home*/
+    
+    .home-image-container{
+        display: flex;
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+    .home-image-container img{
+        margin: 0 auto;
+        width: 252.75px;
+        height: 176.25px;
+    }
+
+}
+
+
+                    /**********************RESPONSIVIDADE 1200px*****************/
+@media(min-width: 950px) and (max-width: 1250px) {
+    .container {
+        max-width: 85rem;
+    }
+    .main-content {
+        padding-bottom: 3rem;
+    }
+
+}
+
+@media(min-width: 601px) and (max-width: 949px) {
+    .container {
+        max-width: 50rem;
+    }
+    .main-content {
+        padding-bottom: 3rem;
+    }
+    .home-image-container{
+        display: flex;
+        max-width: 50rem;
+        margin: 0 auto;
+        align-content: flex-start;
     }
 }
