@@ -10,9 +10,11 @@
         {%include 'global/partials/search_report.html'%}
         {% if search_term or search_date %}  
             {% if reports %} <!-- se existe laudo--> 
-                <h4 class="heading-report-searched">
+            <div class="heading-report-result-container">
+                <h4>
                     Resultados da pesquisa realizada:
                 </h4>
+            </div>
                 <div class="report-list-container">
                     {% for report in reports %} <!-- mostra todos os laudos--> 
                         {% include "lab/partials/report_searched.html" %}
@@ -22,9 +24,11 @@
                 <h3 class="no-report-msg"> Não existe nenhum laudo com o termo "{{ search_term }} {{search_date}}" </h3>
             {% endif %}
         {% else %}
-            <h4 class="heading-report-all">
+        <div class="heading-report-result-container">
+            <h4>
                 Abaixo estão todos os laudos existentes:
             </h4>
+        </div>
             <div class="report-list-container">
                 {% for report in all_reports %} <!-- mostra todos os laudos--> 
                     {% include "lab/partials/report_searched.html" %}

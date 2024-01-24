@@ -498,22 +498,33 @@ h5 {
                 /* REPORT SEARCH - PESQUISA DE LAUDO */
 .search-container-report {
     display: flex;
-    flex-flow: column wrap;
+    position: relative;
+    flex-direction: column;
     margin-bottom: 2rem;
+}
+
+.search-sec-box-report {
+    font-size: 1.5rem;
+    width: 64rem;
+    margin: 0 auto;
+    display: flex;
+    background-color: red;
+    justify-content: space-between;
+}
+.date-box {
+    align-items: flex-start;
+    
 }
 #search_date {
     color: var(--color-dark-text);
     font-size: 1.5rem;
-    height: 3rem;
     background-color: var(--color-gray-1);
     border: 1px solid var(--color-primary-dark);
     border-radius: 5px;
 } 
 
 #combined-search-button {
-    float: left;
     font-size: 1.4rem;   
-    margin: 22.8rem 35.7rem;
     border-radius: 7px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border: 10px var(--color-primary-dark);
@@ -526,28 +537,24 @@ h5 {
 #combined-search-button:hover{
     background-color: rgb(6, 100, 6);
 }
-.search-sec-box-report {
-    font-size: 1.5rem;
-    margin-left: 33rem;
-    margin-top: 2rem;
-}
+
 .heading-report-top {
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     width: fit-content;
 }
-.heading-report-searched,
-.heading-report-all {
-    margin: 5rem auto 0 0;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 1rem 49rem;
-    width: fit-content;
+.heading-report-result-container {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    padding: 1rem 2rem;
     background-color: rgb(77, 68, 160);
+    border-radius: 6px;
+}
+.heading-report-result-container h4{
+    margin: 0 auto; 
     color: white;
-    border-radius: 3px;
 }
 .no-report-msg {
     color: var(--color-error-dark);
@@ -1152,66 +1159,12 @@ h5 {
     margin: var(--spacing-gutter-medium) 0;
 }
 
-                    /**********************RESPONSIVIDADE 600px*****************/
-
-/*listas*/
-@media (max-width: 600px) {
-    .form-content-grid,
-    .main-content-list {
-      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-    }
-  }
-
-/*Header*/  
-@media (max-width: 600px) {
-    .container {
-        max-width: 30rem;
-    }
-    .main-content {
-        padding-bottom: 3rem;
-    }
-    .main-header {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 2rem;
-    }
-   
-    
-    .image-logo {
-        margin: 0 auto;
-        margin-top: 1rem;
-        justify-content: center;
-    }
-    .main-logo {
-        flex-flow: column nowrap; 
-        text-align: center; 
-    }
-
-    
-
-    .main-logo-text {
-        margin-top: 0.3rem;
-        margin-bottom: 1rem;
-    }
-
-/*Main Home*/
-    
-    .home-image-container{
-        display: flex;
-        max-width: 30rem;
-        margin: 0 auto;
-    }
-    .home-image-container img{
-        margin: 0 auto;
-        width: 252.75px;
-        height: 176.25px;
-    }
-
-}
-
-
                     /**********************RESPONSIVIDADE 1200px*****************/
+/*Home*/
 @media(min-width: 950px) and (max-width: 1250px) {
+    .report-list-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
     .container {
         max-width: 85rem;
     }
@@ -1221,7 +1174,12 @@ h5 {
 
 }
 
+
+                /**********************RESPONSIVIDADE 949px*****************/
 @media(min-width: 601px) and (max-width: 949px) {
+    .report-list-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .container {
         max-width: 50rem;
     }
@@ -1233,5 +1191,56 @@ h5 {
         max-width: 50rem;
         margin: 0 auto;
         align-content: flex-start;
+    }
+}
+
+
+                /**********************RESPONSIVIDADE 600px*****************/
+@media (max-width: 600px) {
+    /*listas*/
+    .form-content-grid,
+    .main-content-list,
+    .report-list-container {
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+    
+    /*Main*/  
+    .container {
+        max-width: 30rem;
+    }
+    .main-content {
+        padding-bottom: 3rem;
+    }
+
+    /*Header*/  
+    .main-header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+    }
+    .image-logo {
+        margin: 0 auto;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    .main-logo {
+        flex-flow: column nowrap; 
+        text-align: center; 
+    }
+    .main-logo-text {
+        margin-top: 0.3rem;
+        margin-bottom: 1rem;
+    }
+
+    /*Home*/
+    .home-image-container{
+        display: flex;
+        max-width: 30rem;
+        margin: 0 auto;
+    }
+    .home-image-container img{
+        margin: 0 auto;
+        width: 252.75px;
+        height: 176.25px;
     }
 }
