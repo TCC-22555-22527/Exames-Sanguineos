@@ -15,6 +15,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
 
+# from .forms import SearchReportForm
 from .models import DetectedImage, Lab
 
 # from yolov5.Inference_files.detect import detect
@@ -362,3 +363,42 @@ def laudo_consultar(request):
         'pagination_range': pagination_range,
         'additional_url_query': f'&q={search_term}&search_date={search_date}',
     })
+
+
+""" teste
+@has_permission_decorator('visualizar_laudo')
+def laudo_consultar(request):
+    all_reports = Lab.objects.all()
+    reports = []
+
+    if request.method == 'POST':
+        form = SearchReportForm(request.POST)
+        if form.is_valid():
+            info = form.cleaned_data.get('text')
+            created_at = form.cleaned_data.get('data')
+
+            reports = Lab.objects.filter(
+                name__icontains=info,
+                cpf__icontains=info,
+                created_at=created_at if created_at else None
+            )
+    else:
+        form = SearchReportForm()
+
+    search_term = request.GET.get('q', '').strip()
+    search_date = request.GET.get('search_date')
+
+    page_obj, pagination_range = make_pagination(
+        request, reports, PER_PAGE)
+
+    return render(request, 'lab/pages/laudo_consultar.html', {
+        'page_title': f'Pesquisar por "{search_term}" |',
+        'search_term': search_term,
+        'search_date': search_date,
+        'all_reports': all_reports,
+        'reports': page_obj,
+        'pagination_range': pagination_range,
+        'additional_url_query': f'&q={search_term}&search_date={search_date}',
+        'form': form,
+    })
+    """

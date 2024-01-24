@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # app
     'lab',
     'authors',
-    'patients',
     # 'autoslug',
     'rolepermissions',
 ]
