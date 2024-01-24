@@ -15,15 +15,12 @@
         <div class="date-box">
             <form action="{% url 'lab:laudo_consultar' %}" method="GET" class="date-search-form">
                 <label for="search_date">Data:</label>
-                <input 
-                    type="date" id="search_date" 
-                    name="search_date"
-                >               
+                <input type="date" id="search_date" name="search_date">               
             </form> 
+            <button type="button" class="search-button" id="combined-search-button">
+                <i class="fas fa-search"></i> Pesquisar
+            </button>
         </div>
     </div>
-    <button type="submit" class="search-button" id="combined-search-button">
-        <i class="fas fa-search"></i> Pesquisar
-    </button>
 </div>
 <script src="{% static 'global/js/combined_search.js' %}"></script>
