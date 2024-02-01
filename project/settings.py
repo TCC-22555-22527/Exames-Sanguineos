@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import mimetypes
 from pathlib import Path
 
 from django.contrib.messages import constants
@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'authors',
     # 'autoslug',
     'rolepermissions',
+    # debug tool bar
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,3 +151,15 @@ MESSAGE_TAGS = {
 
 ROLEPERMISSIONS_MODULE = "project.roles"
 AUTH_USER_MODEL = 'authors.CustomUser'
+
+# Django debug tool bar
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "http://localhost:8000",
+]
+
+mimetypes.add_type("application/javascript", ".js", True)
+
+DEBUG_TOOLBAR_CONFIG = {
+    "INTERCEPT_REDIRECTS": False,
+}
