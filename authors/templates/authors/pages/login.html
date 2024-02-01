@@ -1,13 +1,14 @@
-{% extends 'global/base_login.html' %}
-
-{% block title %}Login | {% endblock title %}
-
-{% block content %}
-
-{% include 'global/partials/messages.html' %}  
-{% include 'authors/partials/form_login.html' %}
-
-{% endblock content %}
-
-<!--LOGIN NAO VAI HERDAR, VAI SER APENAS UMA PÁGINA ESPECÍFICA-->
-<!--AFINAL, LOGIN NAO TEM FOOTER, NEM HEADER -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        {% include 'global/partials/head.html' %}
+        <title>Login | AH</title>
+    </head>
+    <body>
+        <div class="body-blue">
+            {% include 'global/partials/messages.html' %}  
+            {% include 'authors/partials/form_login.html' %}
+        </div>
+    </body>
+</html>
