@@ -85,11 +85,7 @@ h5 {
     font-family: var(--font-headings)
 }
 
-.body-blue {
-    height: 100%;
-    width: 100%;
-    background-color: rgba(69, 143, 255, 0.35);
-}
+
 
 
                     /*  TUDO DO PROJETO PASSADO  */
@@ -98,9 +94,8 @@ h5 {
     margin-top: 3rem; 
     padding-bottom: 8rem;
 }
-.main-content-login {
-    padding-top: 0;
-}
+
+
 .main-content-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -851,14 +846,21 @@ h5 {
 
 
                 /* Form login personalizado */
+.body-blue {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(69, 143, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .login-container {
-    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 .login-card {
-    position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, 20%);
     width: 600px; 
     height: 400px;
     display: flex;
@@ -1243,5 +1245,36 @@ h5 {
         margin: 0 auto;
         width: 252.75px;
         height: 176.25px;
+    }
+
+    /*Login page*/
+    .body-blue{
+        background-color:white;
+        align-items: initial;
+    }
+    .login-card {
+        flex-direction: column;
+        height: auto;
+        box-shadow: none;
+    }
+    .retangulo-esquerda {
+        width: 100%;
+        border-radius: 0;
+        padding-top: 2rem;
+    }
+    .card-intro {
+        margin-left: 0;
+    }
+    .card-info {
+        margin-left: 0;
+    }
+    .image-logo-login {
+        margin-top: 2rem;
+        transform: scale(1.1);
+
+    }
+    .wrapper {
+        max-width: 40rem;
+        border-radius: 0;
     }
 }
