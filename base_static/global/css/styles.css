@@ -856,10 +856,10 @@ h5 {
 }
 
 .login-container {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
+    height: 100%;
+    width: 100%;
 }
+
 .login-card {
     width: 600px; 
     height: 400px;
@@ -869,6 +869,7 @@ h5 {
     margin: 0 auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35); 
     border-radius: 2rem;
+    min-width: 280px;
 }
 .card-intro {
     color: white;
@@ -1252,15 +1253,28 @@ h5 {
         background-color:white;
         align-items: initial;
     }
+    .main-content-login {
+        width: 100%;
+    }
+    .login-container {
+        height: 100%;
+        width: 100%;
+    }
     .login-card {
         flex-direction: column;
         height: auto;
+        width: 100%;
         box-shadow: none;
     }
     .retangulo-esquerda {
         width: 100%;
         border-radius: 0;
         padding-top: 2rem;
+    }
+    .wrapper {
+        width: 100%;
+        border-radius: 0;
+        
     }
     .card-intro {
         margin-left: 0;
@@ -1271,10 +1285,7 @@ h5 {
     .image-logo-login {
         margin-top: 2rem;
         transform: scale(1.1);
-
     }
-    .wrapper {
-        max-width: 40rem;
-        border-radius: 0;
-    }
+    
 }
+
