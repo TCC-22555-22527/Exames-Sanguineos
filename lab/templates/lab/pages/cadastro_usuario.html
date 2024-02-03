@@ -3,45 +3,45 @@
 {% block title %}Paciente |{% endblock title %}
 
 {% block content %}
-    <div class="main-content">
-        <div class="access-register-page">
-            <div class="form-group form-button-group">
-                <a href="{% url 'authors:register_tec' %}" class="btn-access">Cadastrar TÉCNICO</a>
-                <div class="btn-access-dcption">
-                    <h4>Esse usuário tem acesso a determinadas sessões: 
-                        <br>
-                        <div class="info-br-color">
-                            <br>• Enviar imagem
-                            <br>• Consultar laudo
-                        </div>
-                    </h4>
-                        
+    <div class="main-content container">
+        <div class="register-custom-user">
+            <div class="access-register-page">
+                <div class="form-button-group">
+                    <a href="{% url 'authors:register_tec' %}" class="btn-access">Cadastrar TÉCNICO</a>
+                    <div class="btn-access-dcption">
+                        <h4>Esse usuário tem acesso a determinadas sessões: 
+                            <br>
+                            <div class="info-br-color">
+                                <br>• Enviar imagem
+                                <br>• Consultar laudo
+                            </div>
+                        </h4>     
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group form-button-group">
-            
-                <a href="{% url 'authors:register_recpt' %}" class="btn-access">Cadastrar RECEPÇÃO</a>
-                <div class="btn-access-dcption">
-                    <h4>Esse usuário tem acesso a determinadas sessões: 
-                        <br>
-                        <div class="info-br-color">
-                            <br>• Consultar laudo   
-                            <br>‎ ‎‎ ‎ ‎ ‎ ‎• Cadastrar paciente
-                            <br>• Alterar dados do paciente
-                        </div>
-                    </h4>
+                <div class="form-button-group">
+                    <a href="{% url 'authors:register_recpt' %}" class="btn-access">Cadastrar RECEPÇÃO</a>
+                    <div class="btn-access-dcption">
+                        <h4>Esse usuário tem acesso a determinadas sessões: 
+                            <br>
+                            <div class="info-br-color">
+                                <br>• Consultar laudo   
+                                <br>‎ ‎‎ ‎ ‎ ‎ ‎• Cadastrar paciente
+                                <br>• Alterar dados do paciente
+                            </div>
+                        </h4>
+                    </div>
+                </div>
+                <div class="form-button-group">
+                    <a href="{% url 'authors:register_patient' %}" class="btn-access">Cadastrar PACIENTE</a>
+                    <div class="btn-access-dcption">
+                        <h4>Esse usuário tem acesso a determinadas sessões: 
+                            <div class="info-br-color">
+                                <br>• Consultar laudo</h4>
+                            </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group form-button-group">
-                <a href="{% url 'authors:register_patient' %}" class="btn-access">Cadastrar PACIENTE</a>
-                <div class="btn-access-dcption">
-                    <h4>Esse usuário tem acesso a determinadas sessões: 
-                        <div class="info-br-color">
-                            <br>• Consultar laudo</h4>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div> 
+        </div> 
+    </div>
 {% endblock content %}
