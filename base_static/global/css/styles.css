@@ -300,7 +300,7 @@ h5 {
 .report-list-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
-    gap: 0.5rem;
+    gap: 1rem;
     margin-bottom: 3rem;
 }
 .report{
@@ -322,6 +322,9 @@ h5 {
     box-shadow: -8px 8px 18px rgba(0, 0, 0, .3);
 }
 .report-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 23rem;
     padding: var(--spacing-gutter-medium);
     padding-top: 1rem;
 }
@@ -405,23 +408,20 @@ h5 {
                 /* REPORT SEARCH - PESQUISA DE LAUDO */
 .search-container-report {
     display: flex;
-    position: relative;
     flex-direction: column;
     margin-bottom: 2rem;
 }
 
 .search-sec-box-report {
     font-size: 1.5rem;
-    width: 64rem;
+    max-width: 64rem;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    background-color: red;
     justify-content: space-between;
+    align-items: center;
 }
-.date-box {
-    align-items: flex-start;
-    
-}
+
 #search_date {
     color: var(--color-dark-text);
     font-size: 1.5rem;
@@ -474,14 +474,21 @@ h5 {
     max-width: 31rem;
     height: fit-content;
 }
-.report-user-access {
+.report-user-acess-container{
+    margin: 0 auto;
+    padding-top: 2rem;
+    display: flex;
+    width: 100%;
+}
+.report-user-access-btn {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    display: inline-block;
-    margin-top: 2rem;
-    margin-left: 20rem;
-    padding: 0.51rem;
-    font-size: 1.1rem;
-    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    padding: 1rem 0;
+    font-size: 1.5rem;
     background-color: var(--color-primary-dark);
     color: #fff; 
     text-decoration: none;
@@ -490,14 +497,15 @@ h5 {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.bxs-binoculars {
-    margin-top: 5px;
-    font-size: 1.5rem;
-}
-.report-user-access:hover {
+.report-user-access-btn:hover {
     display: inline-block;
-    background-color: rgb(6, 100, 6);   
+    background-color: var(--color-primary-dark-hover);
 }
+.bxs-binoculars {
+    font-size: 1.7rem;
+    margin-left: 0.5rem;
+}
+
 
                     /* IMAGE ENVIAR */
 .patient-list {
@@ -1066,6 +1074,7 @@ h5 {
      /*listas*/
     .report-list-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
     /*Main*/  
     .container {
@@ -1109,13 +1118,16 @@ h5 {
 
 
                 /**********************RESPONSIVIDADE 600px*****************/
-@media (max-width: 600px) {
+@media (min-width: 301px) and (max-width: 600px) {
     /*listas*/
     .form-content-grid,
     .main-content-list,
     .report-list-container {
       grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     }
+    .report-list-container {
+        gap: 2rem;
+      }
     
     /*Main*/  
     .container {
@@ -1207,6 +1219,88 @@ h5 {
     .form-button-group {
         margin-bottom: 2rem;
     }
-    
+
+    /*Pesquisa de laudo*/
+    .search-form {
+        margin-bottom: 3rem;
+    }
+    .search-sec-box-report {
+        display: flex;
+        flex-direction: column;
+    }
+    .search-button-report {
+        margin-top: 3rem;
+    }
+
+     /*Footer*/
+     .main-footer {
+        font-size: 1.4rem;
+     }
 }
+
+            /**********************RESPONSIVIDADE 289px *****************/
+
+
+@media (max-width: 300px) { 
+    .form-content-grid,
+    .main-content-list,
+    .report-list-container {
+      grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    }
+    .report-list-container {
+        gap: 2rem;
+      }
+    .container {
+        max-width: 24rem;
+    }
+
+    .main-header {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 2rem;
+    }
+    .image-logo {
+        margin: 0 auto;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    .main-logo {
+        flex-flow: column nowrap; 
+        text-align: center; 
+    }
+    .main-logo-text {
+        margin-top: 0.3rem;
+        margin-bottom: 1rem;
+    }
+
+    /*Home*/
+    .home-image-container{
+        display: flex;
+        max-width: 24rem;
+        margin: 0 auto;
+    }
+    .home-image-container img{
+        margin: 0 auto;
+        width: 252.75px;
+        height: 176.25px;
+    }
+
+    /*Pesquisa de laudo*/
+    .search-form {
+        margin-bottom: 3rem;
+    }
+    .search-sec-box-report {
+        display: flex;
+        flex-direction: column;
+    }
+    .search-button-report {
+        margin-top: 3rem;
+    }
+
+     /*Footer*/
+    .main-footer {
+        font-size: 1.1rem;
+    }
+}
+ 
 
