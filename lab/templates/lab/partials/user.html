@@ -1,14 +1,16 @@
 <div class="recipe recipe-list-item">
-    <div class="patient-content">    
-        <p><strong> Nome: </strong> {{ patient.first_name }} {{ patient.last_name }}</p>
-        <p><strong> CPF: </strong> {{ patient.cpf }}</p>
-        <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
-        <p><strong> ID: </strong> {{ patient.id }}</p>
-        <div class="button-access-user-space">
-            <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}" class="btn-access">
-                <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
-                Visualizar perfil
-            </a>
+    <div class="user-profile-details">
+        <div class="patient-content">    
+            <p><strong> Nome: </strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+            <p><strong> CPF: </strong> {{ patient.cpf }}</p>
+            <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
+            <p><strong> ID: </strong> {{ patient.id }}</p>
+            <div class="button-access-user-space">
+                <a href="{% url 'lab:usuario_detalhes' usuario_id=patient.id %}" class="btn-access">
+                    <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
+                    Visualizar perfil
+                </a>
+            </div>
         </div>
     </div>
 </div>  
