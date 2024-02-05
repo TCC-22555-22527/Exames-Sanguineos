@@ -18,13 +18,21 @@
         <div class="user-profile-details">
             <div class="patient-content">
                 <p><strong>Nome:</strong> {{ profile_user.first_name }} {{ profile_user.last_name }}</p>
+                <br>
                 <p><strong>CPF:</strong> {{ profile_user.cpf }}</p>
+                <br>
                 <p><strong>Nascimento:</strong> {{ profile_user.birthday }}</p>
+                <br>
                 <p><strong>Rua:</strong> {{ profile_user.street }}</p>
+                <br>
                 <p><strong>Número da residência:</strong> {{ profile_user.number }}</p>
+                <br>
                 <p><strong>Cidade:</strong> {{ profile_user.city }}</p>
+                <br>
                 <p><strong>Estado:</strong> {{ profile_user.state }}</p>
+                <br>
                 <p><strong>ID:</strong> {{ profile_user.id }}</p>
+                <br>
                 <div class="button-access-user-space">
                     <a href="{% url 'lab:laudo_perfil' usuario_id=profile_user.id %}" class="btn-access">
                        <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
