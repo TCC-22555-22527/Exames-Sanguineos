@@ -1270,8 +1270,7 @@ h5 {
 
     /*Laudo detalhe e hemograma*/
     .report-description-container {
-        max-width: 50rem;
-        margin: 0 auto;
+        width: auto;
     }
     .before_aft_detect {
         flex-direction: column;
@@ -1311,6 +1310,9 @@ h5 {
       }
     .container {
         max-width: 24rem;
+    }
+    .main-content {
+        padding-bottom: 4rem;
     }
 
     .main-header {
@@ -1356,6 +1358,35 @@ h5 {
         margin-top: 3rem;
     }
 
+    /*Laudo detalhe e hemograma*/
+    .report-description-container {
+        margin: 0 auto;
+        max-width: 26rem;
+    }
+    .before_aft_detect {
+        flex-direction: column;
+        margin:auto 2rem;
+    }
+    .blue-arrow {
+        margin: 0 auto;
+        transform: rotate(90deg);
+    }
+    .report-image-box {
+        margin: 0 auto;
+        margin-top: 2.5rem;
+        margin-bottom: 2rem;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .report-detail-table td {
+        padding: 1.9rem 0rem 0.9rem 0.6rem;
+    }
+    .cell-white {
+        font-size: 13px;
+    }
+    .cell-black {
+        font-size: 13px;
+    }
      /*Footer*/
     .main-footer {
         font-size: 1.1rem;
