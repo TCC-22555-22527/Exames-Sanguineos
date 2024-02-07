@@ -281,6 +281,9 @@ h5 {
     padding: var(--spacing-gutter-medium);
     padding-top: 2rem;
 }
+.patient-content-paragrah {
+    width: 100%;
+}
 .button-access-user-space {
     margin: 0 auto;
     justify-content: center;
@@ -289,9 +292,43 @@ h5 {
     margin-top: 2rem;
     text-align: center;
 } 
-.patient-content-paragrah {
-    width: 100%;
+.btn-access-report {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--color-success-dark);
+    color: #fff; 
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 20rem;
 }
+.btn-access-report:hover {
+    display: inline-block;
+    background-color: rgb(6, 100, 6);   
+}
+.btn-access-edit {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 1rem;
+    text-align: center;
+    background-color: rgb(84, 116, 123);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 20rem;
+}
+.btn-access-edit:hover {
+    display: inline-block;
+    background-color: rgb(32, 60, 58);   
+}
+
 
                     /*  REPORTS DETAILS (DETALHES DOS LAUDOS) */
 .report-container{
@@ -612,25 +649,7 @@ h5 {
     display: inline-block;
     background-color: rgb(6, 100, 6);   
 }
-.btn-access-edit {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    display: inline-block;
-    padding: 1rem;
-    text-align: center;
-    background-color: rgb(84, 116, 123);
-    color: white;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    height: 4rem;
-    width: 20rem;
-}
-.btn-access-edit:hover {
-    display: inline-block;
-    background-color: rgb(32, 60, 58);   
-}
+
 .btn-access-dcption {
     margin-top: 2rem;
     width: 20rem;
@@ -1290,6 +1309,17 @@ h5 {
         max-width: 100%;
         max-height: 100%;
     }
+    
+    /* Detlahes perfil de paciente */
+    .btn-access-report {
+        width: 100%;
+        padding: 1.7rem;
+    }
+    .btn-access-edit {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1.7rem;
+    }
 
     /*Footer*/
      .main-footer {
@@ -1317,7 +1347,7 @@ h5 {
     .main-content {
         padding-bottom: 4rem;
     }
-
+    /* Header */
     .main-header {
         display: flex;
         flex-direction: column;
@@ -1360,7 +1390,7 @@ h5 {
     .search-button-report {
         margin-top: 3rem;
     }
-    
+
      /*Cadastro de tipo de usuário*/
      .access-register-page {
         flex-direction: column;
@@ -1374,7 +1404,7 @@ h5 {
         margin-bottom: 2rem;
     }
 
-    /*Laudo detalhe e hemograma*/
+    /* Laudo detalhe/hemograma */
     .report-description-container {
         margin: 0 auto;
         max-width: 26rem;
@@ -1397,17 +1427,29 @@ h5 {
     .report-detail-table td {
         padding: 1.9rem 0rem 0.9rem 0.6rem;
     }
-    .cell-white {
+    .cell-white { 
         font-size: 13px;
     }
     .cell-black {
         font-size: 13px;
     }
 
-    /*Pesquisa de paciente*/
+    /* Pesquisa de paciente */
     .btn-access {
         width: 100%;
     }
+
+    /* Detlahes perfil de paciente */
+    .btn-access-report {
+        width: 100%;
+        padding: 1.7rem;
+    }
+    .btn-access-edit {
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1.7rem;
+    }
+
      /*Footer*/
     .main-footer {
         font-size: 1.1rem;

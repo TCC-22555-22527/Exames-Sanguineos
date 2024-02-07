@@ -34,7 +34,7 @@
                 <p><strong>ID:</strong> {{ profile_user.id }}</p>
                 <br>
                 <div class="button-access-user-space">
-                    <a href="{% url 'lab:laudo_perfil' usuario_id=profile_user.id %}" class="btn-access">
+                    <a href="{% url 'lab:laudo_perfil' usuario_id=profile_user.id %}" class="btn-access-report">
                        <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
                     </a>
                     {% if user|can:'alterar_dados'%}
