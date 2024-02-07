@@ -253,15 +253,6 @@ h5 {
     padding-top: 2rem;
     max-width: 50rem;
 }
-.button-access-user-space {
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    margin-top: 2rem;
-    text-align: center;
-    
-} 
 .profile-from-name {
     padding: 1rem 1rem;
     min-height: 2rem;
@@ -289,6 +280,17 @@ h5 {
 .patient-content {
     padding: var(--spacing-gutter-medium);
     padding-top: 2rem;
+}
+.button-access-user-space {
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 2rem;
+    text-align: center;
+} 
+.patient-content-paragrah {
+    width: 100%;
 }
 
                     /*  REPORTS DETAILS (DETALHES DOS LAUDOS) */
@@ -1386,6 +1388,11 @@ h5 {
     }
     .cell-black {
         font-size: 13px;
+    }
+
+    /*Pesquisa de paciente*/
+    .btn-access {
+        width: 100%;
     }
      /*Footer*/
     .main-footer {
