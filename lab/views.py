@@ -337,7 +337,7 @@ def laudo_consultar(request):
     search_term = request.GET.get('q', '').strip()
     search_date = request.GET.get('search_date')
 
-    all_reports = Lab.objects.all()
+    all_reports = Lab.objects.all().order_by('-id')
     reports = []
 
     if search_term:
