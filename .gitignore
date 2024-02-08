@@ -9,6 +9,8 @@ db.sqlite3
 # Backup files #
 *.bak
 lab_Results
+media/lab/reports/
+media/lab/detects/
 
 # If you are using PyCharm #
 .idea/**/workspace.xml
