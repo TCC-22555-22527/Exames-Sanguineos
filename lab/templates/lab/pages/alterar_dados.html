@@ -4,14 +4,13 @@
 
 {% block content %}
 
-    <div class="main-content center container">
+    <div class="main-content container">
         <h2 class="personal-heading">Editar perfil de 
             <span class="user-profile-name">
                 {{ profile_user.first_name }} {{ profile_user.last_name }}
             </span> 
         </h2>
+        {% include 'global/partials/form.html' %}
     </div>
-
-    {% include 'global/partials/form.html' %}
 
 {% endblock content %}
