@@ -92,7 +92,7 @@ h5 {
 .main-content {
     padding-top: 0;
     margin-top: 3rem; 
-    padding-bottom: 8rem;
+    padding-bottom: 5rem;
 }
 
 
@@ -513,7 +513,7 @@ h5 {
     max-width: 31rem;
     height: fit-content;
 }
-.report-user-acess-container{
+.report-user-access-container{
     margin: 0 auto;
     padding-top: 2rem;
     display: flex;
@@ -543,6 +543,10 @@ h5 {
 .bxs-binoculars {
     font-size: 1.7rem;
     margin-left: 0.5rem;
+}
+.report-text-info {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
 }
 
 
@@ -1309,7 +1313,7 @@ h5 {
         max-width: 100%;
         max-height: 100%;
     }
-    
+
     /* Detlahes perfil de paciente */
     .btn-access-report {
         width: 100%;

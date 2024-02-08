@@ -1,11 +1,10 @@
 <div class="report report-list-search">
     <div class="report-content">
-        <div class="report-text-info">
-            <p> <strong> CPF do paciente: </strong></p> {{ report.cpf }} bn
+
+            <p> <strong> CPF do paciente: </strong></p> {{ report.cpf }} 
             <p> <strong> nome do paciente: </strong></p> {{ report.name }} 
             <p><strong>Data do Envio:</strong> </p> {{ report.created_at }}
-        </div>
-        <div class="report-user-acess-container">
+        <div class="report-user-access-container">
             <a href= {% url "lab:laudo_detalhes" laudo_id=report.id  %} class="report-user-access-btn"> <!-- link para laudo_detalhes, provavelmente irá precisar de id -->
                 Detalhes <i class='bx bxs-binoculars'></i> 
             </a>
