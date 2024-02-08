@@ -107,6 +107,7 @@ h5 {
 /* TESTE dos h1 que estão no lab*/
 .personal-heading {
     margin: 0 auto;
+    text-align: center;
     align-items: center;
     justify-content: center;
     width: fit-content;
