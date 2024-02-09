@@ -251,7 +251,7 @@ def imagem_enviar(request):
 def pesquisa(request):
     search_term = request.GET.get('q', '').strip()
 
-    all_patients = Patient.objects.all()
+    all_patients = Patient.objects.all().order_by('-id')
     patients = []
 
     if search_term:
