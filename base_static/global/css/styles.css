@@ -1330,6 +1330,10 @@ h5 {
      .main-footer {
         font-size: 1.4rem;
     }
+    /*menu*/
+    .menu-nav a.authors-logout-link {
+        margin-top: 25rem;
+    }
 
     
 }
@@ -1458,6 +1462,23 @@ h5 {
      /*Footer*/
     .main-footer {
         font-size: 1.1rem;
+    }
+    /* Menu */
+    .menu-container {
+        width: 20rem;
+    }
+    .menu-nav {
+        margin-top: 3.5rem;
+        margin-left: 1.5rem;
+    }
+    .menu-nav a {
+        padding-top: 1.3rem;
+    }
+    .menu-nav a.authors-logout-link {
+        margin-top: 8rem;
+    }
+    .menu-hidden {
+        left: -190px;
     }
 }
  
