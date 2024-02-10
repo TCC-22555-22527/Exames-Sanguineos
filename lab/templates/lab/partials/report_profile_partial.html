@@ -4,7 +4,7 @@
             <p><strong>Data de Envio:</strong> {{ laudo.created_at }}</p>
         </div>
         <div class="report-user-access-container">
-            <a href= {% url "lab:laudo_detalhes" laudo_id=laudo.id %} class="report-user-access-btn">
+            <a href= {% url "lab:report_detail" laudo_id=laudo.id %} class="report-user-access-btn">
                 Detalhes <i class='bx bxs-binoculars'></i>
             </a>
         </div>

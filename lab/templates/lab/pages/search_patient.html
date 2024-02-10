@@ -9,7 +9,7 @@
         {% if search_term %}
             {% if patients %}
                 {% for patient in patients %}
-                    {% include 'lab/partials/user.html' %}
+                    {% include 'lab/partials/user_partial.html' %}
                 {% endfor %}
                 {% else %}
                 <div class="center m-y">
@@ -18,7 +18,7 @@
             {% endif %}
         {% else %}
             {% for patient in all_patients %}
-                {% include 'lab/partials/user.html' %}
+                {% include 'lab/partials/user_partial.html' %}
             {% endfor %}
         {% endif %}
         

@@ -34,11 +34,11 @@
                 <p><strong>ID:</strong> {{ profile_user.id }}</p>
                 <br>
                 <div class="button-access-user-space">
-                    <a href="{% url 'lab:laudo_perfil' usuario_id=profile_user.id %}" class="btn-access-report">
+                    <a href="{% url 'lab:reports_profile' usuario_id=profile_user.id %}" class="btn-access-report">
                        <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
                     </a>
                     {% if user|can:'alterar_dados'%}
-                        <a href="{% url 'lab:alterar_dados' usuario_id=profile_user.id %}" class="btn-access-edit">
+                        <a href="{% url 'lab:edit_patient_data' usuario_id=profile_user.id %}" class="btn-access-edit">
                             <i class='bx bx-pencil'></i>‎ ‎Editar perfil
                         </a>
                     {% endif %}

@@ -1,7 +1,7 @@
 {% load static %}
 <div class="search-container-report container">
     <div class="search-fst-box-report">
-        <form action="{% url 'lab:laudo_consultar' %}" method="GET" class="search-form">
+        <form action="{% url 'lab:report_search' %}" method="GET" class="search-form">
             <input 
                 type="search" class="search-input" 
                 name="q" value="{{ search_term }}"  
@@ -13,7 +13,7 @@
 
     <div class="search-sec-box-report">
         <div class="date-box">
-            <form action="{% url 'lab:laudo_consultar' %}" method="GET" class="date-search-form">
+            <form action="{% url 'lab:report_search' %}" method="GET" class="date-search-form">
                 <label for="search_date">Data:</label>
                 <input type="date" id="search_date" name="search_date">               
             </form> 

@@ -7,23 +7,25 @@ app_name = 'lab'
 
 urlpatterns = [
     path('home',  login_required(views.home), name='home'),
-    path('cadastro-usuario/', user_passes_test(lambda u: u.is_superuser)
-         (login_required(views.cadastro_usuario)), name='cadastro_usuario'),
+    path('register-custom-user/', user_passes_test(lambda u: u.is_superuser)
+         (login_required(views.register_custom_user)),
+         name='register_custom_user'),
     # path('cadastro-paciente/', login_required(views.cadastro_paciente),
     # name='cadastro_paciente'),
-    path('laudo-consultar/', login_required(views.laudo_consultar),
-         name='laudo_consultar'),
-    path('imagem-enviar/', login_required(views.imagem_enviar),
-         name='imagem_enviar'),
-    path('pesquisa/', login_required(views.pesquisa), name='pesquisa'),
+    path('report-search/', login_required(views.report_search),
+         name='report_search'),
+    path('send-img/', login_required(views.send_img),
+         name='send_img'),
+    path('search-patient/', login_required(views.search_patient),
+         name='search_patient'),
     # traduzir para português
-    path('usuario/<int:usuario_id>/', login_required(views.usuario_detalhes),
-         name='usuario_detalhes'),
-    path('alterar-dados/<int:usuario_id>/',
-         login_required(views.alterar_dados),
-         name='alterar_dados'),
-    path('laudo-perfil/<int:usuario_id>/',
-         login_required(views.laudo_perfil), name="laudo_perfil"),
-    path('laudo-detalhes/<int:laudo_id>/',
-         login_required(views.laudo_detalhes), name="laudo_detalhes")
+    path('usuario/<int:usuario_id>/', login_required(views.patient_detail),
+         name='patient_detail'),
+    path('edit-patient-data/<int:usuario_id>/',
+         login_required(views.edit_patient_data),
+         name='edit_patient_data'),
+    path('reports-profile/<int:usuario_id>/',
+         login_required(views.reports_profile), name="reports_profile"),
+    path('report-detail/<int:laudo_id>/',
+         login_required(views.report_detail), name="report_detail")
 ]

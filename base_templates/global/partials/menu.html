@@ -19,7 +19,7 @@
           {% endif %}
 
           {% if user.is_superuser %}
-            <a href="{%url 'lab:cadastro_usuario'%}"> Cadastro de usuário </a>
+            <a href="{%url 'lab:register_custom_user'%}"> Cadastro de usuário </a>
           {% endif %}
 
           {% if user|can:'cadastrar_paciente'%}
@@ -27,15 +27,15 @@
           {% endif %}
 
           {% if user|can:'pesquisar_paciente'%}
-            <a href="{%url 'lab:pesquisa'%}"> Pesquisar paciente </a>
+            <a href="{%url 'lab:search_patient'%}"> Pesquisar paciente </a>
           {% endif %}
 
           {% if user|can:'laudo_enviar_permission'%}
-            <a href="{%url 'lab:imagem_enviar'%}"> Enviar imagem </a>
+            <a href="{%url 'lab:send_img'%}"> Enviar imagem </a>
           {% endif %}
 
           {% if user|can:'visualizar_laudo'%}
-            <a href="{%url 'lab:laudo_consultar'%}"> Consultar laudo </a>
+            <a href="{%url 'lab:report_search'%}"> Consultar laudo </a>
           {% endif %}
             <a class="authors-logout-link" href="{% url 'authors:logout' %}">Sair</a>
             {% include 'authors/partials/form_logout.html' %}

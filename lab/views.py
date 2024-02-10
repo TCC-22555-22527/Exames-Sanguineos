@@ -26,8 +26,8 @@ PER_PAGE = os.environ.get('PER_PAGE', 6)
 
 
 # funcao específica do superusuário
-def cadastro_usuario(request):
-    return render(request, 'lab/pages/cadastro_usuario.html')
+def register_custom_user(request):
+    return render(request, 'lab/pages/register_custom_user.html')
 
 
 # funções de usuários comuns
@@ -36,7 +36,7 @@ def home(request):
 
 
 @has_permission_decorator('laudo_enviar_permission')
-def imagem_enviar(request):
+def send_img(request):
     form = AuthorReportForm()
     selected_patient = None
     detected_objects = None
@@ -226,7 +226,7 @@ def imagem_enviar(request):
             messages.error(
                 request, 'Preencha todos os campos antes de enviar.')
 
-        return redirect('lab:imagem_enviar')
+        return redirect('lab:send_img')
 
     patients = Patient.objects.all()
 
@@ -238,7 +238,7 @@ def imagem_enviar(request):
             Q(cpf__icontains=search_term)
         )
 
-    return render(request, 'lab/pages/imagem_enviar.html',
+    return render(request, 'lab/pages/send_img.html',
                   {'patients': patients,
                    'form': form,
                    'selected_patient': selected_patient,
@@ -248,7 +248,7 @@ def imagem_enviar(request):
 
 
 @has_permission_decorator('pesquisar_paciente')
-def pesquisa(request):
+def search_patient(request):
     search_term = request.GET.get('q', '').strip()
 
     all_patients = Patient.objects.all().order_by('-id')
@@ -264,7 +264,7 @@ def pesquisa(request):
     page_obj, pagination_range = make_pagination(
         request, patients, PER_PAGE)
 
-    return render(request, 'lab/pages/pesquisa.html', {
+    return render(request, 'lab/pages/search_patient.html', {
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'patients': page_obj,
@@ -277,18 +277,18 @@ def pesquisa(request):
 # detalhes do usuario com opcoes de alterar dado e visu laudo
 @login_required
 @has_permission_decorator('pesquisar_paciente')
-def usuario_detalhes(request, usuario_id):
+def patient_detail(request, usuario_id):
     profile_user = get_object_or_404(
         Patient, pk=usuario_id)  # trocar customuser
 
-    return render(request, 'lab/pages/usuario_detalhes.html',
+    return render(request, 'lab/pages/patient_detail.html',
                   {'profile_user': profile_user})
 
 
 # alterar dados de um perfil selecionado
 @login_required
 @has_permission_decorator('alterar_dados')
-def alterar_dados(request, usuario_id):
+def edit_patient_data(request, usuario_id):
     profile_user = get_object_or_404(
         Patient, pk=usuario_id)  # trocar customuser
 
@@ -297,35 +297,35 @@ def alterar_dados(request, usuario_id):
         if form.is_valid():
             form.save()
 
-            return redirect('lab:usuario_detalhes', usuario_id=usuario_id)
+            return redirect('lab:patient_detail', usuario_id=usuario_id)
     else:
         form = EditProfileForm(instance=profile_user)
 
-    return render(request, 'lab/pages/alterar_dados.html', {
+    return render(request, 'lab/pages/edit_patient_data.html', {
         'profile_user': profile_user, 'form': form})
 
 
 # consultar laudos de um perfil
 @has_permission_decorator('visualizar_laudo')
-def laudo_perfil(request, usuario_id):
+def reports_profile(request, usuario_id):
     profile_user = get_object_or_404(Patient,
                                      pk=usuario_id)
     laudos = Lab.objects.filter(patient=profile_user)
 
-    return render(request, 'lab/pages/laudo_perfil.html',
+    return render(request, 'lab/pages/reports_profile.html',
                   {'profile_user': profile_user,
                    'laudos': laudos})
 
 
 @has_permission_decorator('visualizar_laudo')
-def laudo_detalhes(request, laudo_id):
+def report_detail(request, laudo_id):
     try:
         laudo = Lab.objects.get(id=laudo_id)
         detected_images = DetectedImage.objects.filter(lab=laudo)
     except Lab.DoesNotExist:
         raise Http404("O laudo não foi encontrado.")
 
-    return render(request, 'lab/pages/laudo_detalhes.html', {
+    return render(request, 'lab/pages/report_detail.html', {
         'laudo': laudo,
         'detected_images': detected_images,
     })
@@ -333,7 +333,7 @@ def laudo_detalhes(request, laudo_id):
 
 # pesquisar laudos criados
 @has_permission_decorator('visualizar_laudo')
-def laudo_consultar(request):
+def report_search(request):
     search_term = request.GET.get('q', '').strip()
     search_date = request.GET.get('search_date')
 
@@ -354,7 +354,7 @@ def laudo_consultar(request):
     page_obj, pagination_range = make_pagination(
         request, reports, PER_PAGE)
 
-    return render(request, 'lab/pages/laudo_consultar.html', {
+    return render(request, 'lab/pages/report_search.html', {
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'search_date': search_date,
@@ -367,7 +367,7 @@ def laudo_consultar(request):
 
 """ teste
 @has_permission_decorator('visualizar_laudo')
-def laudo_consultar(request):
+def report_search(request):
     all_reports = Lab.objects.all()
     reports = []
 
@@ -391,7 +391,7 @@ def laudo_consultar(request):
     page_obj, pagination_range = make_pagination(
         request, reports, PER_PAGE)
 
-    return render(request, 'lab/pages/laudo_consultar.html', {
+    return render(request, 'lab/pages/report_search.html', {
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'search_date': search_date,

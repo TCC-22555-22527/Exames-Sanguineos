@@ -98,7 +98,7 @@ def register_tec_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('lab:cadastro_usuario'), {
+        return redirect(reverse('lab:register_custom_user'), {
         })
 
     return redirect('authors:register_tec')
@@ -138,7 +138,7 @@ def register_recpt_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('lab:cadastro_usuario'))
+        return redirect(reverse('lab:register_custom_user'))
 
     return redirect('authors:register_recpt')
 
@@ -192,6 +192,6 @@ def register_patient_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('lab:cadastro_usuario'))
+        return redirect(reverse('lab:register_custom_user'))
 
     return redirect('authors:register_patient')
