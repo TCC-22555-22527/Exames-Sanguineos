@@ -43,7 +43,7 @@ def send_img(request):
 
     total_rbc = 0
     total_wbc = 0
-    total_plaquetas = 0
+    total_platelets = 0
 
     # conversao para micrometros 'um'
     resolution_pixels_per_um = 25400
@@ -128,21 +128,21 @@ def send_img(request):
                             sizes_of_bounding_boxes_um) if sizes_of_bounding_boxes_um else 0  # noqa E501
 
                         if class_id == '0':
-                            total_plaquetas += 1
+                            total_platelets += 1
                         elif class_id == '1':
                             total_rbc += 1
                         elif class_id == '2':
                             total_wbc += 1
 
-                        total_deteccoes = total_rbc + total_wbc + total_plaquetas  # noqa E501
+                        total_detects = total_rbc + total_wbc + total_platelets  # noqa E501
 
-                        concentracao_rbc = round(
-                            (total_rbc / total_deteccoes) * 100, 2)
-                        concentracao_wbc = round(
-                            (total_wbc / total_deteccoes) * 100, 2)
-                        concentracao_plaquetas = round(
-                            (total_plaquetas / total_deteccoes) * 100, 2)
-                        concentracao_wbc_rbc = round(total_wbc / total_rbc, 4) if total_rbc != 0 else 0  # noqa E501
+                        concentration_rbc = round(
+                            (total_rbc / total_detects) * 100, 2)
+                        concentration_wbc = round(
+                            (total_wbc / total_detects) * 100, 2)
+                        concentration_platelets = round(
+                            (total_platelets / total_detects) * 100, 2)
+                        concentration_wbc_rbc = round(total_wbc / total_rbc, 4) if total_rbc != 0 else 0  # noqa E501
                         media_diam_rbc = round(sum([float(match[3]) + float(match[4]) for match in matches if match[0] == '1']) / total_rbc * resolution_pixels_per_um, 2) if total_rbc != 0 else 0  # noqa E501
                         media_diam_wbc = round(sum([float(match[3]) + float(match[4]) for match in matches if match[0] == '2']) / total_wbc * resolution_pixels_per_um, 2) if total_wbc != 0 else 0  # noqa E501
                         media_circun_rbc = round(sum([(float(match[3]) + float(match[4])) / 4 * 2 * pi for match in matches if match[0] == '1']) / total_rbc * resolution_pixels_per_um, 2) if total_rbc != 0 else 0  # noqa E501
@@ -156,9 +156,9 @@ def send_img(request):
 
                 # impressoes no terminal
                 print(
-                    f"\nTotal de objetos detectados: {total_deteccoes}")  # noqa E501
+                    f"\nTotal de objetos detectados: {total_detects}")  # noqa E501
                 print(
-                f"\nTotal RBC: {total_rbc}, Total WBC: {total_wbc}, Total Platelets: {total_plaquetas}")  # noqa E501
+                f"\nTotal RBC: {total_rbc}, Total WBC: {total_wbc}, Total Platelets: {total_platelets}")  # noqa E501
                 print(
                     f"Coordenadas normalizadas (x, y, largura, altura): {x_center}, {y_center}, {width}, {height}")  # noqa E501
                 print(
@@ -166,13 +166,13 @@ def send_img(request):
                 print(
                     f"Área da bounding box em micrometros quadrados: {area_um2}, Tamanho médio em micrometros quadrados: {average_size}")  # noqa E501
                 print(
-                    f"\nConcentracao de RBC detectados: {concentracao_rbc} %")  # noqa E501
+                    f"\nConcentracao de RBC detectados: {concentration_rbc} %")  # noqa E501
                 print(
-                    f"\nConcentracao de WBC detectados: {concentracao_wbc} %")  # noqa E501
+                    f"\nConcentracao de WBC detectados: {concentration_wbc} %")  # noqa E501
                 print(
-                    f"\nConcentracao de Plaquetas detectadas: {concentracao_plaquetas} %")  # noqa E501
+                    f"\nConcentracao de Plaquetas detectadas: {concentration_platelets} %")  # noqa E501
                 print(
-                    f"\nConcentracao de WBC por RBC: {concentracao_wbc_rbc}")  # noqa E501
+                    f"\nConcentracao de WBC por RBC: {concentration_wbc_rbc}")  # noqa E501
                 print(
                     f"\nDiametro medio RBC: {media_diam_rbc} um")
                 print(
@@ -202,12 +202,12 @@ def send_img(request):
                         detected_img=f'lab/detects/{latest_detection}',
                         total_wbc=total_wbc,
                         total_rbc=total_rbc,
-                        total_plaquetas=total_plaquetas,
-                        total_deteccoes=total_deteccoes,
-                        concentracao_rbc=concentracao_rbc,
-                        concentracao_wbc=concentracao_wbc,
-                        concentracao_plaquetas=concentracao_plaquetas,
-                        concentracao_wbc_rbc=concentracao_wbc_rbc,
+                        total_platelets=total_platelets,
+                        total_detects=total_detects,
+                        concentration_rbc=concentration_rbc,
+                        concentration_wbc=concentration_wbc,
+                        concentration_platelets=concentration_platelets,
+                        concentration_wbc_rbc=concentration_wbc_rbc,
                         media_diam_rbc=media_diam_rbc,
                         media_diam_wbc=media_diam_wbc,
                         media_circun_rbc=media_circun_rbc,

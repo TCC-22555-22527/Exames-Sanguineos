@@ -14,9 +14,9 @@ class LabAdmin(admin.ModelAdmin):
 @admin.register(DetectedImage)
 class DetectedAdmin(admin.ModelAdmin):
     list_display = ['lab', 'detected_img', 'total_wbc', 'total_rbc',
-                    'total_plaquetas', 'total_deteccoes',
-                    'concentracao_rbc', 'concentracao_wbc',
-                    'concentracao_plaquetas', 'concentracao_wbc_rbc',
+                    'total_platelets', 'total_detects',
+                    'concentration_rbc', 'concentration_wbc',
+                    'concentration_platelets', 'concentration_wbc_rbc',
                     'media_diam_rbc', 'media_diam_wbc',
                     'media_circun_rbc', 'media_circun_rbc']
     list_per_page = 10
