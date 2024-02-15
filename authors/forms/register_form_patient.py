@@ -1,4 +1,4 @@
-from authors.models import CustomUser
+from authors.models import CustomUser, Patient
 from django import forms
 from django.core.exceptions import ValidationError
 from utils.django_forms import add_placeholder, strong_password
@@ -139,6 +139,17 @@ class RegisterFormPatient(forms.ModelForm):
             )
 
         return email
+
+    def clean_cpf(self):
+        cpf = self.cleaned_data.get('cpf', '')
+        exists = Patient.objects.filter(cpf=cpf).exists()
+
+        if exists:
+            raise ValidationError(
+                'Esse CPF já está em uso', code='invalid',
+            )
+
+        return cpf
 
     # metodo para verificar se os campos de senhas sao iguais
     def clean(self):
