@@ -27,7 +27,7 @@ class RegisterFormPatient(forms.ModelForm):
 
     birthday = forms.DateField(
         error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Data'
+        label='Data de nascimento',
     )
 
     # Nome do usuário
@@ -99,11 +99,43 @@ class RegisterFormPatient(forms.ModelForm):
         label='Cidade',
         max_length=50
     )
-    state = forms.CharField(
+
+    STATES_CHOICE = (
+        ('AC', 'Acre'),
+        ('AL', 'Alagoas'),
+        ('AP', 'Amapá'),
+        ('AM', 'Amazonas'),
+        ('BA', 'Bahia'),
+        ('CE', 'Ceará'),
+        ('DF', 'Distrito Federal'),
+        ('ES', 'Espírito Santo'),
+        ('GO', 'Goiás'),
+        ('MA', 'Maranhão'),
+        ('MT', 'Mato Grosso'),
+        ('MS', 'Mato Grosso do Sul'),
+        ('MG', 'Minas Gerais'),
+        ('PA', 'Pará'),
+        ('PB', 'Paraíba'),
+        ('PR', 'Paraná'),
+        ('PE', 'Pernambuco'),
+        ('PI', 'Piauí'),
+        ('RJ', 'Rio de Janeiro'),
+        ('RN', 'Rio Grande do Norte'),
+        ('RS', 'Rio Grande do Sul'),
+        ('RO', 'Rondônia'),
+        ('RR', 'Roraima'),
+        ('SC', 'Santa Catarina'),
+        ('SP', 'São Paulo'),
+        ('SE', 'Sergipe'),
+        ('TO', 'Tocantins')
+    )
+    state = forms.ChoiceField(
+        choices=STATES_CHOICE,
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Estado',
-        max_length=50
+        widget=forms.Select(attrs={'class': 'state-select-patient'})
     )
+
     cpf = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='CPF',

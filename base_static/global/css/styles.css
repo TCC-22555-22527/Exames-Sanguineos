@@ -712,7 +712,11 @@ h5 {
     height: 4rem;
 }
 
-
+.state-select-patient { 
+    padding: 1rem;
+    border-radius: 0.4rem;
+    border: 1px solid var(--color-primary-dark);
+}
 
 .btn-register {
     display: inline-block;
