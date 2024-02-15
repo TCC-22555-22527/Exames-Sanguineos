@@ -46,4 +46,11 @@ class Tec(models.Model):
 
 
 class Recpt(models.Model):
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=30, default="tec")
+    last_name = models.CharField(max_length=30, default="tec")
+
+    def __str__(self):
+        return self.user.username

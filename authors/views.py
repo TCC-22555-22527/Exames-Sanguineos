@@ -10,7 +10,7 @@ from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
                     RegisterFormReception)
-from .models import Patient, Tec
+from .models import Patient, Recpt, Tec
 
 
 # funcao de login
@@ -140,6 +140,14 @@ def register_recpt_create(request):
         user.set_password(user.password)
         user.is_recpt_user = True
         user.save()
+
+        recpt = Recpt(
+            user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
+        )
+        recpt.save()
+
         assign_role(user, RecptUSer)
 
         messages.success(
