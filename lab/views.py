@@ -244,9 +244,8 @@ def send_img(request):
                    'selected_patient': selected_patient,
                    'detected_objects': detected_objects})
 
+
 # pesquisar paciente por nome e cpf
-
-
 @has_permission_decorator('pesquisar_paciente')
 def search_patient(request):
     search_term = request.GET.get('q', '').strip()
@@ -277,9 +276,9 @@ def search_patient(request):
 # detalhes do usuario com opcoes de alterar dado e visu laudo
 @login_required
 @has_permission_decorator('pesquisar_paciente')
-def patient_detail(request, usuario_id):
+def patient_detail(request, user_id):
     profile_user = get_object_or_404(
-        Patient, pk=usuario_id)  # trocar customuser
+        Patient, pk=user_id)
 
     return render(request, 'lab/pages/patient_detail.html',
                   {'profile_user': profile_user})
@@ -288,16 +287,16 @@ def patient_detail(request, usuario_id):
 # alterar dados de um perfil selecionado
 @login_required
 @has_permission_decorator('alterar_dados')
-def edit_patient_data(request, usuario_id):
+def edit_patient_data(request, user_id):
     profile_user = get_object_or_404(
-        Patient, pk=usuario_id)  # trocar customuser
+        Patient, pk=user_id)
 
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=profile_user)
         if form.is_valid():
             form.save()
 
-            return redirect('lab:patient_detail', usuario_id=usuario_id)
+            return redirect('lab:patient_detail', user_id=user_id)
     else:
         form = EditProfileForm(instance=profile_user)
 
@@ -307,26 +306,26 @@ def edit_patient_data(request, usuario_id):
 
 # consultar laudos de um perfil
 @has_permission_decorator('visualizar_laudo')
-def reports_profile(request, usuario_id):
+def reports_profile(request, user_id):
     profile_user = get_object_or_404(Patient,
-                                     pk=usuario_id)
-    laudos = Lab.objects.filter(patient=profile_user)
+                                     pk=user_id)
+    reports = Lab.objects.filter(patient=profile_user)
 
     return render(request, 'lab/pages/reports_profile.html',
                   {'profile_user': profile_user,
-                   'laudos': laudos})
+                   'reports': reports})
 
 
 @has_permission_decorator('visualizar_laudo')
-def report_detail(request, laudo_id):
+def report_detail(request, report_id):
     try:
-        laudo = Lab.objects.get(id=laudo_id)
-        detected_images = DetectedImage.objects.filter(lab=laudo)
+        report = Lab.objects.get(id=report_id)
+        detected_images = DetectedImage.objects.filter(lab=report)
     except Lab.DoesNotExist:
         raise Http404("O laudo não foi encontrado.")
 
     return render(request, 'lab/pages/report_detail.html', {
-        'laudo': laudo,
+        'report': report,
         'detected_images': detected_images,
     })
 

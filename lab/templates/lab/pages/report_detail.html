@@ -13,20 +13,20 @@
                     <table class="report-detail-table">
                         <tr>
                             <td class="cell-white"><strong>Data de Envio:</strong></td>
-                            <td class="cell-black">{{ laudo.created_at }}</td>
+                            <td class="cell-black">{{ report.created_at }}</td>
                         </tr>
                         <tr>
                             <td class="cell-white"><strong>CPF do paciente:</strong></td>
-                            <td class="cell-black">{{ laudo.cpf }}</td>
+                            <td class="cell-black">{{ report.cpf }}</td>
                         </tr>
                         <tr>
                             <td class="cell-white"><strong>Nome do paciente:</strong></td>
-                            <td class="cell-black">{{ laudo.name }} </td>
+                            <td class="cell-black">{{ report.name }} </td>
                         </tr>   
                         {% for detected_image in detected_images %}
                             <tr>
                                 <td class="cell-white"><strong>Número células totais detectadas</strong></td>
-                                <td class="cell-black">{{ detected_image.total_deteccoes }}</td>
+                                <td class="cell-black">{{ detected_image.total_detects }}</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Número de hemácias detectadas</strong></td>
@@ -38,23 +38,23 @@
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Número de plaquetas detectadas</strong></td>
-                                <td class="cell-black">{{ detected_image.total_plaquetas }}</td>
+                                <td class="cell-black">{{ detected_image.total_platelets }}</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Concentração em % de hemácias</strong></td>
-                                <td class="cell-black">{{ detected_image.concentracao_rbc }} %</td>
+                                <td class="cell-black">{{ detected_image.concentration_rbc }} %</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Concentração em % de leucócitos</strong></td>
-                                <td class="cell-black">{{ detected_image.concentracao_wbc }} %</td>
+                                <td class="cell-black">{{ detected_image.concentration_wbc }} %</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Concentração em % de plaquetas</strong></td>
-                                <td class="cell-black">{{ detected_image.concentracao_plaquetas }} %</td>
+                                <td class="cell-black">{{ detected_image.concentration_plaquetas }} %</td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Concentração de leucócitos por hemácias</strong></td>
-                                <td class="cell-black">{{ detected_image.concentracao_wbc_rbc }} </td>
+                                <td class="cell-black">{{ detected_image.concentration_wbc_rbc }} </td>
                             </tr>
                             <tr>
                                 <td class="cell-white"><strong>Média do diâmetro das hemácias</strong></td>
@@ -80,7 +80,7 @@
             <div class="before_aft_detect">
                 <div class="report-image-box">
                     <h3> Imagem analisada:</h3>   
-                    <img src="{{ laudo.image.url }}" alt="Imagem do Laudo"> 
+                    <img src="{{ report.image.url }}" alt="Imagem do Laudo"> 
                 </div>
 
                 <div class="blue-arrow">

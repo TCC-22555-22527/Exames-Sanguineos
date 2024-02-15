@@ -4,7 +4,7 @@
 {% block content %}
 {% include 'global/partials/messages.html' %}
     <div class="main-content container">
-        {% if laudos %}
+        {% if reports %}
             <h2 class="personal-heading">Laudos de 
                 <span class="user-profile-name">
                     {{ profile_user.first_name }} {{ profile_user.last_name}}: 
@@ -12,7 +12,7 @@
             </h1>
             
         <div class="report-list-container">
-                {% for laudo in laudos %}
+                {% for report in reports %}
                     {% include 'lab/partials/report_profile_partial.html' %}
                 {% endfor %}
             {% else %}
