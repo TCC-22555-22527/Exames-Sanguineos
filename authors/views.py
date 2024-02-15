@@ -10,7 +10,7 @@ from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
                     RegisterFormReception)
-from .models import Patient
+from .models import Patient, Tec
 
 
 # funcao de login
@@ -91,6 +91,15 @@ def register_tec_create(request):
         user.set_password(user.password)
         user.is_tec_user = True
         user.save()
+
+        tec = Tec(
+            user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
+            crm=form.cleaned_data['crm']
+        )
+        tec.save()
+
         assign_role(user, TecUser)
 
         messages.success(

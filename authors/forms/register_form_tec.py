@@ -1,4 +1,4 @@
-from authors.models import CustomUser
+from authors.models import CustomUser, Tec
 from django import forms
 from django.core.exceptions import ValidationError
 from utils.django_forms import add_placeholder, strong_password
@@ -111,6 +111,17 @@ class RegisterFormLabTec(forms.ModelForm):
             )
 
         return email
+
+    def clean_crm(self):
+        crm = self.cleaned_data.get('crm', '')
+        exists = Tec.objects.filter(crm=crm).exists()
+
+        if exists:
+            raise ValidationError(
+                'Esse CRM já está em uso', code='invalid',
+            )
+
+        return crm
 
     # metodo para verificar se os campos de senhas sao iguais
     def clean(self):
