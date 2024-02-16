@@ -23,7 +23,8 @@ urlpatterns = [
          login_required(views.send_img),
          name='send_img'
          ),
-    path('search-patient/', login_required(views.search_patient),
+    path('search-patient/',
+         login_required(views.search_patient),
          name='search_patient'
          ),
     # traduzir para português

@@ -22,7 +22,7 @@ from .models import DetectedImage, Lab
 
 
 # vou precisar import
-PER_PAGE = os.environ.get('PER_PAGE', 6)
+PER_PAGE = os.environ.get('PER_PAGE', 9)
 
 
 # funcao específica do superusuário
@@ -261,20 +261,26 @@ def search_patient(request):
         ).order_by('-id')
 
     page_obj, pagination_range = make_pagination(
-        request, patients, PER_PAGE)
+        request, patients, 6)
+
+    page_obj_all, pagination_range_all = make_pagination(
+        request, all_patients, 6)
+
+    has_search_results = bool(patients)
 
     return render(request, 'lab/pages/search_patient.html', {
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'patients': page_obj,
         'pagination_range': pagination_range,
+        'pagination_range_all': pagination_range_all,
         'additional_url_query': f'&q={search_term}',
-        'all_patients': all_patients,
+        'all_patients': page_obj_all,
+        'has_search_results': has_search_results,
     })
 
 
 # detalhes do usuario com opcoes de alterar dado e visu laudo
-@login_required
 @has_permission_decorator('pesquisar_paciente')
 def patient_detail(request, user_id):
     profile_user = get_object_or_404(

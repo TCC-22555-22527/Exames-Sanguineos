@@ -5,7 +5,7 @@
             <p> <strong> nome do paciente: </strong></p> {{ report.name }} 
             <p><strong>Data do Envio:</strong> </p> {{ report.created_at }}
         <div class="report-user-access-container">
-            <a href= {% url "lab:report_detail" laudo_id=report.id  %} class="report-user-access-btn"> <!-- link para report_detail, provavelmente irá precisar de id -->
+            <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> <!-- link para report_detail, provavelmente irá precisar de id -->
                 Detalhes <i class='bx bxs-binoculars'></i> 
             </a>
         </div>

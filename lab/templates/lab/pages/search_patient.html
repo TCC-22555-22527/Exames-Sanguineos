@@ -4,24 +4,33 @@
 
 {% block content %}
 {%include 'global/partials/search.html'%}
+
     <div class="main-content-list container">
         
         {% if search_term %}
+
             {% if patients %}
+
                 {% for patient in patients %}
                     {% include 'lab/partials/user_partial.html' %}
                 {% endfor %}
-                {% else %}
+
+            {% else %}
                 <div class="center m-y">
                     <h2 class="no-patient-msg">Nenhum paciente encontrado</h2>
                 </div>
             {% endif %}
+
         {% else %}
+
             {% for patient in all_patients %}
                 {% include 'lab/partials/user_partial.html' %}
             {% endfor %}
-        {% endif %}
-        
+            
+        {% endif %} 
+
     </div>
+
     {% include 'global/partials/pagination.html' %}
+
 {% endblock content %}
