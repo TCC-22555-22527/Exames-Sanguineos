@@ -272,10 +272,10 @@ def search_patient(request):
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'patients': page_obj,
+        'all_patients': page_obj_all,
         'pagination_range': pagination_range,
         'pagination_range_all': pagination_range_all,
         'additional_url_query': f'&q={search_term}',
-        'all_patients': page_obj_all,
         'has_search_results': has_search_results,
     })
 
@@ -352,21 +352,34 @@ def report_search(request):
         ).order_by('-id')
 
     if search_date:
+
         reports = Lab.objects.filter(
             created_at__date=search_date
         ).order_by('-id')
 
     page_obj, pagination_range = make_pagination(
-        request, reports, PER_PAGE)
+        request, reports, 12)
+
+    page_obj_all, pagination_range_all = make_pagination(
+        request, all_reports, 12)
+
+    has_search_results = bool(reports)
+    # Inicializa a query apenas com search_term
+    additional_url_query = f'&q={search_term}'
+
+    if search_date:  # Adiciona search_date à query apenas se estiver presente
+        additional_url_query += f'&search_date={search_date}'
 
     return render(request, 'lab/pages/report_search.html', {
         'page_title': f'Pesquisar por "{search_term}" |',
         'search_term': search_term,
         'search_date': search_date,
-        'all_reports': all_reports,
+        'all_reports': page_obj_all,
         'reports': page_obj,
         'pagination_range': pagination_range,
-        'additional_url_query': f'&q={search_term}&search_date={search_date}',
+        'pagination_range_all': pagination_range_all,
+        'additional_url_query': additional_url_query,
+        'has_search_results': has_search_results,
     })
 
 
