@@ -1484,6 +1484,46 @@ h5 {
     .menu-hidden {
         left: -190px;
     }
+    .body-blue{
+        background-color:white;
+        align-items: initial;
+    }
+
+    
+    /*Login page*/
+    .main-content-login {
+        width: 100%;
+    }
+    .login-container {
+        height: 100%;
+        width: 100%;
+    }
+    .login-card {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        box-shadow: none;
+    }
+    .retangulo-esquerda {
+        width: 100%;
+        border-radius: 0;
+        padding-top: 2rem;
+    }
+    .wrapper {
+        width: 100%;
+        border-radius: 0;
+        
+    }
+    .card-intro {
+        margin-left: 0;
+    }
+    .card-info {
+        margin-left: 0;
+    }
+    .image-logo-login {
+        margin-top: 2rem;
+        transform: scale(1.1);
+    }
 }
  
 
