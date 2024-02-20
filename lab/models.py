@@ -33,3 +33,11 @@ class DetectedImage(models.Model):
 
     def __str__(self):
         return f"{self.lab} - {self.detected_img}"
+
+
+class BackupImage(models.Model):
+    image = models.ImageField(
+        upload_to='lab/backup_imgs/', blank=True, default='')
+
+    def __str__(self):
+        return f"Imagem {self.image}"
