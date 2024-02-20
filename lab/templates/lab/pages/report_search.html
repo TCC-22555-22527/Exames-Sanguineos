@@ -10,31 +10,35 @@
         {%include 'global/partials/search_report.html'%}
         {% if search_term or search_date %}  
             {% if reports %} <!-- se existe laudo--> 
-            <div class="heading-report-result-container">
-                <h4>
-                    Resultados da pesquisa realizada:
-                </h4>
-            </div>
+                <div class="heading-report-result-container">
+                    <h4>
+                        Resultados da pesquisa realizada:
+                    </h4>
+                </div>
                 <div class="report-list-container">
                     {% for report in reports %} <!-- mostra todos os laudos--> 
                         {% include "lab/partials/report_searched_partial.html" %}
                     {% endfor %}
+                    
                 </div>
+                {% include 'global/partials/pagination.html' %}
             {% else %}
                 <h3 class="no-report-msg"> Não existe nenhum laudo com o termo "{{ search_term }} {{search_date}}" </h3>
             {% endif %}
         {% else %}
-        <div class="heading-report-result-container">
-            <h4>
-                Abaixo estão todos os laudos existentes:
-            </h4>
-        </div>
+            <div class="heading-report-result-container">
+                <h4>
+                    Abaixo estão todos os laudos existentes:
+                </h4>
+            </div>
             <div class="report-list-container">
                 {% for report in all_reports %} <!-- mostra todos os laudos--> 
                     {% include "lab/partials/report_searched_partial.html" %}
                 {% endfor %}
+                
             </div>
+            {% include 'global/partials/pagination.html' %}
         {% endif %}
-        {% include 'global/partials/pagination.html' %}
+        
     </div>
 {% endblock content %}

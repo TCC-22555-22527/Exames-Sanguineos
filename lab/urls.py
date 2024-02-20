@@ -27,7 +27,6 @@ urlpatterns = [
          login_required(views.search_patient),
          name='search_patient'
          ),
-    # traduzir para português
     path('user/<int:user_id>/', login_required(views.patient_detail),
          name='patient_detail'
          ),

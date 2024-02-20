@@ -505,7 +505,7 @@ h5 {
 }
 .no-report-msg {
     color: var(--color-error-dark);
-    margin: 10rem auto 18.1rem;
+    margin: 6rem auto;
     align-items: center;
     justify-content: center;
     width: fit-content;
