@@ -36,6 +36,9 @@
 
             {{ field.errors }}
           </div>
+          {% if field.name == 'image' and field.value.url %}
+              <img src="{{ field.value.url }}" alt="image">
+          {% endif %}
         {% endfor %}
       </div>
 
