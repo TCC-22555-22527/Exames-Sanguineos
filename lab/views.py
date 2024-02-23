@@ -256,8 +256,16 @@ def send_img(request):
             Q(cpf__icontains=search_term)
         )
 
+    # paginação
+    page_obj, pagination_range = make_pagination(
+        request, patients, 10)
+
+    has_search_results = bool(patients)
+
     return render(request, 'lab/pages/send_img.html',
-                  {'patients': patients,
+                  {'patients': page_obj,
+                   'has_search_results': has_search_results,
+                   'pagination_range': pagination_range,
                    'form': form,
                    'selected_patient': selected_patient,
                    'detected_objects': detected_objects})

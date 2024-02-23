@@ -11,18 +11,22 @@
             <h3 class="personal-heading">Lista de Pacientes:</h3>
             <div class="patient-radio-list">
               <ul>
+                {% if patients %}
                   {% for patient in patients %}
                       <li>
                           <input type="radio" name="selected_patient" value="{{ patient.id }}">
                           {{ patient.first_name }} {{ patient.last_name }} - CPF: {{ patient.cpf }}
                       </li>
                   {% endfor %}
+                 
+                {% endif %}
               </ul>
             </div>
         {% else %}
             <p>Nenhum paciente encontrado.</p>
         {% endif %}
       </div>
+      {% include 'global/partials/pagination.html' %}
       
       <div class="form-content form-content-grid">  
         {% for field in form %}
