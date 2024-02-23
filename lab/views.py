@@ -258,7 +258,7 @@ def send_img(request):
 
     # paginação
     page_obj, pagination_range = make_pagination(
-        request, patients, 10)
+        request, patients, 5)
 
     has_search_results = bool(patients)
 

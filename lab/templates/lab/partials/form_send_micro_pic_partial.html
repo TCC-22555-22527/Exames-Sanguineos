@@ -8,14 +8,20 @@
 
       <div class="patient-list">
         {% if patients %}
-            <h3 class="personal-heading">Lista de Pacientes:</h3>
+            <h3 class="personal-heading">Lista de Pacientes (Selecione um):</h3>
             <div class="patient-radio-list">
               <ul>
                 {% if patients %}
                   {% for patient in patients %}
                       <li>
                           <input type="radio" name="selected_patient" value="{{ patient.id }}">
-                          {{ patient.first_name }} {{ patient.last_name }} - CPF: {{ patient.cpf }}
+                         {{ patient.first_name }} {{ patient.last_name }} 
+                         <br>
+                         
+                          <strong> 
+                            CPF: 
+                         </strong>
+                         {{ patient.cpf }}
                       </li>
                   {% endfor %}
                  
