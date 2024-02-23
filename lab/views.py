@@ -230,7 +230,10 @@ def send_img(request):
                     detection_result.save()
 
                     messages.success(
-                        request, 'Sua imagem foi salva com sucesso!')
+                        request, 'Sua imagem foi salva com sucesso e o laudo '
+                        'foi gerado. Veja abaixo!')
+                    return redirect('lab:report_detail', report_id=lab.pk)
+
                 else:
                     messages.error(
                         request, 'Nenhuma detecção encontrada em lab_results/.')  # noqa E501
