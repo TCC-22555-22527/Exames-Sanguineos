@@ -53,7 +53,8 @@ urlpatterns = [
     # registro de paciente
     path(
         'auth/register-patient/',
-        views.register_patient_view,
+        user_passes_test(lambda u: u.is_superuser)
+        (views.register_patient_view),
         name='register_patient'
     ),
     path(

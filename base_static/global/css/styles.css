@@ -188,7 +188,10 @@ h5 {
 .hello-user .name {
     font-weight: 500;
 }
-
+.hello-user a{
+    text-decoration: none;
+    color: white;
+}
 
 
                     /*  SEARCH DE PESQUISA  */

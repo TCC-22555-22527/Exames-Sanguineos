@@ -37,6 +37,9 @@
           {% if user|can:'visualizar_laudo'%}
             <a href="{%url 'lab:report_search'%}"> Consultar laudo </a>
           {% endif %}
+          <!-- Perfil do usuário logado-->
+          <a href="{%url 'authors:my_profile'%}"> Meu perfil </a>
+         
             <a class="authors-logout-link" href="{% url 'authors:logout' %}">Sair</a>
             {% include 'authors/partials/form_logout.html' %}
         {% else %}
