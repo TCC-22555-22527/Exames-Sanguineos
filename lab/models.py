@@ -15,7 +15,8 @@ class Lab(models.Model):
         upload_to='lab/reports/', blank=True, default='')
 
     def __str__(self):
-        return f"Laboratório de {self.patient.first_name} ({self.cpf})"
+        return (f"Laudo de {self.patient.first_name} "
+                f"{self.patient.last_name}, id: {self.id}")
 
 
 class DetectedImage(models.Model):

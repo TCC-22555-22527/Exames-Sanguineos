@@ -19,6 +19,9 @@ class CustomUser(AbstractUser):
 class UserType(models.Model):
     type = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.type
+
 
 class Recpt(models.Model):
     user = models.OneToOneField(
@@ -74,4 +77,4 @@ class Patient(models.Model):
                                      blank=True)
 
     def __str__(self):
-        return self.user.username
+        return f"Paciente: {self.first_name} {self.last_name}"
