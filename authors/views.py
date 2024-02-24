@@ -14,7 +14,11 @@ from .models import Patient, Recpt, Tec
 
 
 def my_profile(request):
-    return render(request, 'authors/pages/my_profile.html')
+
+    return render(request, 'authors/pages/my_profile.html', {
+
+
+    })
 
 # funcao de login
 
@@ -203,7 +207,8 @@ def register_patient_create(request):
             number=form.cleaned_data['number'],
             city=form.cleaned_data['city'],
             state=form.cleaned_data['state'],
-            cpf=form.cleaned_data['cpf']
+            cpf=form.cleaned_data['cpf'],
+            recept_fk=request.user.recpt
         )
         patient.save()
 

@@ -1,9 +1,13 @@
-from authors.models import Patient
+from authors.models import Patient, Tec
 from django.db import models
 
 
 class Lab(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    fk_tec = models.ForeignKey(Tec,
+                               on_delete=models.SET_NULL,
+                               null=True,
+                               blank=True)
     name = models.CharField(max_length=65)
     cpf = models.CharField(max_length=19)
     created_at = models.DateTimeField(auto_now_add=True)
