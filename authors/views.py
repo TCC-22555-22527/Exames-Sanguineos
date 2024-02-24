@@ -13,7 +13,12 @@ from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
 from .models import Patient, Recpt, Tec
 
 
+def my_profile(request):
+    return render(request, 'authors/pages/my_profile.html')
+
 # funcao de login
+
+
 def login_view(request):
     form = LoginForm()
     return render(request, 'authors/pages/login.html', {
