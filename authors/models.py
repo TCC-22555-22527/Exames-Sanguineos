@@ -1,6 +1,6 @@
-from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from project import settings
 
 
 class CustomUser(AbstractUser):
@@ -11,6 +11,7 @@ class CustomUser(AbstractUser):
     state = models.CharField(max_length=50, blank=True)
     cpf = models.CharField(max_length=16, blank=True)
     crm = models.CharField(max_length=16, blank=True)
+    user_type = models.CharField(max_length=16, blank=True)
 
     def __str__(self):
         return self.username

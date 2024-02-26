@@ -1,3 +1,5 @@
+
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -10,15 +12,40 @@ from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
                     RegisterFormReception)
-from .models import Patient, Recpt, Tec
+from .models import Patient, Recpt, Tec, UserType
+
+
+def is_recpt(user):
+    return hasattr(user, 'recpt') and user.recpt is not None
+
+
+def is_tec(user):
+    return hasattr(user, 'tec') and user.tec is not None
+
+
+def is_patient(user):
+    return hasattr(user, 'patient') and user.patient is not None
 
 
 def my_profile(request):
+    print(f'Tipo de usuario logado: {request.user.user_type}')
+    if is_recpt(request.user):
+        ola = "recpt"
 
-    return render(request, 'authors/pages/my_profile.html', {
+        return render(request, 'authors/pages/my_profile.html', {
+            'ola': ola
+        })
+    elif is_tec(request.user):
+        ola = "tec"
+        return render(request, 'authors/pages/my_profile.html', {
+            'ola': ola
+        })
+    elif is_patient(request.user):
+        ola = "patient"
+        return render(request, 'authors/pages/my_profile.html', {
+            'ola': ola
+        })
 
-
-    })
 
 # funcao de login
 
@@ -91,6 +118,7 @@ def register_tec_create(request):
     if not request.POST:
         raise Http404()
 
+    user_type_obj = UserType.objects.get(id=1)
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormLabTec(POST)
@@ -105,7 +133,8 @@ def register_tec_create(request):
             user=user,
             first_name=form.cleaned_data['first_name'],
             last_name=form.cleaned_data['last_name'],
-            crm=form.cleaned_data['crm']
+            crm=form.cleaned_data['crm'],
+            fk_user_type=user_type_obj
         )
         tec.save()
 
@@ -140,6 +169,7 @@ def register_recpt_create(request):
     if not request.POST:
         raise Http404()
 
+    user_type_obj = UserType.objects.get(id=2)
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormReception(POST)
@@ -154,6 +184,7 @@ def register_recpt_create(request):
             user=user,
             first_name=form.cleaned_data['first_name'],
             last_name=form.cleaned_data['last_name'],
+            fk_user_type=user_type_obj
         )
         recpt.save()
 
@@ -188,6 +219,7 @@ def register_patient_create(request):
     if not request.POST:
         raise Http404()
 
+    user_type_obj = UserType.objects.get(id=3)
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormPatient(POST)
@@ -208,7 +240,7 @@ def register_patient_create(request):
             city=form.cleaned_data['city'],
             state=form.cleaned_data['state'],
             cpf=form.cleaned_data['cpf'],
-            recept_fk=request.user.recpt
+            fk_user_type=user_type_obj,
         )
         patient.save()
 
