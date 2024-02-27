@@ -12,7 +12,7 @@ from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
                     RegisterFormReception)
-from .models import Patient, Recpt, Tec, UserType
+from .models import CustomUser, Patient, Recpt, Tec, UserType
 
 
 def is_recpt(user):
@@ -223,7 +223,10 @@ def register_patient_create(request):
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormPatient(POST)
+    print(f'usuario logado: {request.user}')
 
+    recpt_instance = CustomUser.objects.get(user=request.user)
+    print(f' instancia de recpt: {recpt_instance}')
     if form.is_valid():
         user = form.save(commit=False)
         user.set_password(user.password)
@@ -240,6 +243,7 @@ def register_patient_create(request):
             city=form.cleaned_data['city'],
             state=form.cleaned_data['state'],
             cpf=form.cleaned_data['cpf'],
+            recpt_fk=recpt_instance,
             fk_user_type=user_type_obj,
         )
         patient.save()
