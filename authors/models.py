@@ -4,9 +4,7 @@ from project import settings
 
 
 class CustomUser(AbstractUser):
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+
     birthday = models.DateField(null=True, blank=True)
     street = models.CharField(max_length=65, blank=True)
     number = models.IntegerField(null=True, blank=True)
