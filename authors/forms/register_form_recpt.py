@@ -1,9 +1,7 @@
-from authors.models import CustomUser
+from authors.models import CustomUser, Recpt
 from django import forms
 from django.core.exceptions import ValidationError
 from utils.django_forms import add_placeholder, strong_password
-
-# ARRUMAR ESTA MERDA
 
 
 class RegisterFormReception(forms.ModelForm):
@@ -123,3 +121,11 @@ class RegisterFormReception(forms.ModelForm):
                     password_confirmation_error,
                 ],
             })
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_tec = True
+        if commit:
+            user.save()
+            Recpt.objects.create(user=user)
+        return user

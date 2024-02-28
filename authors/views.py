@@ -12,7 +12,7 @@ from rolepermissions.roles import assign_role
 
 from .forms import (LoginForm, RegisterFormLabTec, RegisterFormPatient,
                     RegisterFormReception)
-from .models import CustomUser, Patient, Recpt, Tec, UserType
+from .models import Patient, Recpt, Tec
 
 
 def is_recpt(user):
@@ -118,7 +118,7 @@ def register_tec_create(request):
     if not request.POST:
         raise Http404()
 
-    user_type_obj = UserType.objects.get(id=1)
+    # user_type_obj = UserType.objects.get(id=1)
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormLabTec(POST)
@@ -131,10 +131,8 @@ def register_tec_create(request):
 
         tec = Tec(
             user=user,
-            first_name=form.cleaned_data['first_name'],
-            last_name=form.cleaned_data['last_name'],
             crm=form.cleaned_data['crm'],
-            fk_user_type=user_type_obj
+            # fk_user_type=user_type_obj
         )
         tec.save()
 
@@ -169,7 +167,7 @@ def register_recpt_create(request):
     if not request.POST:
         raise Http404()
 
-    user_type_obj = UserType.objects.get(id=2)
+    # user_type_obj = UserType.objects.get(id=2)
     POST = request.POST
     request.session['register_form_data'] = POST
     form = RegisterFormReception(POST)
@@ -182,9 +180,7 @@ def register_recpt_create(request):
 
         recpt = Recpt(
             user=user,
-            first_name=form.cleaned_data['first_name'],
-            last_name=form.cleaned_data['last_name'],
-            fk_user_type=user_type_obj
+            # fk_user_type=user_type_obj
         )
         recpt.save()
 
@@ -211,22 +207,25 @@ def register_patient_view(request):
     return render(request, 'authors/pages/register_view_patient.html', {
         'form': form,
         'form_action': reverse('authors:register_patient_create'),
-        'is_recpt_registration': is_patient_registration_page
+        'is_patient_registration': is_patient_registration_page
     })
 
 
+@has_permission_decorator('cadastrar_paciente')
 def register_patient_create(request):
     if not request.POST:
         raise Http404()
 
-    user_type_obj = UserType.objects.get(id=3)
+    # user_type_obj = UserType.objects.get(id=3)
     POST = request.POST
     request.session['register_form_data'] = POST
+
     form = RegisterFormPatient(POST)
     print(f'usuario logado: {request.user}')
 
-    recpt_instance = CustomUser.objects.get(user=request.user)
+    recpt_instance = Recpt.objects.get(user=request.user)
     print(f' instancia de recpt: {recpt_instance}')
+
     if form.is_valid():
         user = form.save(commit=False)
         user.set_password(user.password)
@@ -235,16 +234,14 @@ def register_patient_create(request):
 
         patient = Patient(
             user=user,
-            first_name=form.cleaned_data['first_name'],
-            last_name=form.cleaned_data['last_name'],
             birthday=form.cleaned_data['birthday'],
             street=form.cleaned_data['street'],
             number=form.cleaned_data['number'],
             city=form.cleaned_data['city'],
             state=form.cleaned_data['state'],
             cpf=form.cleaned_data['cpf'],
-            recpt_fk=recpt_instance,
-            fk_user_type=user_type_obj,
+            fk_recpt=recpt_instance,
+            # fk_user_type=user_type_obj,
         )
         patient.save()
 

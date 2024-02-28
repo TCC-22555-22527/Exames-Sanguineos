@@ -13,20 +13,6 @@ class RegisterFormLabTec(forms.ModelForm):
         add_placeholder(self.fields['email'], 'Digite seu e-mail')
         add_placeholder(self.fields['crm'], 'Digite seu CRM')
 
-    first_name = forms.CharField(
-        error_messages={
-            'required': 'Este campo não pode estar vazio'
-        },
-        label='Nome'
-    )
-
-    # Sobrenome
-    last_name = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Sobrenome'
-    )
-
-    # Nome do usuário
     username = forms.CharField(
         error_messages={
             'required': 'Este campo não pode estar vazio',
@@ -40,6 +26,20 @@ class RegisterFormLabTec(forms.ModelForm):
         '150 caracteres ou menos. '
         'Letras, números e @/./+/-/_ apenas.',
         min_length=4, max_length=150,
+    )
+
+    # Nome do usuário
+    first_name = forms.CharField(
+        error_messages={
+            'required': 'Este campo não pode estar vazio'
+        },
+        label='Nome'
+    )
+
+    # Sobrenome
+    last_name = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Sobrenome'
     )
 
     # Email
@@ -96,7 +96,6 @@ class RegisterFormLabTec(forms.ModelForm):
             'username',
             'email',
             'password',
-            'password2',
             'crm',
         ]
 
@@ -141,3 +140,11 @@ class RegisterFormLabTec(forms.ModelForm):
                     password_confirmation_error,
                 ],
             })
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_tec = True
+        if commit:
+            user.save()
+            Tec.objects.create(user=user, crm=self.cleaned_data['crm'])
+        return user

@@ -201,3 +201,18 @@ class RegisterFormPatient(forms.ModelForm):
                     password_confirmation_error,
                 ],
             })
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.is_tec = True
+        if commit:
+            user.save()
+            Patient.objects.create(user=user,
+                                   birthday=self.cleaned_data['birthday'],
+                                   street=self.cleaned_data['street'],
+                                   number=self.cleaned_data['number'],
+                                   city=self.cleaned_data['city'],
+                                   state=self.cleaned_data['state'],
+                                   cpf=self.cleaned_data['cpf'],
+                                   fk_recpt=self.recpt_instance,)
+        return user

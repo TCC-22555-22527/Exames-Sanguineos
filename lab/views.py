@@ -276,7 +276,7 @@ def send_img(request):
 def search_patient(request):
     search_term = request.GET.get('q', '').strip()
 
-    all_patients = Patient.objects.all().order_by('-id')
+    all_patients = Patient.objects.all().order_by('-user_id')
     patients = []
 
     if search_term:
