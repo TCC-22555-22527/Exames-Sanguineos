@@ -8,8 +8,8 @@ class Lab(models.Model):
                                on_delete=models.SET_NULL,
                                null=True,
                                blank=True)
-    name = models.CharField(max_length=65)
-    cpf = models.CharField(max_length=19)
+    name = models.CharField(max_length=65, null=True)
+    cpf = models.CharField(max_length=19, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(
         upload_to='lab/reports/', blank=True, default='')

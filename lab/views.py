@@ -5,7 +5,7 @@ import subprocess
 from math import pi
 
 from authors.forms import AuthorReportForm, EditProfileForm
-from authors.models import Patient
+from authors.models import Patient, Tec
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 # from django.core.files import File
@@ -57,12 +57,12 @@ def send_img(request):
         image = request.FILES.get('image')
         # captura o paciente selecionado
         selected_patient_id = request.POST.get('selected_patient')
-
+        print(f'selected_pat:{selected_patient_id}')
         # caso os valores sejam verdadeiros
         if selected_patient_id and image:
             try:
                 # obtem o id do paciente selecionado
-                selected_patient = Patient.objects.get(id=selected_patient_id)
+                selected_patient = Patient.objects.get(pk=selected_patient_id)
                 # salva a imagem e os dados do paciente no bd
                 backup_img = BackupImage(
                     image=image
@@ -194,7 +194,10 @@ def send_img(request):
                 detected_objects = os.listdir('lab_results/')
                 print(f"\nDetected objects: {detected_objects}")
 
+                fk_tec = Tec.objects.get(user=request.user)
+
                 lab = Lab(patient=selected_patient,
+                          fk_tec=fk_tec,
                           name=selected_patient.first_name,
                           cpf=selected_patient.cpf,
                           image=image)
