@@ -9,6 +9,8 @@ class CustomUser(AbstractUser):
 class Recpt(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, primary_key=True)
+    first_name = models.CharField(max_length=30, default='')
+    last_name = models.CharField(max_length=30, default='')
 
     def __str__(self):
         return self.user.username
@@ -17,6 +19,8 @@ class Recpt(models.Model):
 class Tec(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, primary_key=True)
+    first_name = models.CharField(max_length=30, default='')
+    last_name = models.CharField(max_length=30, default='')
     crm = models.CharField(max_length=16)
 
     def __str__(self):
@@ -26,6 +30,8 @@ class Tec(models.Model):
 class Patient(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, primary_key=True)
+    first_name = models.CharField(max_length=30, default='')
+    last_name = models.CharField(max_length=30, default='')
     birthday = models.DateField()
     street = models.CharField(max_length=65)
     number = models.IntegerField()

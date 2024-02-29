@@ -58,11 +58,13 @@ def send_img(request):
         # captura o paciente selecionado
         selected_patient_id = request.POST.get('selected_patient')
         print(f'selected_pat:{selected_patient_id}')
+
         # caso os valores sejam verdadeiros
         if selected_patient_id and image:
             try:
                 # obtem o id do paciente selecionado
-                selected_patient = Patient.objects.get(pk=selected_patient_id)
+                selected_patient = Patient.objects.get(
+                    user_id=selected_patient_id)
                 # salva a imagem e os dados do paciente no bd
                 backup_img = BackupImage(
                     image=image
@@ -195,6 +197,7 @@ def send_img(request):
                 print(f"\nDetected objects: {detected_objects}")
 
                 fk_tec = Tec.objects.get(user=request.user)
+                print(f"fk_tec: {fk_tec}")
 
                 lab = Lab(patient=selected_patient,
                           fk_tec=fk_tec,

@@ -131,6 +131,8 @@ def register_tec_create(request):
 
         tec = Tec(
             user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
             crm=form.cleaned_data['crm'],
             # fk_user_type=user_type_obj
         )
@@ -180,6 +182,8 @@ def register_recpt_create(request):
 
         recpt = Recpt(
             user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
             # fk_user_type=user_type_obj
         )
         recpt.save()
@@ -234,6 +238,8 @@ def register_patient_create(request):
 
         patient = Patient(
             user=user,
+            first_name=form.cleaned_data['first_name'],
+            last_name=form.cleaned_data['last_name'],
             birthday=form.cleaned_data['birthday'],
             street=form.cleaned_data['street'],
             number=form.cleaned_data['number'],
@@ -252,6 +258,6 @@ def register_patient_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('lab:register_custom_user'))
+        return redirect(reverse('lab:register_patient'))
 
     return redirect('authors:register_patient')

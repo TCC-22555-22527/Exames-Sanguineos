@@ -14,7 +14,7 @@
                 {% if patients %}
                   {% for patient in patients %}
                       <li>
-                          <input type="radio" name="selected_patient" value="{{ patient.id }}">
+                          <input type="radio" name="selected_patient" value="{{ patient.user_id }}">
                          {{ patient.first_name }} {{ patient.last_name }} 
                          <br>
                          
