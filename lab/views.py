@@ -196,15 +196,23 @@ def send_img(request):
                 detected_objects = os.listdir('lab_results/')
                 print(f"\nDetected objects: {detected_objects}")
 
-                fk_tec = Tec.objects.get(user=request.user)
-                print(f"fk_tec: {fk_tec}")
+                if request.user.is_superuser:
+                    lab = Lab(patient=selected_patient,
+                              fk_tec=None,
+                              name=selected_patient.first_name,
+                              cpf=selected_patient.cpf,
+                              image=image)
+                    lab.save()
+                else:
+                    fk_tec = Tec.objects.get(user=request.user)
+                    print(f"fk_tec: {fk_tec}")
 
-                lab = Lab(patient=selected_patient,
-                          fk_tec=fk_tec,
-                          name=selected_patient.first_name,
-                          cpf=selected_patient.cpf,
-                          image=image)
-                lab.save()
+                    lab = Lab(patient=selected_patient,
+                              fk_tec=fk_tec,
+                              name=selected_patient.first_name,
+                              cpf=selected_patient.cpf,
+                              image=image)
+                    lab.save()
 
                 if detected_objects:  # Verifica se a lista não está vazia
                     latest_detection = next((f for f in detected_objects if f.lower().endswith(('.png', '.jpg', '.jpeg'))), None)  # noqa E501
