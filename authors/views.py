@@ -28,23 +28,13 @@ def is_patient(user):
 
 
 def my_profile(request):
-    print(f'Tipo de usuario logado: {request.user.user_type}')
-    if is_recpt(request.user):
-        ola = "recpt"
+    recpt_instance = Recpt.objects.get(user=request.user)
+   
+    patients = Patient.objects.filter(fk_recpt=recpt_instance)
 
-        return render(request, 'authors/pages/my_profile.html', {
-            'ola': ola
-        })
-    elif is_tec(request.user):
-        ola = "tec"
-        return render(request, 'authors/pages/my_profile.html', {
-            'ola': ola
-        })
-    elif is_patient(request.user):
-        ola = "patient"
-        return render(request, 'authors/pages/my_profile.html', {
-            'ola': ola
-        })
+    return render(request, 'authors/pages/my_profile.html', {
+        'patients': patients,
+    })
 
 
 # funcao de login
@@ -148,6 +138,7 @@ def register_tec_create(request):
         return redirect(reverse('lab:register_custom_user'), {
         })
 
+    del (request.session['register_form_data'])
     return redirect('authors:register_tec')
 
 
@@ -197,6 +188,7 @@ def register_recpt_create(request):
         del (request.session['register_form_data'])
         return redirect(reverse('lab:register_custom_user'))
 
+    del (request.session['register_form_data'])
     return redirect('authors:register_recpt')
 
 
@@ -276,4 +268,5 @@ def register_patient_create(request):
         del (request.session['register_form_data'])
         return redirect(reverse('authors:register_patient'))
 
+    del (request.session['register_form_data'])
     return redirect('authors:register_patient')
