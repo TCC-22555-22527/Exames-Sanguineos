@@ -96,7 +96,9 @@ class RegisterFormLabTec(forms.ModelForm):
             'username',
             'email',
             'password',
+            'password2',
             'crm',
+
         ]
 
     # Funcao que levanta erro se for cadastrar com o mesmo email

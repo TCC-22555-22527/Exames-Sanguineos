@@ -28,6 +28,7 @@ class RegisterFormPatient(forms.ModelForm):
     birthday = forms.DateField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Data de nascimento',
+        widget=forms.DateInput(attrs={'type': 'date'})
     )
 
     # Nome do usuário
@@ -147,16 +148,18 @@ class RegisterFormPatient(forms.ModelForm):
         fields = [
             'first_name',
             'last_name',
-            'birthday',
             'username',
+            'cpf',
+            'birthday',
             'email',
             'password',
             'password2',
+            'state',
+            'city',
             'street',
             'number',
-            'city',
-            'state',
-            'cpf'
+
+
         ]
 
     # Funcao que levanta erro se for cadastrar com o mesmo email
