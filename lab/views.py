@@ -298,7 +298,7 @@ def search_patient(request):
             Q(first_name__icontains=search_term) |
             Q(last_name__icontains=search_term) |
             Q(cpf__icontains=search_term)
-        ).order_by('-id')
+        ).order_by('-user_id')
 
     page_obj, pagination_range = make_pagination(
         request, patients, 6)

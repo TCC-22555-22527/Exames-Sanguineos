@@ -227,29 +227,45 @@ def register_patient_create(request):
     form = RegisterFormPatient(POST)
     print(f'usuario logado: {request.user}')
 
-    recpt_instance = Recpt.objects.get(user=request.user)
-    print(f' instancia de recpt: {recpt_instance}')
-
     if form.is_valid():
         user = form.save(commit=False)
         user.set_password(user.password)
         user.is_patient_user = True
         user.save()
 
-        patient = Patient(
-            user=user,
-            first_name=form.cleaned_data['first_name'],
-            last_name=form.cleaned_data['last_name'],
-            birthday=form.cleaned_data['birthday'],
-            street=form.cleaned_data['street'],
-            number=form.cleaned_data['number'],
-            city=form.cleaned_data['city'],
-            state=form.cleaned_data['state'],
-            cpf=form.cleaned_data['cpf'],
-            fk_recpt=recpt_instance,
-            # fk_user_type=user_type_obj,
-        )
-        patient.save()
+        if request.user.is_superuser:
+            patient = Patient(
+                user=user,
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                birthday=form.cleaned_data['birthday'],
+                street=form.cleaned_data['street'],
+                number=form.cleaned_data['number'],
+                city=form.cleaned_data['city'],
+                state=form.cleaned_data['state'],
+                cpf=form.cleaned_data['cpf'],
+                fk_recpt=None,
+                # fk_user_type=user_type_obj,
+            )
+            patient.save()
+        else:
+            recpt_instance = Recpt.objects.get(user=request.user)
+            print(f' instancia de recpt: {recpt_instance}')
+
+            patient = Patient(
+                user=user,
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                birthday=form.cleaned_data['birthday'],
+                street=form.cleaned_data['street'],
+                number=form.cleaned_data['number'],
+                city=form.cleaned_data['city'],
+                state=form.cleaned_data['state'],
+                cpf=form.cleaned_data['cpf'],
+                fk_recpt=recpt_instance,
+                # fk_user_type=user_type_obj,
+            )
+            patient.save()
 
         assign_role(user, PatientUser)
 
@@ -258,6 +274,6 @@ def register_patient_create(request):
         )
 
         del (request.session['register_form_data'])
-        return redirect(reverse('lab:register_patient'))
+        return redirect(reverse('authors:register_patient'))
 
     return redirect('authors:register_patient')
