@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from lab.models import DetectedImage, Lab
 from project.roles import PatientUser, RecptUSer, TecUser
 from rolepermissions.decorators import has_permission_decorator
 from rolepermissions.roles import assign_role
@@ -27,15 +28,43 @@ def is_patient(user):
     return hasattr(user, 'patient') and user.patient is not None
 
 
+@login_required(login_url='authors:login', redirect_field_name='next')
 def my_profile(request):
-    recpt_instance = Recpt.objects.get(user=request.user)
-   
-    patients = Patient.objects.filter(fk_recpt=recpt_instance)
 
-    return render(request, 'authors/pages/my_profile.html', {
-        'patients': patients,
-    })
+    try:
+        recpt_instance = request.user.recpt_profile
+        patients = Patient.objects.filter(fk_recpt=recpt_instance)
+        return render(request, 'authors/pages/my_profile.html', {
+            'patients': patients,
+            'recpt': recpt_instance,
+        })
+    except Recpt.DoesNotExist:
+        pass  # O usuário logado não é um Recpt
 
+    try:
+        tec_instance = request.user.tec_profile
+        labs = Lab.objects.filter(fk_tec=tec_instance)
+        return render(request, 'authors/pages/my_profile.html', {
+            'labs': labs,
+            'tec': tec_instance,
+        })
+    except Tec.DoesNotExist:
+        pass  # O usuário logado não é um Tec
+
+    try:
+        patient_instance = request.user.patient_profile
+        lab_instances = Lab.objects.filter(patient=patient_instance)
+        detected_images = DetectedImage.objects.filter(lab__in=lab_instances)
+        return render(request, 'authors/pages/my_profile.html', {
+            'patient': patient_instance,
+            'reports': detected_images,
+            'lab': lab_instances,
+
+        })
+    except Tec.DoesNotExist:
+        pass  # O usuário logado não é um Tec
+
+    return render(request, 'lab:home')
 
 # funcao de login
 
@@ -75,7 +104,7 @@ def login_create(request):
 
 
 # logout
-@login_required(login_url='authors:login', redirect_field_name='next')
+@ login_required(login_url='authors:login', redirect_field_name='next')
 def logout_view(request):
     if not request.POST:
         return redirect(reverse('authors:login'))
@@ -193,7 +222,7 @@ def register_recpt_create(request):
 
 
 # PATIENT
-@has_permission_decorator('cadastrar_paciente')
+@ has_permission_decorator('cadastrar_paciente')
 def register_patient_view(request):
     is_patient_registration_page = request.path == reverse(
         'authors:register_patient')
@@ -207,7 +236,7 @@ def register_patient_view(request):
     })
 
 
-@has_permission_decorator('cadastrar_paciente')
+@ has_permission_decorator('cadastrar_paciente')
 def register_patient_create(request):
     if not request.POST:
         raise Http404()
@@ -240,7 +269,7 @@ def register_patient_create(request):
                 # fk_user_type=user_type_obj,
             )
             patient.save()
-        else:
+        elif request.user.recpt_profile:
             recpt_instance = Recpt.objects.get(user=request.user)
             print(f' instancia de recpt: {recpt_instance}')
 

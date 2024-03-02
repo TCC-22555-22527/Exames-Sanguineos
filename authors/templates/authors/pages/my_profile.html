@@ -5,19 +5,43 @@
 {% block content %}
 
 <h1>Meu perfil</h1>
-    {% for patient in patients %}
+    
     <div class="center">
-        <p>nome: {{patient.first_name}}</p>
-        <p>sobrenome:{{patient.last_name}}</p>
-        <p>id:{{patient.user_id}}</p>
-        
-    </div>
-   
-        
-        
-        
-    {% endfor %}
 
+        {% if recpt %}
+            <h1>Meu nome: {{ recpt.user.first_name }} </h1>
+            {% for patient in patients %}
+
+                <p>nome: {{patient.first_name}}</p>
+                <p>sobrenome:{{patient.last_name}}</p>
+                <p>id:{{patient.user_id}}</p>
+
+            {% endfor %}
+        {% endif %}
+
+        {% if tec %}
+            <h1>Meu nome: {{ tec.user.first_name }} </h1>
+            {% for lab in labs %}
+
+                <p>nome paciente: {{lab.patient.first_name}}</p>
+                <p>sobrenome:{{lab.patient.last_name}}</p>
+                <p>id:{{lab.created_at}}</p>
+
+            {% endfor %}
+        {% endif %}
+        {% if patient %}
+            <h1>Meu nome: {{ patient.user.first_name }} </h1>
+            {% for report in reports %}
+
+                <p>data: {{lab.created_at }}</p>
+                <p>total detect:{{report.total_detects}}</p>
+                <img src="report.detected_img.url" alt="image">
+                
+                
+            {% endfor %}
+        {% endif %}
+
+    </div>  
 
 {% endblock content %}
 
