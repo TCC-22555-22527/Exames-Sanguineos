@@ -4,12 +4,15 @@
 
 {% block content %}
 
-<h1>Meu perfil</h1>
-    
-    <div class="center">
+    <div class="container">
+            <div class="main-content">
+                <div class="center">
+                <h1>Meu perfil</h1>
+            </div>
 
-        {% if recpt %}
-            <h1>Meu nome: {{ recpt.user.first_name }} </h1>
+            {% if recpt %}
+            <h3>Meu nome: {{ recpt.user.first_name }} </h3>
+          
             {% for patient in patients %}
 
                 <p>nome: {{patient.first_name}}</p>
@@ -17,31 +20,32 @@
                 <p>id:{{patient.user_id}}</p>
 
             {% endfor %}
-        {% endif %}
+            {% endif %}
 
-        {% if tec %}
-            <h1>Meu nome: {{ tec.user.first_name }} </h1>
-            {% for lab in labs %}
+            {% if tec %}
+                <h1>Meu nome: {{ tec.user.first_name }} </h1>
+                {% for lab in labs %}
 
-                <p>nome paciente: {{lab.patient.first_name}}</p>
-                <p>sobrenome:{{lab.patient.last_name}}</p>
-                <p>id:{{lab.created_at}}</p>
+                    <p>nome paciente: {{lab.patient.first_name}}</p>
+                    <p>sobrenome:{{lab.patient.last_name}}</p>
+                    <p>id:{{lab.created_at}}</p>
 
-            {% endfor %}
-        {% endif %}
-        {% if patient %}
-            <h1>Meu nome: {{ patient.user.first_name }} </h1>
-            {% for report in reports %}
-
-                <p>data: {{lab.created_at }}</p>
-                <p>total detect:{{report.total_detects}}</p>
-                <img src="report.detected_img.url" alt="image">
-                
-                
-            {% endfor %}
-        {% endif %}
-
-    </div>  
+                {% endfor %}
+            {% endif %}
+            {% if patient %}
+                <h1>Meu nome: {{ patient.user.first_name }} - patient </h1>
+                {% for report in reports %}
+                    
+                    <p>data do laudo: {{ report.lab.created_at }}</p>
+                    <p>total detect:{{report.total_detects}}</p>
+                    <div class="report-image-box">
+                        <img src= "{{report.detected_img.url}}" alt="image">
+                    </div>  
+                    
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 
 {% endblock content %}
 
