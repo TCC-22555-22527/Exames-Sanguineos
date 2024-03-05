@@ -8,7 +8,7 @@
                 <br>
                 <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
                 <br>
-                <p><strong> ID: </strong> {{ patient.id }}</p>        
+                <p><strong> ID: </strong> {{ patient.user_id }}</p>        
             </div> 
             <div class="button-access-user-space">
                 <a href="{% url 'lab:patient_detail' user_id=patient.user_id %}" class="btn-access">
