@@ -5,12 +5,17 @@
 __pycache__
 db.sqlite3
 
-
 # Backup files #
 *.bak
-lab_Results
+
+# Contains image data from send_img form (project root)
 media/lab/reports/
 media/lab/detects/
+media/lab/backup_imgs/
+
+# Txt file generated after detection script (project root)
+output.txt
+lab_results
 
 # If you are using PyCharm #
 .idea/**/workspace.xml
@@ -132,6 +137,5 @@ db.sqlite3
 db copy.sqlite3
 static/
 
-output.txt
-yolov5
+
 
