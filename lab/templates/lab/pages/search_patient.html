@@ -3,7 +3,13 @@
 {% block title %}{{ page_title }}{% endblock title %}
 
 {% block content %}
-{%include 'global/partials/search.html'%}
+
+<div class="main-content container">
+    <div class="personal-heading">
+        <h2>Pesquisa de pacientes</h2>
+    </div>
+    
+    {%include 'global/partials/search.html'%}
 
     <div class="main-content-list container">  
         {% if search_term %}
@@ -24,5 +30,5 @@
     </div>
  
     {% include 'global/partials/pagination.html' %}
-    <br><br>
+</div>
 {% endblock content %}
