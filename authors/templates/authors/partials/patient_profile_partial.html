@@ -1,0 +1,56 @@
+{% load static %}
+
+<div id="container" class="center">
+    <div class="tab-buttons">
+        <button class="tab-btn active" content-id="home">
+            Meus dados
+        </button>
+
+        <button class="tab-btn" content-id="services">
+            Meus laudos
+        </button>
+    </div>
+
+    <div class="tab-contents">
+        <div class="content" id="home">
+            <div class="infos">
+                <p><strong>Nome completo:</strong> {{ patient.user.first_name }} {{patient.user.last_name}} </p>
+                <p><strong>Nome de usuário: </strong>{{ patient.user.username }}</p>
+                <p><strong>Data de nascimento: </strong>{{ patient.birthday }}</p>
+                <p><strong>CPF: </strong>{{ patient.cpf }}</p>
+                <h2>Endereço:</h2>
+                <p><strong>Rua: </strong>{{ patient.street }}</p>
+                <p><strong>Número: </strong>{{ patient.number }}</p>
+                <p><strong>Cidade: </strong>{{ patient.number }}</p>
+                <p><strong>Estado: </strong>{{ patient.number }}</p>
+                <h2>Cadastro</h2>
+                <p><strong>Recepcionista responsável:</strong>
+                    {{ patient.fk_recpt.user.username }}
+                </p>
+                
+            </div>
+        </div>
+
+        <div class="content" id="services">
+            <div class="infos">
+                <div class="report-list-container">
+                    {% for report in reports %}
+                        <div class="report report-list-search">
+                            <div class="report-content">
+                                <p>Data do laudo: {{ report.lab.created_at }}</p>
+                                <p>Técnico responsável: {{report.lab.fk_tec }}</p>
+                                <div class="report-user-access-container">
+                                    <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> 
+                                        Detalhes <i class='bx bxs-binoculars'></i> 
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>    
+                    {% endfor %}                    
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<script src="{% static 'global/js/profile_tab.js' %}"></script>

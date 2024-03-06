@@ -45,5 +45,3 @@ class Patient(models.Model):
 
     def __str__(self):
         return f"{self.user.username}"
-    # fk_user_type = models.ForeignKey(UserType,on_delete=models.SET_NULL,
-    # null=True,blank=True)#noqa E501

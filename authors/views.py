@@ -19,40 +19,42 @@ from .models import Patient, Recpt, Tec
 @login_required(login_url='authors:login', redirect_field_name='next')
 def my_profile(request):
 
-    try:
-        recpt_instance = request.user.recpt_profile
-        patients = Patient.objects.filter(fk_recpt=recpt_instance)
-        return render(request, 'authors/pages/my_profile.html', {
-            'patients': patients,
-            'recpt': recpt_instance,
-        })
-    except Recpt.DoesNotExist:
-        pass
+    if request.user.is_superuser:
+        return render(request, 'authors/pages/my_profile.html')
+    else:
+        try:
+            recpt_instance = request.user.recpt_profile
+            patients = Patient.objects.filter(fk_recpt=recpt_instance)
+            return render(request, 'authors/pages/my_profile.html', {
+                'patients': patients,
+                'recpt': recpt_instance,
+            })
+        except Recpt.DoesNotExist:
+            pass
 
-    try:
-        tec_instance = request.user.tec_profile
-        labs = Lab.objects.filter(fk_tec=tec_instance)
-        return render(request, 'authors/pages/my_profile.html', {
-            'labs': labs,
-            'tec': tec_instance,
-        })
-    except Tec.DoesNotExist:
-        pass
+        try:
+            tec_instance = request.user.tec_profile
+            labs = Lab.objects.filter(fk_tec=tec_instance)
+            return render(request, 'authors/pages/my_profile.html', {
+                'labs': labs,
+                'tec': tec_instance,
+            })
+        except Tec.DoesNotExist:
+            pass
 
-    try:
-        patient_instance = request.user.patient_profile
-        lab_instances = Lab.objects.filter(patient=patient_instance)
-        detected_images = DetectedImage.objects.filter(lab__in=lab_instances)
-        return render(request, 'authors/pages/my_profile.html', {
-            'patient': patient_instance,
-            'reports': detected_images,
-            'lab': lab_instances,
+        try:
+            patient_instance = request.user.patient_profile
+            lab_instances = Lab.objects.filter(patient=patient_instance)
+            detected_images = DetectedImage.objects.filter(
+                lab__in=lab_instances)
+            return render(request, 'authors/pages/my_profile.html', {
+                'patient': patient_instance,
+                'reports': detected_images,
+                'lab': lab_instances,
 
-        })
-    except Tec.DoesNotExist:
-        pass
-
-    return render(request, 'lab:home')
+            })
+        except Tec.DoesNotExist:
+            pass
 
 
 # funcao de login

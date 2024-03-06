@@ -5,8 +5,8 @@
 {% block content %}
 
     <div class="container">
-            <div class="main-content">
-                <div class="center">
+        <div class="main-content">
+                <div class="personal-heading">
                 <h1>Meu perfil</h1>
             </div>
 
@@ -33,16 +33,9 @@
                 {% endfor %}
             {% endif %}
             {% if patient %}
-                <h1>Meu nome: {{ patient.user.first_name }} - patient </h1>
-                {% for report in reports %}
-                    
-                    <p>data do laudo: {{ report.lab.created_at }}</p>
-                    <p>total detect:{{report.total_detects}}</p>
-                    <div class="report-image-box">
-                        <img src= "{{report.detected_img.url}}" alt="image">
-                    </div>  
-                    
-                {% endfor %}
+                
+                {% include "authors/partials/patient_profile_partial.html" %}
+
             {% endif %}
         </div>
     </div>
