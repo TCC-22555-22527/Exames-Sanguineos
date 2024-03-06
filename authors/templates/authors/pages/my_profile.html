@@ -6,22 +6,18 @@
 
     <div class="container">
         <div class="main-content">
-                <div class="personal-heading">
-                <h1>Meu perfil</h1>
+            <div class="personal-heading">
+                <h2>Meu perfil</h2>
             </div>
 
+
+<!-- Recepcionista-->            
             {% if recpt %}
-            <h3>Meu nome: {{ recpt.user.first_name }} </h3>
-          
-            {% for patient in patients %}
-
-                <p>nome: {{patient.first_name}}</p>
-                <p>sobrenome:{{patient.last_name}}</p>
-                <p>id:{{patient.user_id}}</p>
-
-            {% endfor %}
+                {% include "authors/partials/recpt_profile_tabs.html" %}
             {% endif %}
 
+
+<!-- tecnico-->  
             {% if tec %}
                 <h1>Meu nome: {{ tec.user.first_name }} </h1>
                 {% for lab in labs %}
@@ -29,14 +25,15 @@
                     <p>nome paciente: {{lab.patient.first_name}}</p>
                     <p>sobrenome:{{lab.patient.last_name}}</p>
                     <p>id:{{lab.created_at}}</p>
-
                 {% endfor %}
             {% endif %}
-            {% if patient %}
-                
-                {% include "authors/partials/patient_profile_partial.html" %}
 
+
+<!-- paciente-->  
+            {% if patient %}
+                {% include "authors/partials/patient_profile_tabs.html" %}
             {% endif %}
+
         </div>
     </div>
 

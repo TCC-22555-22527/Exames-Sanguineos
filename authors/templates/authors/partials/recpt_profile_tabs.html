@@ -1,0 +1,53 @@
+{% load static %}
+
+<div id="container" class="center">
+    <div class="tab-buttons">
+        <button class="tab-btn active" content-id="data-recpt">
+            Meus dados
+        </button>
+
+        <button class="tab-btn" content-id="registered-patients-recpt">
+            Pacientes que eu cadastrei
+        </button>
+    </div>
+
+    <div class="tab-contents">
+        <div class="content" id="data-recpt">
+            <div class="infos">
+                <p><strong>Nome completo:</strong> {{ recpt.user.first_name }} {{patient.user.last_name}} </p>
+                <p><strong>Nome de usuário: </strong>{{ recpt.user.username }}
+            </div>
+        </div>
+
+        <div class="content" id="registered-patients-recpt">
+            <div class="infos">
+                <div class="main-content-list">
+
+                    {% for patient in patients %}
+                        <div class="user-profile-details">
+                            <div class="patient-content">
+                                <div class="patient-content-paragrah">   
+                                    <p><strong> Nome: </strong> {{ patient.user.first_name }} {{ patient.last_name }}</p>
+                                    <br>
+                                    <p><strong> CPF: </strong> {{ patient.cpf }}</p>
+                                    <br>
+                                    <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
+                                    <br>
+                                    <p><strong> ID: </strong> {{ patient.user_id }}</p>        
+                                </div> 
+                                <div class="button-access-user-space">
+                                    <a href="{% url 'lab:patient_detail' user_id=patient.user_id %}" class="btn-access">
+                                        <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
+                                        Visualizar perfil
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}                    
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<script src="{% static 'global/js/profile_tab.js' %}"></script>
