@@ -2,17 +2,17 @@
 
 <div id="container" class="center">
     <div class="tab-buttons">
-        <button class="tab-btn active" content-id="home">
+        <button class="tab-btn active" content-id="data-patient">
             Meus dados
         </button>
 
-        <button class="tab-btn" content-id="services">
+        <button class="tab-btn" content-id="my-reports">
             Meus laudos
         </button>
     </div>
 
     <div class="tab-contents">
-        <div class="content" id="home">
+        <div class="content" id="data-patient">
             <div class="infos">
                 <p><strong>Nome completo:</strong> {{ patient.user.first_name }} {{patient.user.last_name}} </p>
                 <p><strong>Nome de usuário: </strong>{{ patient.user.username }}</p>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="content" id="services">
+        <div class="content" id="my-reports">
             <div class="infos">
                 <div class="report-list-container">
                     {% for report in reports %}

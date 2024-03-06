@@ -9,31 +9,18 @@
             <div class="personal-heading">
                 <h2>Meu perfil</h2>
             </div>
-
-
 <!-- Recepcionista-->            
             {% if recpt %}
-                {% include "authors/partials/recpt_profile_tabs.html" %}
+                {% include "authors/partials/profiles/recpt_profile_tabs.html" %}
             {% endif %}
-
-
 <!-- tecnico-->  
             {% if tec %}
-                <h1>Meu nome: {{ tec.user.first_name }} </h1>
-                {% for lab in labs %}
-
-                    <p>nome paciente: {{lab.patient.first_name}}</p>
-                    <p>sobrenome:{{lab.patient.last_name}}</p>
-                    <p>id:{{lab.created_at}}</p>
-                {% endfor %}
+                {% include "authors/partials/profiles/tec_profile_tabs.html" %}
             {% endif %}
-
-
 <!-- paciente-->  
             {% if patient %}
-                {% include "authors/partials/patient_profile_tabs.html" %}
+                {% include "authors/partials/profiles/patient_profile_tabs.html" %}
             {% endif %}
-
         </div>
     </div>
 
