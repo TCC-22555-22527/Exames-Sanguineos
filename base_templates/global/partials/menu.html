@@ -14,33 +14,70 @@
       <nav class="menu-nav">
 
         {% if user.is_authenticated %}
-          {% if user|can:'pagina_inicial'%}
-            <a href="{%url 'lab:home' %}"> Página inicial </a>
-          {% endif %}
-
+         
+            {% if user|can:'pagina_inicial'%}
+              <a href="{%url 'lab:home' %}">
+                <div class="menu-href-line">
+                  <i class="fa-solid fa-house menu-icons"></i>
+                  <h5>Página inicial</h5> 
+                </div>
+              </a>
+            {% endif %}
+       
           {% if user.is_superuser %}
-            <a href="{%url 'lab:register_custom_user'%}"> Cadastro de usuário </a>
+            <a href="{%url 'lab:register_custom_user'%}"> 
+              <div class="menu-href-line">
+                <i class="fa-solid fa-user-plus menu-icons"></i>
+                <h5>Cadastro de usuário</h5>
+              </div>
+            </a>
           {% endif %}
 
           {% if user|can:'cadastrar_paciente'%}
-            <a href="{%url 'authors:register_patient'%}"> Cadastro de paciente </a>
+            <a href="{%url 'authors:register_patient'%}"> 
+              <div class="menu-href-line">
+                <i class="fa-solid fa-user-plus menu-icons"></i>
+                <h5>Cadastro de paciente</h5>
+              </div>
+            </a>
           {% endif %}
 
           {% if user|can:'pesquisar_paciente'%}
-            <a href="{%url 'lab:search_patient'%}"> Pesquisar paciente </a>
+            <a href="{%url 'lab:search_patient'%}">
+              <div class="menu-href-line">
+                <i class="fa-solid fa-magnifying-glass menu-icons"></i>
+                <h5>Pesquisar paciente </h5>
+              </div>
+            </a>
           {% endif %}
 
           {% if user|can:'laudo_enviar_permission'%}
-            <a href="{%url 'lab:send_img'%}"> Enviar imagem </a>
+            <a href="{%url 'lab:send_img'%}"> 
+              <div class="menu-href-line">
+                <i class="fa-solid fa-share menu-icons"></i>
+                <h5>Enviar imagem</h5> 
+              </div>
+            </a>
           {% endif %}
 
           {% if user|can:'visualizar_laudo'%}
-            <a href="{%url 'lab:report_search'%}"> Consultar laudo </a>
+            <a href="{%url 'lab:report_search'%}">
+              <div class="menu-href-line">
+                <i class="fa-solid fa-flask menu-icons"></i>  
+                <h5>Consultar laudo </h5>
+              </div>
+            </a>
           {% endif %}
           <!-- Perfil do usuário logado-->
-          <a href="{%url 'authors:my_profile'%}"> Meu perfil </a>
-         
-            <a class="authors-logout-link" href="{% url 'authors:logout' %}">Sair</a>
+          <a href="{%url 'authors:my_profile'%}"> 
+            <div class="menu-href-line">
+              <i class="fa-solid fa-user menu-icons"></i>
+              <h5>Meu perfil</h5>
+              </div>
+            </a>
+            <a class="authors-logout-link" href="{% url 'authors:logout' %}">
+              Sair    
+            </a>
             {% include 'authors/partials/form_logout.html' %}
         {% else %}
 

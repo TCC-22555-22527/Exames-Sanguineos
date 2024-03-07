@@ -98,10 +98,26 @@ h5 {
     gap: 6px;
 }
 
+.tab-title {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-title .fa-person {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+.tab-title .fa-list {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
 .tab-btn {
+    font-family: var(--font-headings);
     width: 100%;
     border: none;
-    color: #020617;
+    color: var(--color-dark-text);
     background-color: #f0f8ff;
     border-radius: 8px 8px 0px 0px;
     font-weight: 500;
@@ -1110,9 +1126,20 @@ h5 {
     flex-flow: column wrap;
     font-family: var(--font-headings);
     font-size: 2rem;
-    margin-left: 3rem;
+    align-items: flex-start;
     margin-top: 2rem;
 }
+.menu-href-line {
+    display: flex;
+    align-items: baseline;
+}
+.menu-href-line .menu-icons{
+    margin-right: 1.6rem;
+}
+.menu-href-line .fa-user-plus {
+    margin-right: 1.2rem;
+}
+
 .menu-nav a {
     margin-top: 1rem;
     width: 100%;
@@ -1123,10 +1150,12 @@ h5 {
     transition: all 300ms ease-in-out;
     color: #959595;
 }
+
 .menu-nav a.authors-logout-link {
+    display: flex;
+    justify-content: center;
     color: var(--color-error-dark);
     margin-top: 18rem;
-    margin-left: 5rem;
 }
 .blurred-content {
     filter: blur(2.5px); 
@@ -1241,6 +1270,11 @@ h5 {
         margin-bottom: 2.5rem;
         max-width: 100%;
         max-height: 100%;
+    }
+
+    /*Menu*/
+    .menu-nav a {
+        margin-top: 2.5rem;
     }
 }
 
@@ -1402,7 +1436,7 @@ h5 {
     }
     /*menu*/
     .menu-nav a.authors-logout-link {
-        margin-top: 25rem;
+        margin-top: 22rem;
     }
 
     
@@ -1555,6 +1589,9 @@ h5 {
     .body-blue{
         background-color:white;
         align-items: initial;
+    }
+    .menu-href-line {
+        align-items: center;
     }
 
     
