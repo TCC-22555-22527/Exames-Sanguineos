@@ -3,20 +3,51 @@
 <div id="container" class="center">
     <div class="tab-buttons">
         <button class="tab-btn active" content-id="data-tec">
-            Meus dados
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Meus dados</h3>
+            </div>
         </button>
 
         <button class="tab-btn" content-id="created-reports-tec">
-            Laudos que eu criei
+            <div class="tab-title">
+                <i class="fa-solid fa-list"></i>
+                <h3>Laudos que eu criei</h3>
+            </div>
         </button>
     </div>
 
     <div class="tab-contents">
         <div class="content" id="data-tec">
             <div class="infos">
-                <p><strong>Nome completo:</strong> {{ tec.user.first_name }} {{patient.user.last_name}} </p>
-                <p><strong>Nome de usuário: </strong>{{ tec.user.username }}</p>
-                <p><strong>CRM: </strong>{{ tec.crm }}</p>
+               
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome completo:</strong> 
+                    </div>
+                    <div class="tab-data-right">
+                        {{ tec.user.first_name }} {{patient.user.last_name}} 
+                    </div>
+                </div>
+            
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome de usuário: </strong>
+                    </div>
+                    <div class="tab-data-right">
+                        {{ tec.user.username }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>CRM: </strong>
+                    </div>
+                    <div class="tab-data-right">
+                        {{ tec.crm }}
+                    </div>
+                </div>
+                
             </div>
         </div>
 
