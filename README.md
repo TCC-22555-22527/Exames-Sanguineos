@@ -31,6 +31,8 @@ This is a Django-based web system for a blood laboratory.
 ### Features
 
 User Types: The system supports three types of users: technician, receptionist, and patient.
+
 Image Processing: Utilizes YOLO AI for processing microscopic blood images to generate hemogram reports.
+
 User Management: Allows receptionists to manage patient registrations and control their personal data.
 Patient Access: Patients can access their hemogram reports using their CPF.
