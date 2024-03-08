@@ -91,6 +91,7 @@ h5 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
 }
 
 .tab-buttons {
@@ -115,6 +116,7 @@ h5 {
 }
 .tab-btn {
     font-family: var(--font-headings);
+    font-size: 14px;
     width: 100%;
     border: none;
     color: var(--color-dark-text);
@@ -124,10 +126,12 @@ h5 {
     padding: 1.2rem;
     cursor: pointer;
     transition: background-color .3s ease;
+    transition: font-size .3s ease;
 }
 
 .tab-btn.active {
     background-color: #f3f3f3;
+    font-size: 13px;
 }
 
 .tab-btn:hover {
@@ -1245,6 +1249,11 @@ h5 {
         max-height: 100%;
     }
 
+    /* My profile tabs*/
+    .tab-data-right {
+        min-width: 40rem;
+    }
+
     
 }
 
@@ -1318,6 +1327,17 @@ h5 {
     .menu-nav a {
         margin-top: 2.5rem;
     }
+
+    /* My profile tabs*/
+    .field {
+        flex-direction: column;
+    }
+    .tab-data-right {
+        min-width: 35rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0;
+    }
 }
 
 
@@ -1359,6 +1379,15 @@ h5 {
     .main-logo-text {
         margin-top: 0.3rem;
         margin-bottom: 1rem;
+    }
+    .image-title-container {
+        margin-left: 1.5rem;
+    }
+    .imagem-logo-container {
+        margin-left: 4rem;
+    }
+    .hello-user a {
+        display: none;
     }
 
     /*Home*/
@@ -1471,6 +1500,23 @@ h5 {
         margin-top: 2rem;
         padding: 1.7rem;
     }
+    
+    /* My profile tabs*/
+    .field {
+        flex-direction: column;
+    }
+    .tab-data-right {
+        min-width: 20rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0;
+        font-size: small;
+    }
+    .tab-label-left{
+        min-width: 20rem;
+        text-align: left;
+        font-size: medium;
+    }
 
     /*Footer*/
      .main-footer {
@@ -1520,6 +1566,15 @@ h5 {
     .main-logo-text {
         margin-top: 0.3rem;
         margin-bottom: 1rem;
+    }
+    .image-title-container {
+        margin-left: 1.5rem;
+    }
+    .imagem-logo-container {
+        margin-left: 4rem;
+    }
+    .hello-user a {
+        display: none;
     }
 
     /*Home*/
@@ -1670,6 +1725,29 @@ h5 {
     .image-logo-login {
         margin-top: 2rem;
         transform: scale(1.1);
+    }
+
+    /* My profile tabs*/
+    .field {
+        flex-direction: column;
+    }
+    .tab-data-right {
+        min-width: 18rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0;
+        font-size: small;
+    }
+    .tab-label-left{
+        min-width: 18rem;
+        text-align: left;
+        font-size: small;
+    }
+    .tab-btn {
+        font-size: 10px;
+    }
+    .tab-btn.active {
+        font-size: 11px;
     }
 }
  
