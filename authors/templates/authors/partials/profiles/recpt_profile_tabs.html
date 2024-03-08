@@ -3,19 +3,40 @@
 <div id="container" class="center">
     <div class="tab-buttons">
         <button class="tab-btn active" content-id="data-recpt">
-            Meus dados
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                Meus dados
+            </div>
         </button>
 
         <button class="tab-btn" content-id="registered-patients-recpt">
-            Pacientes que eu cadastrei
+            <div class="tab-title">
+                <i class="fa-solid fa-list"></i>
+                Pacientes que eu cadastrei
+            </div>
         </button>
     </div>
 
     <div class="tab-contents">
         <div class="content" id="data-recpt">
             <div class="infos">
-                <p><strong>Nome completo:</strong> {{ recpt.user.first_name }} {{patient.user.last_name}} </p>
-                <p><strong>Nome de usuário: </strong>{{ recpt.user.username }}
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome completo:</strong>
+                    </div>
+                    <div class="tab-data-right">
+                        {{ recpt.user.first_name }} {{patient.user.last_name}} </p>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome de usuário: </strong>
+                    </div>
+                    <div class="tab-data-right">
+                        {{ recpt.user.username }}
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -1178,6 +1178,7 @@ h5 {
 .menu-href-line {
     display: flex;
     align-items: baseline;
+    margin-left: 2rem;
 }
 .menu-href-line .menu-icons{
     margin-right: 1.6rem;
