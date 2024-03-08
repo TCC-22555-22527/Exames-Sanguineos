@@ -20,10 +20,12 @@
     <div class="tab-contents">
         <div class="content" id="data-tec">
             <div class="infos">
-               
+
+                <h4 class="tab-patient-h4-top">Informações pessoais</h4>
+                
                 <div class="field">
                     <div class="tab-label-left">
-                        <strong>Nome completo:</strong> 
+                        <strong>Nome completo</strong> 
                     </div>
                     <div class="tab-data-right">
                         {{ tec.user.first_name }} {{patient.user.last_name}} 
@@ -32,7 +34,7 @@
             
                 <div class="field">
                     <div class="tab-label-left">
-                        <strong>Nome de usuário: </strong>
+                        <strong>Nome de usuário</strong>
                     </div>
                     <div class="tab-data-right">
                         {{ tec.user.username }}
@@ -41,7 +43,7 @@
 
                 <div class="field">
                     <div class="tab-label-left">
-                        <strong>CRM: </strong>
+                        <strong>CRM</strong>
                     </div>
                     <div class="tab-data-right">
                         {{ tec.crm }}

@@ -5,14 +5,14 @@
         <button class="tab-btn active" content-id="data-recpt">
             <div class="tab-title">
                 <i class="fa-solid fa-person"></i>
-                Meus dados
+                <h3>Meus dados</h3>
             </div>
         </button>
 
         <button class="tab-btn" content-id="registered-patients-recpt">
             <div class="tab-title">
                 <i class="fa-solid fa-list"></i>
-                Pacientes que eu cadastrei
+                <h3>Pacientes que eu cadastrei</h3>
             </div>
         </button>
     </div>
@@ -21,9 +21,11 @@
         <div class="content" id="data-recpt">
             <div class="infos">
 
+                <h4 class="tab-patient-h4-top">Informações pessoais</h4>
+
                 <div class="field">
                     <div class="tab-label-left">
-                        <strong>Nome completo:</strong>
+                        <strong>Nome completo</strong>
                     </div>
                     <div class="tab-data-right">
                         {{ recpt.user.first_name }} {{patient.user.last_name}} </p>
@@ -31,7 +33,7 @@
                 </div>
                 <div class="field">
                     <div class="tab-label-left">
-                        <strong>Nome de usuário: </strong>
+                        <strong>Nome de usuário</strong>
                     </div>
                     <div class="tab-data-right">
                         {{ recpt.user.username }}
