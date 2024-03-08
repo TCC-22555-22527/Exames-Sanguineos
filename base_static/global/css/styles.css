@@ -149,6 +149,7 @@ h5 {
     border-radius: 0px 0px 8px 8px;
     padding: 16px;
     padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 .infos {
     display: flex;  
@@ -167,7 +168,7 @@ h5 {
     height: 250px;
 }
 
-            /* PROFILE tabs tec */
+            /* PROFILE tabs tec, recpt e patient */
 .tab-label-left {
     background-color: white;
     border: 0.01px solid var(--color-gray-3);
@@ -187,6 +188,19 @@ h5 {
     color: var(--color-gray-5);
     padding: 1rem;
     min-width: 60rem;
+}
+.tab-patient-h4 {
+    color: var(--color-debug-dark);
+    margin-top: 1.8rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    text-align: left;
+}
+.tab-patient-h4-top{
+    color: var(--color-debug-dark);
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    text-align: left;
 }
 
                     /*  TUDO DO PROJETO PASSADO  */

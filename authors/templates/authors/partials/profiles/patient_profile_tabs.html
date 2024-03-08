@@ -3,30 +3,107 @@
 <div id="container" class="center">
     <div class="tab-buttons">
         <button class="tab-btn active" content-id="data-patient">
-            Meus dados
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Meus dados</h3>
+            </div>
         </button>
 
         <button class="tab-btn" content-id="my-reports">
-            Meus laudos
+            <h3>Meus laudos</h3>
         </button>
     </div>
 
     <div class="tab-contents">
         <div class="content" id="data-patient">
             <div class="infos">
-                <p><strong>Nome completo:</strong> {{ patient.user.first_name }} {{patient.user.last_name}} </p>
-                <p><strong>Nome de usuário: </strong>{{ patient.user.username }}</p>
-                <p><strong>Data de nascimento: </strong>{{ patient.birthday }}</p>
-                <p><strong>CPF: </strong>{{ patient.cpf }}</p>
-                <h2>Endereço:</h2>
-                <p><strong>Rua: </strong>{{ patient.street }}</p>
-                <p><strong>Número: </strong>{{ patient.number }}</p>
-                <p><strong>Cidade: </strong>{{ patient.number }}</p>
-                <p><strong>Estado: </strong>{{ patient.number }}</p>
-                <h2>Cadastro</h2>
-                <p><strong>Recepcionista responsável:</strong>
-                    {{ patient.fk_recpt.user.username }}
-                </p>
+
+                <h4 class="tab-patient-h4-top">Informações pessoais</h4>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome completo</strong>
+                    </div>
+                    <div class="tab-data-right">    
+                        {{ patient.user.first_name }} {{patient.user.last_name}}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Nome de usuário </strong>
+                    </div>
+                    <div class="tab-data-right">  
+                        {{ patient.user.username }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Data de nascimento </strong>
+                    </div>
+                    <div class="tab-data-right">  
+                        {{ patient.birthday }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>CPF: </strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.cpf }}
+                    </div>
+                </div>
+
+                <h4 class="tab-patient-h4">Endereço</h4>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Rua: </strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.street }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Número </strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.number }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Cidade </strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.city }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Estado </strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.state }}
+                    </div>
+                </div>
+
+                <h4 class="tab-patient-h4">Cadastro</h4>
+
+                <div class="field">
+                    <div class="tab-label-left">
+                        <strong>Responsável</strong>
+                    </div>
+                    <div class="tab-data-right"> 
+                        {{ patient.fk_recpt.user.username }}
+                    </div>
+                </div>
                 
             </div>
         </div>
