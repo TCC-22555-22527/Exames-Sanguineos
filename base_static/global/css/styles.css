@@ -1136,7 +1136,8 @@ h5 {
     transition: all 300ms ease-in-out;
 }
 .menu-container a {
-    color: var(--color-white);
+    color: rgba(245, 245, 245, 0.935);
+    
 }
 .menu-hidden {
     left: -255px;
@@ -1205,11 +1206,13 @@ h5 {
     margin-top: 1rem;
     width: 100%;
     padding: 1rem;
+    transition: all 300ms ease-in-out;
     text-decoration: none;
+    font-size: 19px;
 }
 .menu-nav a:hover {
-    transition: all 300ms ease-in-out;
-    color: #959595;
+    font-size: 20px;
+    color: var(--color-white);
 }
 
 .menu-nav a.authors-logout-link {
