@@ -20,7 +20,7 @@
     <div class="tab-contents">
         <div class="content" id="data-tec">
             <div class="infos">
-
+                
                 <h4 class="tab-user-h4-top">Informações pessoais</h4>
                 
                 <div class="field">
@@ -55,42 +55,41 @@
 
         <div class="content" id="created-reports-tec">
             <div class="infos">
+
                 {% if labs %}
 
-                <div class="report-list-container">
-                    {% for lab in labs %}
-                        <div class="report report-list-search">
-                            <div class="report-content">
-                                <p><strong>Data do laudo:</strong> </p>{{ lab.created_at }}
-                                    
-                                <p><strong>Nome do paciente: </strong>                                 
-                                    {{ lab.patient.user.first_name }}
-                                    {{ lab.patient.user.last_name }}
-                                </p> 
-                                <p><strong>CPF do paciente:</strong> </p>{{ lab.patient.cpf }}
-                                <div class="report-user-access-container">
-                                    <a href= {% url "lab:report_detail" report_id=lab.id  %} class="report-user-access-btn"> 
-                                        Detalhes <i class='bx bxs-binoculars'></i> 
-                                    </a>
-                                </div>
-                            </div>
-                            
-                        </div>    
-                    {% endfor %}  
-                </div>
+                    <div class="report-list-container"> 
+                        {% for lab in labs %}
+                            <div class="report report-list-search">
+                                <div class="report-content">
+                                    <p><strong>Data do laudo:</strong> </p>{{ lab.created_at }}
+                                    <p><strong>Nome do paciente: </strong>                                 
+                                        {{ lab.patient.user.first_name }}
+                                        {{ lab.patient.user.last_name }}
+                                    </p> 
+                                    <p><strong>CPF do paciente:</strong> </p>{{ lab.patient.cpf }}
+                                    <div class="report-user-access-container">
+                                        <a href= {% url "lab:report_detail" report_id=lab.id  %} class="report-user-access-btn"> 
+                                            Detalhes <i class='bx bxs-binoculars'></i> 
+                                        </a>
+                                    </div>
+                                </div>               
+                            </div>    
+                        {% endfor %}  
+                    </div>
 
                 {% else %}
+
                     <h2 class="no-report-msg center no-rep-resp">
-                        Você ainda não gerou nenhum laudo
-                        
-                            <h4>Para gerar, 
-                                <a href="{% url "lab:send_img" %}" class="send-img-href-tab">
-                                    acesse aqui 
-                                    <i class="fa-solid fa-share "></i>
-                                </a>
-                            </h4>
-                        
+                        Você ainda não gerou nenhum laudo                     
+                        <h4>Para gerar, 
+                            <a href="{% url "lab:send_img" %}" class="send-img-href-tab">
+                                acesse aqui 
+                                <i class="fa-solid fa-share "></i>
+                            </a>
+                        </h4>
                     </h2>
+
                 {% endif %}
 
             </div>

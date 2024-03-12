@@ -110,22 +110,33 @@
 
         <div class="content" id="my-reports">
             <div class="infos">
-                <div class="report-list-container">
-                    {% for report in reports %}
-                        <div class="report report-list-search">
-                            <div class="report-content">
-                                <p>Data do laudo: {{ report.lab.created_at }}</p>
-                                <p>Técnico responsável: {{report.lab.fk_tec }}</p>
-                                <div class="report-user-access-container">
-                                    <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> 
-                                        Detalhes <i class='bx bxs-binoculars'></i> 
-                                    </a>
-                                </div>
-                            </div>
-                            
-                        </div>    
-                    {% endfor %}                    
-                </div>
+
+                {% if reports %}
+                
+                    <div class="report-list-container">
+                        {% for report in reports %}
+                            <div class="report report-list-search">
+                                <div class="report-content">
+                                    <p>Data do laudo: {{ report.lab.created_at }}</p>
+                                    <p>Técnico responsável: {{report.lab.fk_tec }}</p>
+                                    <div class="report-user-access-container">
+                                        <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> 
+                                            Detalhes <i class='bx bxs-binoculars'></i> 
+                                        </a>
+                                    </div>
+                                </div>                              
+                            </div>    
+                        {% endfor %}       
+                    </div>
+
+                {% else %}
+
+                    <h2 class="no-report-msg center no-rep-resp">
+                        Você não possui nenhum laudo de hemograma                     
+                    </h2>
+
+                {% endif %}   
+                               
             </div>
         </div>        
     </div>

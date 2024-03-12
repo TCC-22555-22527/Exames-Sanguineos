@@ -28,7 +28,7 @@
                         <strong>Nome completo</strong>
                     </div>
                     <div class="tab-data-right">
-                        {{ recpt.user.first_name }} {{patient.user.last_name}} </p>
+                        {{ recpt.user.first_name }} {{recpt.user.last_name}} </p>
                     </div>
                 </div>
                 <div class="field">
@@ -44,9 +44,10 @@
 
         <div class="content" id="registered-patients-recpt">
             <div class="infos">
-                {% if patients %}
-                <div class="patients-created-list">
 
+                {% if patients %}
+
+                <div class="patients-created-list">
                     {% for patient in patients %}
                         <div class="user-profile-details">
                             <div class="patient-content">
@@ -67,12 +68,23 @@
                                 </div>
                             </div>
                         </div>
-
                     {% endfor %}                    
                 </div>
+
                 {% else %}
-                
+
+                <h2 class="no-report-msg center no-rep-resp">
+                    Você ainda não cadastrou nenhum paciente               
+                    <h4>Para cadastrar, 
+                        <a href="{% url "authors:register_patient" %}" class="send-img-href-tab">
+                            acesse aqui 
+                            <i class="fa-solid fa-share "></i>
+                        </a>
+                    </h4>
+                </h2>
+
                 {% endif %}
+                
             </div>
         </div>        
     </div>
