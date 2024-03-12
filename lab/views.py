@@ -43,7 +43,7 @@ def send_img(request):
     )
     selected_patient = None
     detected_objects = None
-
+    processing_state = None
     total_rbc = 0
     total_wbc = 0
     total_platelets = 0
@@ -53,6 +53,7 @@ def send_img(request):
     sizes_of_bounding_boxes_um = []
 
     if request.method == 'POST':
+        processing_state = 'processing'
         # captura a imagem enviada no form
         image = request.FILES.get('image')
         # captura o paciente selecionado
@@ -243,18 +244,22 @@ def send_img(request):
                         media_circun_wbc=media_circun_wbc)
                     detection_result.save()
 
+                    processing_state = 'success'
                     messages.success(
                         request, 'Sua imagem foi salva com sucesso e o laudo '
                         'foi gerado. Veja abaixo!')
                     return redirect('lab:report_detail', report_id=lab.pk)
 
                 else:
+                    processing_state = 'error'
                     messages.error(
                         request, 'Nenhuma detecção encontrada em lab_results/.')  # noqa E501
 
             except Patient.DoesNotExist:
+                processing_state = 'error'
                 messages.error(request, 'Paciente não encontrado.')
         else:
+            processing_state = 'error'
             messages.error(
                 request, 'Preencha todos os campos antes de enviar.')
 
@@ -282,7 +287,10 @@ def send_img(request):
                    'pagination_range': pagination_range,
                    'form': form,
                    'selected_patient': selected_patient,
-                   'detected_objects': detected_objects})
+                   'detected_objects': detected_objects,
+                   'processing_state': processing_state,
+                   }
+                  )
 
 
 # pesquisar paciente por nome e cpf

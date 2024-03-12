@@ -1,16 +1,35 @@
 {% extends 'global/base.html' %}    
-
+{% load static %}
 {% block title %}Envio de imagem |{% endblock title %}
 
 {% block content %}
 
 <div class="main-content container">
     <h2 class="personal-heading">Envie a imagem microscópica com os seguintes dados</h2>
-    <!--<div id="loading-overlay">
+    <div id="loading-overlay" style="display: none;">
         <div class="loader"></div>
-    </div>-->
+    </div>
     {% include "global/partials/search_envio.html" %}
     {% include "lab/partials/form_send_micro_pic_partial.html" %}
     
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        var form = document.getElementById('form-send-mic');
+        form.addEventListener('submit', function (event) {
+            
+            if (form.checkValidity()) {
+                var loadingOverlay = document.getElementById('loading-overlay');
+                loadingOverlay.style.display = 'flex';
+            } else {
+                
+                event.preventDefault();
+            }
+        });
+    });
+</script>
+
+
 {% endblock content %}
