@@ -55,6 +55,8 @@
 
         <div class="content" id="created-reports-tec">
             <div class="infos">
+                {% if labs %}
+
                 <div class="report-list-container">
                     {% for lab in labs %}
                         <div class="report report-list-search">
@@ -74,8 +76,23 @@
                             </div>
                             
                         </div>    
-                    {% endfor %}                    
+                    {% endfor %}  
                 </div>
+
+                {% else %}
+                    <h2 class="no-report-msg center no-rep-resp">
+                        Você ainda não gerou nenhum laudo
+                        
+                            <h4>Para gerar, 
+                                <a href="{% url "lab:send_img" %}" class="send-img-href-tab">
+                                    acesse aqui 
+                                    <i class="fa-solid fa-share "></i>
+                                </a>
+                            </h4>
+                        
+                    </h2>
+                {% endif %}
+
             </div>
         </div>        
     </div>

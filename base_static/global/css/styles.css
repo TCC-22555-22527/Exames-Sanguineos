@@ -209,6 +209,14 @@ h5 {
     gap: 2rem;
     margin-bottom: 5rem
 }
+/* Tabs da direita do tec*/
+.send-img-href-tab {
+    color: var(--color-debug-dark);
+    transition: all 0.6s ease;
+}
+.send-img-href-tab:hover {
+    color: hsl(212, 100%, 33%);
+}
 
                     /*  TUDO DO PROJETO PASSADO  */
 .main-content {
@@ -1543,6 +1551,9 @@ h5 {
         text-align: left;
         font-size: medium;
     }
+    .no-rep-resp{
+        font-size: 18px;
+    }
 
     /*Footer*/
      .main-footer {
@@ -1774,6 +1785,9 @@ h5 {
     }
     .tab-btn.active {
         font-size: 11px;
+    }
+    .no-rep-resp{
+        font-size: 18px;
     }
 }
  
