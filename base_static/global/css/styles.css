@@ -189,18 +189,25 @@ h5 {
     padding: 1rem;
     min-width: 60rem;
 }
-.tab-patient-h4 {
+.tab-user-h4 {
     color: var(--color-debug-dark);
     margin-top: 1.8rem;
     margin-bottom: 1rem;
     margin-left: 0.5rem;
     text-align: left;
 }
-.tab-patient-h4-top{
+.tab-user-h4-top{
     color: var(--color-debug-dark);
     margin-bottom: 1rem;
     margin-left: 0.5rem;
     text-align: left;
+}
+/* Tabs da direita do recpct*/
+.patients-created-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 5rem
 }
 
                     /*  TUDO DO PROJETO PASSADO  */
@@ -213,12 +220,13 @@ h5 {
 
 .main-content-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--spacing-gutter-large);
     margin-bottom: 5rem
 }
 
-/*HOME*/
+
+                        /*HOME*/
 /* TESTE dos h1 que estão no lab*/
 .personal-heading {
     margin: 0 auto;
