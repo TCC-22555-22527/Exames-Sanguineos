@@ -7,10 +7,15 @@ from utils.django_forms import add_placeholder, strong_password
 class RegisterFormPatient(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        add_placeholder(self.fields['username'], 'Digite seu nome de usuário')
-        add_placeholder(self.fields['first_name'], 'Digite seu primeiro nome')
-        add_placeholder(self.fields['last_name'], 'Digite seu sobrenome')
-        add_placeholder(self.fields['email'], 'Digite seu e-mail')
+        add_placeholder(self.fields['username'], 'Digite o nome de usuário')
+        add_placeholder(self.fields['first_name'], 'Digite o primeiro nome')
+        add_placeholder(self.fields['last_name'], 'Digite o sobrenome')
+        add_placeholder(self.fields['email'], 'Digite o e-mail')
+        add_placeholder(self.fields['cpf'], 'Digite o cpf')
+        add_placeholder(self.fields['cell'], 'Digite o número telefônico')
+        add_placeholder(self.fields['city'], 'Digite o nome da cidade')
+        add_placeholder(self.fields['street'], 'Digite o nome da rua')
+        add_placeholder(self.fields['number'], 'Digite o número da residência')
 
     first_name = forms.CharField(
         error_messages={
@@ -60,7 +65,7 @@ class RegisterFormPatient(forms.ModelForm):
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Sua senha'
+            'placeholder': 'Crie uma senha'
         }),
         error_messages={
             'required': 'A senha não pode estar vazia'
@@ -70,7 +75,7 @@ class RegisterFormPatient(forms.ModelForm):
             'um caracter minúsculo e um número. A senha deve '
             'possuir pelo menos 8 caracteres.'
         ),
-        label='Digite sua senha',
+        label='Senha',
         validators=[strong_password]
     )
 
@@ -78,12 +83,12 @@ class RegisterFormPatient(forms.ModelForm):
     password2 = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Digite novamente sua senha'
+            'placeholder': 'Digite novamente a senha'
         }),
         error_messages={
             'required': 'A senha não pode estar vazia'
         },
-        label='Confirme sua senha',
+        label='Confirme a senha',
     )
 
     street = forms.CharField(
@@ -99,6 +104,11 @@ class RegisterFormPatient(forms.ModelForm):
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Cidade',
         max_length=50
+    )
+    cell = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Telefone',
+        max_length=14
     )
 
     STATES_CHOICE = (
@@ -154,12 +164,11 @@ class RegisterFormPatient(forms.ModelForm):
             'email',
             'password',
             'password2',
+            'cell',
             'state',
             'city',
             'street',
             'number',
-
-
         ]
 
     # Funcao que levanta erro se for cadastrar com o mesmo email

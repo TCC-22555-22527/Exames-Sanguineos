@@ -7,11 +7,11 @@ from utils.django_forms import add_placeholder, strong_password
 class RegisterFormLabTec(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        add_placeholder(self.fields['username'], 'Digite seu nome de usuário')
-        add_placeholder(self.fields['first_name'], 'Digite seu primeiro nome')
-        add_placeholder(self.fields['last_name'], 'Digite seu sobrenome')
-        add_placeholder(self.fields['email'], 'Digite seu e-mail')
-        add_placeholder(self.fields['crm'], 'Digite seu CRM')
+        add_placeholder(self.fields['username'], 'Digite o nome de usuário')
+        add_placeholder(self.fields['first_name'], 'Digite o primeiro nome')
+        add_placeholder(self.fields['last_name'], 'Digite o sobrenome')
+        add_placeholder(self.fields['email'], 'Digite o e-mail')
+        add_placeholder(self.fields['crm'], 'Digite o CRM')
 
     username = forms.CharField(
         error_messages={
@@ -55,7 +55,7 @@ class RegisterFormLabTec(forms.ModelForm):
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Sua senha'
+            'placeholder': 'Crie uma senha'
         }),
         error_messages={
             'required': 'A senha não pode estar vazia'
@@ -73,12 +73,12 @@ class RegisterFormLabTec(forms.ModelForm):
     password2 = forms.CharField(
         required=True,
         widget=forms.PasswordInput(attrs={
-            'placeholder': 'Digite novamente sua senha'
+            'placeholder': 'Digite novamente a senha'
         }),
         error_messages={
             'required': 'A senha não pode estar vazia'
         },
-        label='Confirme sua senha',
+        label='Confirmação de senha',
     )
 
     crm = forms.CharField(
