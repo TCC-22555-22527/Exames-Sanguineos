@@ -105,6 +105,7 @@ def logout_view(request):
 
 
 # TEC
+@ login_required(login_url='authors:login', redirect_field_name='next')
 def register_tec_view(request):
     is_lab_tec_registration_page = request.path == reverse(
         'authors:register_tec')
@@ -158,6 +159,7 @@ def register_tec_create(request):
 
 
 # RECEPTION
+@ login_required(login_url='authors:login', redirect_field_name='next')
 def register_recpt_view(request):
     is_recpt_registration_page = request.path == reverse(
         'authors:register_recpt')
@@ -206,6 +208,7 @@ def register_recpt_create(request):
 
 
 # PATIENT
+@login_required(login_url='authors:login', redirect_field_name='next')
 @ has_permission_decorator('cadastrar_paciente')
 def register_patient_view(request):
     is_patient_registration_page = request.path == reverse(

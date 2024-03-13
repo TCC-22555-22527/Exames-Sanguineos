@@ -8,33 +8,31 @@ from authors.forms import AuthorReportForm, EditProfileForm
 from authors.models import Patient, Tec
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-# from django.core.files import File
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from rolepermissions.decorators import has_permission_decorator
 from utils.pagination import make_pagination
 
-# from .forms import SearchReportForm
 from .models import BackupImage, DetectedImage, Lab
 
-# from yolov5.Inference_files.detect import detect
-
-
-# vou precisar import
 PER_PAGE = os.environ.get('PER_PAGE', 9)
 
 
 # funcao específica do superusuário
+@login_required(login_url='authors:login', redirect_field_name='next')
 def register_custom_user(request):
     return render(request, 'lab/pages/register_custom_user.html')
 
 
 # funções de usuários comuns
+@login_required(login_url='authors:login', redirect_field_name='next')
 def home(request):
     return render(request, 'lab/pages/home.html')
 
 
+# envio de imagem estando logado como técnico ou administrador
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('laudo_enviar_permission')
 def send_img(request):
     form = AuthorReportForm(
@@ -294,6 +292,7 @@ def send_img(request):
 
 
 # pesquisar paciente por nome e cpf
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('pesquisar_paciente')
 def search_patient(request):
     search_term = request.GET.get('q', '').strip()
@@ -329,6 +328,7 @@ def search_patient(request):
 
 
 # detalhes do usuario com opcoes de alterar dado e visu laudo
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('pesquisar_paciente')
 def patient_detail(request, user_id):
     profile_user = get_object_or_404(
@@ -339,7 +339,7 @@ def patient_detail(request, user_id):
 
 
 # alterar dados de um perfil selecionado
-@login_required
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('alterar_dados')
 def edit_patient_data(request, user_id):
     profile_user = get_object_or_404(
@@ -359,6 +359,7 @@ def edit_patient_data(request, user_id):
 
 
 # consultar laudos de um perfil
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('visualizar_laudo')
 def reports_profile(request, user_id):
     profile_user = get_object_or_404(Patient,
@@ -370,6 +371,8 @@ def reports_profile(request, user_id):
                    'reports': reports})
 
 
+# Detalhes de um determinado laudo c/ image pré e pós detecção
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('visualizar_laudo_detalhe')
 def report_detail(request, report_id):
     try:
@@ -399,6 +402,7 @@ def report_detail(request, report_id):
 
 
 # pesquisar laudos criados
+@login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('visualizar_laudo')
 def report_search(request):
     search_term = request.GET.get('q', '').strip()
