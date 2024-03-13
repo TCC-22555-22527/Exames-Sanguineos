@@ -370,11 +370,25 @@ def reports_profile(request, user_id):
                    'reports': reports})
 
 
-@has_permission_decorator('visualizar_laudo')
+@has_permission_decorator('visualizar_laudo_detalhe')
 def report_detail(request, report_id):
     try:
         report = Lab.objects.get(id=report_id)
-        detected_images = DetectedImage.objects.filter(lab=report)
+
+        # Verifica se o usuário é do tipo "paciente"
+        if hasattr(request.user, 'patient_profile'):
+            # Verifica se o laudo pertence ao paciente atual
+            if report.patient != request.user.patient_profile:
+                raise Http404("Você não tem permissão para acessar essa URL.")
+            else:
+                detected_images = DetectedImage.objects.filter(lab=report)
+                return render(request, 'lab/pages/report_detail.html', {
+                    'report': report,
+                    'detected_images': detected_images,
+                })
+        else:
+            detected_images = DetectedImage.objects.filter(lab=report)
+
     except Lab.DoesNotExist:
         raise Http404("O laudo não foi encontrado.")
 
