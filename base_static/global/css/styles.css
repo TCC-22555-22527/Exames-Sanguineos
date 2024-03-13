@@ -1237,9 +1237,14 @@ h5 {
     color: var(--color-error-dark);
     margin-top: 18rem;
 }
-.blurred-content {
-    filter: blur(2.5px); 
+
+.blurred-content-hidden {
+    filter: blur(0); /* Comece com o desfoque desligado */
+    transition: all 0.3s ease; /* Adicione uma transição suave para a propriedade filter */
     pointer-events: none; 
+}
+.blurred-content {
+    filter: blur(2.5px); /* Aplique o desfoque quando a classe .blurred for adicionada */
 }
 
 
