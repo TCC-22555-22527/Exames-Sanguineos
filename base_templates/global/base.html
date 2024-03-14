@@ -9,7 +9,7 @@
 
     <body>
         {% include 'global/partials/menu.html' %}
-        <div class="blurred-content-hidden">
+        
             {%include 'global/partials/header.html'%}
             
             {% include 'global/partials/messages.html' %} 
@@ -18,8 +18,8 @@
                 {% block content %}{% endblock content %}
             </main>
 
-            {% include 'global/partials/footer.html'%}
-        </div>
+            {% include 'global/partials/footer.html'%} 
         <script src="{% static 'global/js/scripts.js' %}"></script>
+        <script src="{% static 'global/js/jquery-3.7.1.min.js' %}"></script>
     </body>
 </html>

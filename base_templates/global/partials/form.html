@@ -1,3 +1,4 @@
+{% load static %}
 <form 
   class ="main-form" 
   action="{{ form_action }}"  
@@ -41,4 +42,16 @@
         <button type="submit">Enviar</button>
       </div>
     </div>
+    <script src="{% static 'global/js/jquery.mask.min.js' %}"></script>
+
+  <script>
+    $(document).ready(function(){
+          alert("ok");
+          $("#id_cpf").mask("000.000.000-00");
+          $("#id_cell").mask("000.000.000-00");
+      });
+    </script>
   </form>
+  
+
+  
