@@ -35,23 +35,22 @@
       </div>
     </div>
     {% endif %}
-
-    <div class="form-content form-content-grid button-container">
-      <!-- botao para se logar -->
-      <div class="form-group">
-        <button type="submit">Enviar</button>
-      </div>
-    </div>
-    <script src="{% static 'global/js/jquery.mask.min.js' %}"></script>
-
-  <script>
-    $(document).ready(function(){
-          alert("ok");
-          $("#id_cpf").mask("000.000.000-00");
-          $("#id_cell").mask("000.000.000-00");
-      });
-    </script>
+ 
   </form>
   
+  <div class="form-content form-content-grid button-container">
+    <!-- botao para se logar -->
+    <div class="form-group">
+      <button type="submit">Enviar</button>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'global/js/jquery.mask.min.js' %}"></script>
+        <script>
+            $(document).ready(function(){
+                console.log('jQuery está funcionando!');
+                $('input[name="cpf"]').mask('000.000.000-00', {reverse: true});
+            });
+        </script>
 
   

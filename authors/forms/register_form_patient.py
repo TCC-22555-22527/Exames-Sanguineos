@@ -170,6 +170,9 @@ class RegisterFormPatient(forms.ModelForm):
             'street',
             'number',
         ]
+        widgets = {
+            'cpf': forms.TextInput(attrs={'class': 'cpf-mask'})
+        }
 
     # Funcao que levanta erro se for cadastrar com o mesmo email
 
