@@ -1,3 +1,4 @@
+import requests
 from authors.models import CustomUser, Tec
 from django import forms
 from django.core.exceptions import ValidationError
@@ -12,6 +13,20 @@ class RegisterFormLabTec(forms.ModelForm):
         add_placeholder(self.fields['last_name'], 'Digite o sobrenome')
         add_placeholder(self.fields['email'], 'Digite o e-mail')
         add_placeholder(self.fields['crm'], 'Digite o CRM')
+        self.fields['crm_state'].choices = self.carregar_estados()
+
+    def carregar_estados(self):
+        estados = []
+        try:
+            response = requests.get(
+                'https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+            if response.status_code == 200:
+                data = response.json()
+                for estado in data:
+                    estados.append((estado['sigla'], estado['nome']))
+        except requests.RequestException as e:
+            print('Erro ao carregar estados:', e)
+        return estados
 
     username = forms.CharField(
         error_messages={
@@ -91,39 +106,10 @@ class RegisterFormLabTec(forms.ModelForm):
         max_length=6,
     )
 
-    STATES_CHOICE = (
-        ('AC', 'Acre'),
-        ('AL', 'Alagoas'),
-        ('AP', 'Amapá'),
-        ('AM', 'Amazonas'),
-        ('BA', 'Bahia'),
-        ('CE', 'Ceará'),
-        ('DF', 'Distrito Federal'),
-        ('ES', 'Espírito Santo'),
-        ('GO', 'Goiás'),
-        ('MA', 'Maranhão'),
-        ('MT', 'Mato Grosso'),
-        ('MS', 'Mato Grosso do Sul'),
-        ('MG', 'Minas Gerais'),
-        ('PA', 'Pará'),
-        ('PB', 'Paraíba'),
-        ('PR', 'Paraná'),
-        ('PE', 'Pernambuco'),
-        ('PI', 'Piauí'),
-        ('RJ', 'Rio de Janeiro'),
-        ('RN', 'Rio Grande do Norte'),
-        ('RS', 'Rio Grande do Sul'),
-        ('RO', 'Rondônia'),
-        ('RR', 'Roraima'),
-        ('SC', 'Santa Catarina'),
-        ('SP', 'São Paulo'),
-        ('SE', 'Sergipe'),
-        ('TO', 'Tocantins')
-    )
     crm_state = forms.ChoiceField(
-        choices=STATES_CHOICE,
+        choices=[],
         error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Estado do CRM',
+        label='Estado',
         widget=forms.Select(attrs={'class': 'state-select-patient'})
     )
 

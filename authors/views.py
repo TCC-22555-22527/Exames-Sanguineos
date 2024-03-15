@@ -141,6 +141,7 @@ def register_tec_create(request):
             first_name=form.cleaned_data['first_name'],
             last_name=form.cleaned_data['last_name'],
             crm=form.cleaned_data['crm'],
+            crm_state=form.cleaned_data['crm_state']
         )
         tec.save()
 
@@ -233,6 +234,7 @@ def register_patient_create(request):
 
     form = RegisterFormPatient(POST)
     print(f'usuario logado: {request.user}')
+    print('Chegamos aqui')
 
     if form.is_valid():
         user = form.save(commit=False)
@@ -268,8 +270,10 @@ def register_patient_create(request):
                 city=form.cleaned_data['city'],
                 state=form.cleaned_data['state'],
                 cpf=form.cleaned_data['cpf'],
+                cell=form.cleaned_data['cell'],
                 fk_recpt=recpt_instance,
             )
+            print('Chegamos aqui pra salvar')
             patient.save()
 
         assign_role(user, PatientUser)

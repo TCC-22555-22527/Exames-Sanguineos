@@ -1,3 +1,4 @@
+import requests
 from authors.models import CustomUser, Patient
 from django import forms
 from django.core.exceptions import ValidationError
@@ -16,6 +17,21 @@ class RegisterFormPatient(forms.ModelForm):
         add_placeholder(self.fields['city'], 'Digite o nome da cidade')
         add_placeholder(self.fields['street'], 'Digite o nome da rua')
         add_placeholder(self.fields['number'], 'Digite o número da residência')
+
+        self.fields['state'].choices = self.carregar_estados()
+
+    def carregar_estados(self):
+        estados = []
+        try:
+            response = requests.get(
+                'https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+            if response.status_code == 200:
+                data = response.json()
+                for estado in data:
+                    estados.append((estado['sigla'], estado['nome']))
+        except requests.RequestException as e:
+            print('Erro ao carregar estados:', e)
+        return estados
 
     first_name = forms.CharField(
         error_messages={
@@ -92,7 +108,22 @@ class RegisterFormPatient(forms.ModelForm):
         },
         label='Confirme a senha',
     )
-
+    cell = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Telefone',
+        max_length=14
+    )
+    state = forms.ChoiceField(
+        choices=[],
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Estado',
+        widget=forms.Select(attrs={'class': 'state-select-patient'})
+    )
+    city = forms.ChoiceField(
+        choices=[],
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Cidade',
+    )
     street = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Rua',
@@ -102,53 +133,6 @@ class RegisterFormPatient(forms.ModelForm):
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Número da residência'
     )
-    city = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Cidade',
-        max_length=50
-    )
-    cell = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Telefone',
-        max_length=14
-    )
-
-    STATES_CHOICE = (
-        ('AC', 'Acre'),
-        ('AL', 'Alagoas'),
-        ('AP', 'Amapá'),
-        ('AM', 'Amazonas'),
-        ('BA', 'Bahia'),
-        ('CE', 'Ceará'),
-        ('DF', 'Distrito Federal'),
-        ('ES', 'Espírito Santo'),
-        ('GO', 'Goiás'),
-        ('MA', 'Maranhão'),
-        ('MT', 'Mato Grosso'),
-        ('MS', 'Mato Grosso do Sul'),
-        ('MG', 'Minas Gerais'),
-        ('PA', 'Pará'),
-        ('PB', 'Paraíba'),
-        ('PR', 'Paraná'),
-        ('PE', 'Pernambuco'),
-        ('PI', 'Piauí'),
-        ('RJ', 'Rio de Janeiro'),
-        ('RN', 'Rio Grande do Norte'),
-        ('RS', 'Rio Grande do Sul'),
-        ('RO', 'Rondônia'),
-        ('RR', 'Roraima'),
-        ('SC', 'Santa Catarina'),
-        ('SP', 'São Paulo'),
-        ('SE', 'Sergipe'),
-        ('TO', 'Tocantins')
-    )
-    state = forms.ChoiceField(
-        choices=STATES_CHOICE,
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Estado',
-        widget=forms.Select(attrs={'class': 'state-select-patient'})
-    )
-
     cpf = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='CPF',
@@ -172,9 +156,6 @@ class RegisterFormPatient(forms.ModelForm):
             'street',
             'number',
         ]
-        widgets = {
-            'cpf': forms.TextInput(attrs={'class': 'cpf-mask'})
-        }
 
     # Funcao que levanta erro se for cadastrar com o mesmo email
 
@@ -231,5 +212,7 @@ class RegisterFormPatient(forms.ModelForm):
                                    city=self.cleaned_data['city'],
                                    state=self.cleaned_data['state'],
                                    cpf=self.cleaned_data['cpf'],
-                                   fk_recpt=self.recpt_instance,)
+                                   cell=self.cleaned_data['cell'],
+                                   fk_recpt=self.recpt_instance,
+                                   )
         return user
