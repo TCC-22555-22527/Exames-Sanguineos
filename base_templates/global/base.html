@@ -9,18 +9,20 @@
 
     <body>
         {% include 'global/partials/menu.html' %}
-        
-            {%include 'global/partials/header.html'%}
-            
-            {% include 'global/partials/messages.html' %} 
-            
-            <main>
-                {% block content %}{% endblock content %}
-            </main>
 
-            {% include 'global/partials/footer.html'%} 
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="{% static 'global/js/scripts.js' %}"></script>
+        {%include 'global/partials/header.html'%}  
+
+        {% include 'global/partials/messages.html' %} 
         
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+
+        {% include 'global/partials/footer.html'%} 
     </body>
+
+    <script src="{% static 'global/js/scripts.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="{% static 'global/js/mask_form_fields.js' %}"></script>
+    
 </html>

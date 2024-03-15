@@ -1,56 +1,48 @@
-{% load static %}
 <form 
   class ="main-form" 
   action="{{ form_action }}"  
   method="POST"
   enctype="multipart/form-data">
-    {% csrf_token %}
+  {% csrf_token %}
 
-    <div class="form-content form-content-grid">
-      {% for field in form %}
-        <div class="form-group">
-          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-          {{field}}
-
-          {% if field.help_text %}
-            <p class="help-text">{{ field.help_text }}</p>
-          {% endif %}
-
-          {{ field.errors }}
-        </div>
-        {% if field.name == 'image' or field.value.url %}
-          <div class="span-2">
-            <img src="{{ field.value.url }}" alt="Capa para {{ recipe.title }}">
-          </div>
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    {% if form.errors %}
-    <div class="form-content form-content-grid">
+  <div class="form-content form-content-grid">
+    {% for field in form %}
       <div class="form-group">
-        <div class="message message-error">
-          Existem erros no formulário, por favor, corrija antes de enviar!
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{field}}
+
+        {% if field.help_text %}
+          <p class="help-text">{{ field.help_text }}</p>
+        {% endif %}
+
+        {{ field.errors }}
+      </div>
+      {% if field.name == 'image' or field.value.url %}
+        <div class="span-2">
+          <img src="{{ field.value.url }}" alt="Capa para {{ recipe.title }}">
         </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if form.errors %}
+  <div class="form-content form-content-grid">
+    <div class="form-group">
+      <div class="message message-error">
+        Existem erros no formulário, por favor, corrija antes de enviar!
       </div>
     </div>
-    {% endif %}
- 
-  </form>
-  
+  </div>
+  {% endif %}
+
   <div class="form-content form-content-grid button-container">
     <!-- botao para se logar -->
     <div class="form-group">
       <button type="submit">Enviar</button>
     </div>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="{% static 'global/js/jquery.mask.min.js' %}"></script>
-        <script>
-            $(document).ready(function(){
-                console.log('jQuery está funcionando!');
-                $('input[name="cpf"]').mask('000.000.000-00', {reverse: true});
-            });
-        </script>
+</form>
+  
 
+  
   

@@ -150,7 +150,7 @@ class RegisterFormPatient(forms.ModelForm):
     cpf = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='CPF',
-        max_length=16
+        max_length=14
     )
 
     class Meta:
