@@ -24,7 +24,8 @@ class Tec(models.Model):
         related_name='tec_profile')
     first_name = models.CharField(max_length=30, default='')
     last_name = models.CharField(max_length=30, default='')
-    crm = models.CharField(max_length=16)
+    crm = models.CharField(max_length=6, )
+    crm_state = models.CharField(max_length=50, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

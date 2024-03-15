@@ -21,13 +21,15 @@ class RegisterFormPatient(forms.ModelForm):
         error_messages={
             'required': 'Este campo não pode estar vazio'
         },
-        label='Nome'
+        label='Nome',
+        max_length=30,
     )
 
     # Sobrenome
     last_name = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Sobrenome'
+        label='Sobrenome',
+        max_length=30,
     )
 
     birthday = forms.DateField(

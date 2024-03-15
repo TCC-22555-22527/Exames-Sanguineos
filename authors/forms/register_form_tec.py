@@ -33,13 +33,15 @@ class RegisterFormLabTec(forms.ModelForm):
         error_messages={
             'required': 'Este campo não pode estar vazio'
         },
-        label='Nome'
+        label='Nome',
+        max_length=30,
     )
 
     # Sobrenome
     last_name = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Sobrenome'
+        label='Sobrenome',
+        max_length=30,
     )
 
     # Email
@@ -86,6 +88,43 @@ class RegisterFormLabTec(forms.ModelForm):
             'required': 'E-mail é obrigatório'
         },
         label='CRM',
+        max_length=6,
+    )
+
+    STATES_CHOICE = (
+        ('AC', 'Acre'),
+        ('AL', 'Alagoas'),
+        ('AP', 'Amapá'),
+        ('AM', 'Amazonas'),
+        ('BA', 'Bahia'),
+        ('CE', 'Ceará'),
+        ('DF', 'Distrito Federal'),
+        ('ES', 'Espírito Santo'),
+        ('GO', 'Goiás'),
+        ('MA', 'Maranhão'),
+        ('MT', 'Mato Grosso'),
+        ('MS', 'Mato Grosso do Sul'),
+        ('MG', 'Minas Gerais'),
+        ('PA', 'Pará'),
+        ('PB', 'Paraíba'),
+        ('PR', 'Paraná'),
+        ('PE', 'Pernambuco'),
+        ('PI', 'Piauí'),
+        ('RJ', 'Rio de Janeiro'),
+        ('RN', 'Rio Grande do Norte'),
+        ('RS', 'Rio Grande do Sul'),
+        ('RO', 'Rondônia'),
+        ('RR', 'Roraima'),
+        ('SC', 'Santa Catarina'),
+        ('SP', 'São Paulo'),
+        ('SE', 'Sergipe'),
+        ('TO', 'Tocantins')
+    )
+    crm_state = forms.ChoiceField(
+        choices=STATES_CHOICE,
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Estado do CRM',
+        widget=forms.Select(attrs={'class': 'state-select-patient'})
     )
 
     class Meta:
@@ -98,6 +137,7 @@ class RegisterFormLabTec(forms.ModelForm):
             'password',
             'password2',
             'crm',
+            'crm_state',
 
         ]
 
