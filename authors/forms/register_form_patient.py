@@ -17,7 +17,6 @@ class RegisterFormPatient(forms.ModelForm):
         add_placeholder(self.fields['city'], 'Digite o nome da cidade')
         add_placeholder(self.fields['street'], 'Digite o nome da rua')
         add_placeholder(self.fields['number'], 'Digite o número da residência')
-
         self.fields['state'].choices = self.carregar_estados()
 
     def carregar_estados(self):
@@ -108,22 +107,7 @@ class RegisterFormPatient(forms.ModelForm):
         },
         label='Confirme a senha',
     )
-    cell = forms.CharField(
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Telefone',
-        max_length=14
-    )
-    state = forms.ChoiceField(
-        choices=[],
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Estado',
-        widget=forms.Select(attrs={'class': 'state-select-patient'})
-    )
-    city = forms.ChoiceField(
-        choices=[],
-        error_messages={'required': 'Este campo não pode estar vazio'},
-        label='Cidade',
-    )
+
     street = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Rua',
@@ -133,6 +117,29 @@ class RegisterFormPatient(forms.ModelForm):
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Número da residência'
     )
+
+    cell = forms.CharField(
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Telefone',
+        max_length=15
+    )
+
+    city = forms.ChoiceField(
+        choices=[],  # As opções serão preenchidas dinamicamente
+        required=False,
+        label='Cidade',
+        widget=forms.Select(
+            attrs={'class': 'city-select-patient', 'id': 'id_city'})
+    )
+
+    state = forms.ChoiceField(
+        choices=[],  # As opções serão preenchidas dinamicamente
+        error_messages={'required': 'Este campo não pode estar vazio'},
+        label='Estado',
+        widget=forms.Select(
+            attrs={'class': 'state-select-patient', 'id': 'id_state'})
+    )
+
     cpf = forms.CharField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='CPF',
@@ -156,8 +163,18 @@ class RegisterFormPatient(forms.ModelForm):
             'street',
             'number',
         ]
+        widgets = {
+            'cpf': forms.TextInput(attrs={'class': 'cpf-mask'})
+        }
 
     # Funcao que levanta erro se for cadastrar com o mesmo email
+
+    def clean_city(self):
+        city = self.cleaned_data.get('city')
+        if not city:
+            raise forms.ValidationError('Por favor, selecione uma cidade.')
+        # Adicione qualquer outra validação necessária aqui
+        return city
 
     def clean_email(self):
         email = self.cleaned_data.get('email', '')
@@ -182,6 +199,7 @@ class RegisterFormPatient(forms.ModelForm):
         return cpf
 
     # metodo para verificar se os campos de senhas sao iguais
+
     def clean(self):
         cleaned_data = super().clean()
 
@@ -202,7 +220,6 @@ class RegisterFormPatient(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_tec = True
         if commit:
             user.save()
             Patient.objects.create(user=user,
@@ -213,6 +230,5 @@ class RegisterFormPatient(forms.ModelForm):
                                    state=self.cleaned_data['state'],
                                    cpf=self.cleaned_data['cpf'],
                                    cell=self.cleaned_data['cell'],
-                                   fk_recpt=self.recpt_instance,
-                                   )
+                                   fk_recpt=self.recpt_instance,)
         return user

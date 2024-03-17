@@ -234,8 +234,9 @@ def register_patient_create(request):
 
     form = RegisterFormPatient(POST)
     print(f'usuario logado: {request.user}')
-    print('Chegamos aqui')
 
+    id_city = request.POST.get('city')
+    form.fields['city'].choices = [(id_city, id_city)]
     if form.is_valid():
         user = form.save(commit=False)
         user.set_password(user.password)
@@ -253,6 +254,7 @@ def register_patient_create(request):
                 city=form.cleaned_data['city'],
                 state=form.cleaned_data['state'],
                 cpf=form.cleaned_data['cpf'],
+                cell=form.cleaned_data['cell'],
                 fk_recpt=None,
             )
             patient.save()
@@ -270,10 +272,9 @@ def register_patient_create(request):
                 city=form.cleaned_data['city'],
                 state=form.cleaned_data['state'],
                 cpf=form.cleaned_data['cpf'],
-                cell=form.cleaned_data['cell'],
                 fk_recpt=recpt_instance,
+                cell=form.cleaned_data['cell'],
             )
-            print('Chegamos aqui pra salvar')
             patient.save()
 
         assign_role(user, PatientUser)
@@ -284,6 +285,11 @@ def register_patient_create(request):
 
         del (request.session['register_form_data'])
         return redirect(reverse('authors:register_patient'))
+    else:
+        print(form.errors)
+        messages.error(
+            request, 'Deu ruim'
+        )
 
     del (request.session['register_form_data'])
     return redirect('authors:register_patient')

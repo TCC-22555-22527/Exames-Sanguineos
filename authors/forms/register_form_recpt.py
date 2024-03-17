@@ -126,7 +126,6 @@ class RegisterFormReception(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_tec = True
         if commit:
             user.save()
             Recpt.objects.create(user=user)
