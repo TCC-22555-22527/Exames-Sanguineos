@@ -50,7 +50,9 @@ class RegisterFormPatient(forms.ModelForm):
     birthday = forms.DateField(
         error_messages={'required': 'Este campo não pode estar vazio'},
         label='Data de nascimento',
-        widget=forms.DateInput(attrs={'type': 'date'})
+        widget=forms.DateInput(attrs={'type': 'date',
+                                      'class': 'date-form-patient'}
+                               )
     )
 
     # Nome do usuário
