@@ -425,7 +425,18 @@ h5 {
     padding-top: 2rem;
 }
 .patient-content-paragrah {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
+}
+.patient-content-paragrah p{
+    margin-bottom: 0.8rem;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    background: #f9f9f9;
+    color: var(--color-primary-dark);
+    min-width: 100%;
 }
 .button-access-user-space {
     margin: 0 auto;
@@ -1310,6 +1321,9 @@ h5 {
     .tab-data-right {
         min-width: 40rem;
     }
+    .patients-created-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     
 }
@@ -1394,6 +1408,9 @@ h5 {
         margin-top: 0.5rem;
         margin-bottom: 1.5rem;
         margin-left: 0;
+    }
+    .patients-created-list {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -1576,6 +1593,9 @@ h5 {
     }
     .no-rep-resp{
         font-size: 18px;
+    }
+    .patients-created-list {
+        grid-template-columns: repeat(1, 1fr);
     }
 
     /*Footer*/
@@ -1811,6 +1831,9 @@ h5 {
     }
     .no-rep-resp{
         font-size: 18px;
+    }
+    .patients-created-list {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
  

@@ -1,6 +1,6 @@
 {% load static %}
 
-<div id="container" class="center">
+<div id="container">
     <div class="tab-buttons">
         <button class="tab-btn active" content-id="data-recpt">
             <div class="tab-title">
@@ -52,12 +52,9 @@
                         <div class="user-profile-details">
                             <div class="patient-content">
                                 <div class="patient-content-paragrah">   
-                                    <p><strong> Nome: </strong> {{ patient.user.first_name }} {{ patient.last_name }}</p>
-                                    <br>
-                                    <p><strong> CPF: </strong> {{ patient.cpf }}</p>
-                                    <br>
-                                    <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>
-                                    <br>
+                                    <p><strong> Nome: </strong> {{ patient.user.first_name }} {{ patient.last_name }}</p>                                   
+                                    <p><strong> CPF: </strong> {{ patient.cpf }}</p>                                   
+                                    <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>                                 
                                     <p><strong> ID: </strong> {{ patient.user_id }}</p>        
                                 </div> 
                                 <div class="button-access-user-space">
