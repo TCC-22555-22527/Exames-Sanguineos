@@ -424,8 +424,25 @@ h5 {
     padding: var(--spacing-gutter-medium);
     padding-top: 2rem;
 }
+.patient-content-profile-detail{
+    margin: 0 auto;
+    width: 50%;
+    padding-bottom: 5rem;
+}
+.patient-content-profile-detail p{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem;
+    background: #f9f9f9;
+    border-radius: 0.6rem;
+}
+
+.patient-content p {
+    margin-bottom: 1rem;
+}
 .patient-content-paragrah {
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
     width: 100%;

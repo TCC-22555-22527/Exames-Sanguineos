@@ -17,22 +17,22 @@
         </div>
         <div class="user-profile-details">
             <div class="patient-content">
-                <p><strong>Nome:</strong> {{ profile_user.first_name }} {{ profile_user.last_name }}</p>
-                <br>
-                <p><strong>CPF:</strong> {{ profile_user.cpf }}</p>
-                <br>
-                <p><strong>Nascimento:</strong> {{ profile_user.birthday }}</p>
-                <br>
-                <p><strong>Rua:</strong> {{ profile_user.street }}</p>
-                <br>
-                <p><strong>Número da residência:</strong> {{ profile_user.number }}</p>
-                <br>
-                <p><strong>Cidade:</strong> {{ profile_user.city }}</p>
-                <br>
-                <p><strong>Estado:</strong> {{ profile_user.state }}</p>
-                <br>
-                <p><strong>ID:</strong> {{ profile_user.user_id }}</p>
-                <br>
+                <div class="patient-content-profile-detail">
+                    <p><strong>Nome:</strong>{{ profile_user.first_name }} {{ profile_user.last_name }}</p>               
+                    <p><strong>CPF:</strong> {{ profile_user.cpf }}</p>          
+                    <p><strong>Nascimento:</strong> {{ profile_user.birthday }}</p>              
+                    <p><strong>Rua:</strong> {{ profile_user.street }}</p>              
+                    <p><strong>Número da residência:</strong> {{ profile_user.number }}</p>              
+                    <p><strong>Cidade:</strong> {{ profile_user.city }}</p>             
+                    <p><strong>Estado:</strong> {{ profile_user.state }}</p>               
+                    <p><strong>Telefone Celular:</strong> {{ profile_user.cell }}</p>               
+                    <p><strong>ID:</strong> {{ profile_user.user_id }}</p>
+                    <p><strong>Criado em:</strong> {{ profile_user.created_at }}</p>
+                    <p><strong>Recepcionista criador:</strong> 
+                        {{ profile_user.fk_recpt.first_name }}
+                        {{ profile_user.fk_recpt.last_name }} 
+                    </p>
+                </div>
                 <div class="button-access-user-space">
                     <a href="{% url 'lab:reports_profile' user_id=profile_user.user_id %}" class="btn-access-report">
                        <i class='bx bxs-band-aid'></i>‎ ‎Visualizar laudos 
