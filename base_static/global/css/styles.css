@@ -543,6 +543,16 @@ h5 {
     padding: var(--spacing-gutter-medium);
     padding-top: 1rem;
 }
+.report-content p {
+    padding: 0.6rem;
+    color: var(--color-gray-6);
+    background: #f9f9f9;
+    border-radius: 0.6rem;
+    margin-bottom: 1rem;
+}
+.report-content strong {
+    color: var(--color-primary-dark);
+}
 .report img{
     margin-top: 1rem;
     max-width: 100%;
@@ -1338,7 +1348,7 @@ h5 {
         max-width: 100%;
         max-height: 100%;
     }
-    
+
      /*Detalhes perfil de paciente*/
      .patient-content-profile-detail{
         margin: 0 auto;

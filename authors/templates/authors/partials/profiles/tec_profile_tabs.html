@@ -62,12 +62,12 @@
                         {% for lab in labs %}
                             <div class="report report-list-search">
                                 <div class="report-content">
-                                    <p><strong>Data do laudo:</strong> </p>{{ lab.created_at }}
-                                    <p><strong>Nome do paciente: </strong>                                 
+                                    <p><strong>Data do laudo:</strong> <br>  {{ lab.created_at }}</p>
+                                    <p><strong>Nome do paciente: <br> </strong>                                 
                                         {{ lab.patient.user.first_name }}
                                         {{ lab.patient.user.last_name }}
                                     </p> 
-                                    <p><strong>CPF do paciente:</strong> </p>{{ lab.patient.cpf }}
+                                    <p><strong>CPF do paciente:</strong> <br>{{ lab.patient.cpf }} </p>
                                     <div class="report-user-access-container">
                                         <a href= {% url "lab:report_detail" report_id=lab.id  %} class="report-user-access-btn"> 
                                             Detalhes <i class='bx bxs-binoculars'></i> 

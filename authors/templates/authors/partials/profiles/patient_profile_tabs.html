@@ -117,8 +117,8 @@
                         {% for report in reports %}
                             <div class="report report-list-search">
                                 <div class="report-content">
-                                    <p>Data do laudo: {{ report.lab.created_at }}</p>
-                                    <p>Técnico responsável: {{report.lab.fk_tec }}</p>
+                                    <p> <strong> Data do laudo: </strong> <br> {{ report.lab.created_at }}</p>
+                                    <p> <strong> Técnico responsável: </strong>  <br> {{report.lab.fk_tec }}</p>
                                     <div class="report-user-access-container">
                                         <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> 
                                             Detalhes <i class='bx bxs-binoculars'></i> 
