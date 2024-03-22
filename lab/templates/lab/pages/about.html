@@ -1,0 +1,148 @@
+{% extends 'global/base.html' %}    
+
+{% block title %}Home |{% endblock title %}
+
+{% block content %}
+    <div class="main-content container">
+        <div class="about-container">
+
+            <h2>Quem desenvolveu o sistema?</h2>
+            <div class="who-created">
+                <div class="about-image-container">
+                    <img src="/media/lab/logo/heliel.png" alt="titulo">  
+                </div>
+                <div class="text">
+                    <p>Esse sistema foi desenvolvido pelo estudante de análise e desenvolvimento de sistemas
+                <strong>Heliel Souza Lima</strong>, na instituição de ensino COTUCA, no final de 2023.</p><br>
+                    <p>O projeto foi idealizado através de um Trabalho de Conclusão de Curso (TCC), 
+                        onde no qual, a idéia surgiu por conta de seu ex-colega de sala, <strong>Anderson.</strong></p> <br>
+                    <p> Anderson, dias depois, saiu do curso, onde todo o trabalho de desenvolvimento foi 
+                    atribuído ao Heliel. A idéia se amadureceu cada vez mais, onde foram incluídas novas 
+                    funcionalidades até chegar ao produto final.
+                    </p>
+                </div>
+            </div>
+
+            <h2>Como funciona esse sistema?</h2>
+            <div class="system-funcionality">
+                <p>Esse sistema foi criado para ser usado em um controle de laboratório que realiza exames de sangue, com diversas de funcionalidades
+                    incluídas:
+                    <div class="list">
+                        <li> Geração de laudos de hemograma através de imagens microscópicas com um modelo de IA treinado;</li>
+                        <li> Controle e cadastro de usuários (Pacientes, Técnicos, Recepcionistas e Administradores);</li>
+                        <li> Permissões específicas para cada tipo de usuário;</li>                    
+                        <li> Controle de laudos criados por técnicos associando à um paciente;</li>
+                        <li> Login e meu perfil, com todas as movimentações e dados pessoais;</li>
+                    </div>
+                </p>
+            </div>
+
+            <h2>Como são as permissões de usuários?</h2>
+            <div class="system-user-permissions">
+                <p>No sistema existem 4 tipos de usuários que podem ser criados e utilizados:</p><br>
+
+                <div class="abt-patient-permissions pms-space">
+                    <strong>Pacientes</strong>
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Consulta de laudos que foram criados com seu CPF ou nome de cadastro</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Alteração de senha do perfil</li>
+                    </div>
+
+                    <p class="enable-to"> O que não é liberado:</p>
+                    <li>Visualização de qualquer outro perfil, desde dados, laudos, etc</li>
+                    <li>Tudo aquilo que os usuários abaixo tem permissão</li>
+                </div>
+
+                <div class="abt-recpt-permissions pms-space">
+                    <strong>Recepcionistas</strong>
+
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Cadastro de usuários pacientes</li>
+                        <li>Alterações de dados pessoais de pacientes (mediante a solicitação do mesmo, tal como endereço, por exemplo)</li>
+                        <li>Consulta de laudos já existentes no sistema</li>
+                        <li>Visualização dos detalhes de laudos criados no sistema</li>
+                        <li>Pesquisa de pacientes</li>
+                        <li>Visualização geral de qualquer perfil do tipo 'paciente'</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Alteração de senha do seu perfil</li>
+                        <li>Visualização de pacientes cadastrados pelo seu perfil</li>
+                    </div>
+
+                    <p class="enable-to"> O que não é liberado:</p> 
+                    <div class="list-permissions">
+                        <li>Cadastro de usuários técnicos e administradores</li>
+                        <li>Envio de imagens para geração de laudo de hemograma</li>
+                        <li>Alteração de senhas de qualquer outro perfil</li>
+                    </div>
+                </div>
+                        
+                <div class="abt-tec-permissions pms-space">
+                    <strong>Técnicos</strong>
+
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Envio de imagens para serem analisadas</li>                    
+                        <li>Consulta de laudos já existentes no sistema</li>
+                        <li>Visualização dos detalhes de laudos criados no sistema</li>
+                        <li>Pesquisa de pacientes</li>
+                        <li>Visualização geral de qualquer perfil do tipo 'paciente'</li>
+                        <li>Alteração de senha próprio</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Visualização de laudos gerados pelo seu perfil</li>
+                    </div>
+
+                    <p class="enable-to"> O que não é liberado:</p> 
+                    <div class="list-permissions">
+                        <li>Cadastro de qualquer tipo de usuário</li>
+                        <li>Alteração de dados de pacientes</li>
+                        <li>Alteração de senhas de qualquer outro perfil</li>
+                    </div>
+                </div>
+
+                <div class="abt-adm-permissions">
+                    <strong>Administradores</strong>
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Todas as funcionalidades do sistema</li>    
+                    </div>                
+                </div>
+                    
+                
+
+            </div>
+
+            <h2>Qual o objetivo deste sistema?</h2>
+            <div class="system-goals">
+               <p> O maior objetivo desse sistema é aprimorar a fase introdutória de uma realização de exame sanguíneo, 
+                retornando em questões de segundos o resultado em forma de hemograma de uma análise de uma imagem de sangue microscópica.
+                </p><br>
+                <p>Além disso, com base nos tipos de usuários que podem ser criados, as permissões de acesso e funções dentro do sistema,
+                    junto ao design simples e limpo, trazem uma dinânica maior ao controle de laudos, pacientes, atividades internas e muito mais
+                </p><br>
+            
+                Esse sistema tem 3 tipos de usuários a serem cadastrados:
+                <strong>Técnico</strong>: responsável por enviar imagens ao sistema e realizar a geração dos laudos de imagens sanguíneas. <br>
+                <strong>Recepcionista</strong>: Responsável pelo cadastro de pacientes, alteração de dados, consulta de laudos gerados. <br>
+                <strong>Paciente</strong>: Paciente é o usuário que terá seus dados pessoais coletados para seu cadastro e terá um laudo gerado por conta de seu sangue.
+            
+                <p>Existe uma inteligência artificial de detecção de objetos por trás desse sistema, onde um há um peso treinado com mais de 400 imagens sanguíneas
+                de um data-set, com um algoritmo de visão computacional de rede neural convolucional (RNN) chamado <strong> YOLO </strong>(You Once Look Once).
+                
+                Esse modelo levou mais de 14 horas para ser trainado no google Colab, onde todas as imagens do data-set foram rotuladas manualmente, para que a máquina aprendesse
+                a identificar padrões e buscar melhor sua taxa de confiança, até gerar o melhor peso pré-trainado para ser ajustado e utilizado como inferência nesse sistema.
+            </div>
+
+            <h2>Como o projeto foi desenvolvido?</h2>
+            <div class="system-tecs">
+                <p>O projeto majoritariamente foi desenvolvido no Framework <strong>Django</strong>, framework escrito em python que permite a criação de sistemas web escaláveis e robustos.
+                Além disso, foram usadas tecnologias como <strong> HTML, CSS e JavaScript, Jquery, AJAX</strong> para algumas estilizações e detalhes da estrutura da página. outros frameworks, linguagens e algoritmos
+                também fora utilizados nesse sistema, mas logo adiante serão explicados em detalhes. 
+                </p>
+            </div>
+                   
+        </div>
+    </div>
+{% endblock content %}

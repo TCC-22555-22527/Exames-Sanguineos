@@ -254,11 +254,74 @@ h5 {
 .personal-p-tag {
     margin-bottom: 4rem;
 }
-.home-image-container {
+
+
+                /*ABOUT PAGE*/
+.about-container {
     margin: 0 auto;
-    max-width: 120rem;
-    align-content: flex-start;
+    margin-top: 5rem;
+    max-width: 80rem;
 }
+.about-container h2 {
+    margin-bottom: 2rem;
+}
+.who-created {
+    display: flex;
+    margin-bottom: 5rem;
+}
+.who-created .text {
+    margin-left: 2rem;
+    max-width: 45rem;
+}
+.about-image-container img {
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.system-funcionality {
+    margin-bottom: 5rem;
+}
+.system-funcionality .list{
+    margin: 2rem 0;
+}
+.list li{
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-style: italic;
+}
+.system-user-permissions {
+    margin-bottom: 5rem;
+}
+.system-user-permissions .list-permissions {
+    margin-bottom: 2rem;
+}
+.system-user-permissions li{
+    margin-left: 3rem;
+    margin-bottom: 0.3rem;
+}
+.system-user-permissions .pms-space {
+    margin-bottom: 4rem;
+}
+.system-user-permissions .able-to {
+    display: flex;
+    justify-content: center;
+    margin: 0.6rem 0;
+    color: white;
+    padding: 0.6rem;
+    max-width: 20rem;
+    background-color: var(--color-success-dark);
+    border-radius: 6px;
+}
+.system-user-permissions .enable-to {
+    display: flex;
+    justify-content: center;
+    margin: 0.6rem 0;
+    color: white;
+    padding: 0.6rem;
+    max-width: 20rem;
+    background-color: var(--color-error-dark);
+    border-radius: 6px;
+}
+
 
 
 
@@ -1841,7 +1904,7 @@ h5 {
     }
     .menu-nav {
         margin-top: 3.5rem;
-        margin-left: 1.5rem;
+        margin-left: 0;
     }
     .menu-nav a {
         padding-top: 1.3rem;

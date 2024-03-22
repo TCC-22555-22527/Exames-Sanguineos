@@ -15,14 +15,14 @@
 
         {% if user.is_authenticated %}
          
-            {% if user|can:'pagina_inicial'%}
-              <a href="{%url 'lab:home' %}">
-                <div class="menu-href-line">
-                  <i class="fa-solid fa-house menu-icons"></i>
-                  <h5>Página inicial</h5> 
-                </div>
-              </a>
-            {% endif %}
+            
+            <a href="{%url 'lab:home' %}">
+              <div class="menu-href-line">
+                <i class="fa-solid fa-house menu-icons"></i>
+                <h5>Página inicial</h5> 
+              </div>
+            </a>
+            
        
           {% if user.is_superuser %}
             <a href="{%url 'lab:register_custom_user'%}"> 
@@ -68,6 +68,14 @@
               </div>
             </a>
           {% endif %}
+
+          <a href="{%url 'lab:about' %}">
+            <div class="menu-href-line">
+              <i class="fa-solid fa-circle-info menu-icons"></i>
+              <h5>Sobre</h5> 
+            </div>
+          </a>
+          
           <!-- Perfil do usuário logado-->
           <a href="{%url 'authors:my_profile'%}"> 
             <div class="menu-href-line">

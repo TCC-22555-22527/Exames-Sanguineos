@@ -31,6 +31,11 @@ def home(request):
     return render(request, 'lab/pages/home.html')
 
 
+@login_required(login_url='authors:login', redirect_field_name='next')
+def about(request):
+    return render(request, 'lab/pages/about.html')
+
+
 # envio de imagem estando logado como técnico ou administrador
 @login_required(login_url='authors:login', redirect_field_name='next')
 @has_permission_decorator('laudo_enviar_permission')

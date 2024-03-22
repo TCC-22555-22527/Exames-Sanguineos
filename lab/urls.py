@@ -6,9 +6,13 @@ from . import views
 app_name = 'lab'
 
 urlpatterns = [
-    path('home',
+    path('home/',
          views.home,
          name='home'
+         ),
+    path('about/',
+         views.about,
+         name='about'
          ),
     path('register-custom-user/',
          user_passes_test(lambda u: u.is_superuser)
