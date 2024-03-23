@@ -264,7 +264,15 @@ h5 {
 }
 .about-container h2 {
     margin-bottom: 2rem;
+    color: #8c74c7
 }
+.about-container .infos {
+    margin-left: 5rem;
+}
+.about-image-container img {
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
 .who-created {
     display: flex;
     margin-bottom: 5rem;
@@ -273,9 +281,7 @@ h5 {
     margin-left: 2rem;
     max-width: 45rem;
 }
-.about-image-container img {
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
+
 
 .system-funcionality {
     margin-bottom: 5rem;
@@ -295,6 +301,10 @@ h5 {
     display: flex;
     align-items: center;
 }
+.tab-buttons .i-users {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
 .system-user-permissions .user-type .line{
     flex: 1;
     height: 1px;
@@ -302,16 +312,19 @@ h5 {
     margin: 0 10px; 
 }
 .subtitle-about {
-    display: flex;
+    position: relative;
 }
+
 .line{
-  flex-grow: 1;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 60%;
     height: 1px;
     background-color: #c7c7c7;
-    margin-top: 15px;   
-    margin-left: 2rem;
 }
 .system-user-permissions .list-permissions {
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
     max-width: 60rem;
 }
@@ -319,13 +332,14 @@ h5 {
     margin-left: 3rem;
     margin-bottom: 0.3rem;
 }
+.user-type strong{
+    display: none;
+}
 .system-user-permissions strong{
     font-size: 18px;
 }
-.system-user-permissions .pms-space {
-    margin-bottom: 4rem;
-}
-.system-user-permissions .able-to {
+
+.system-user-permissions .enable-to {
     display: flex;
     justify-content: center;
     margin: 0.6rem 0;
@@ -335,7 +349,7 @@ h5 {
     background-color: var(--color-success-dark);
     border-radius: 6px;
 }
-.system-user-permissions .enable-to {
+.system-user-permissions .disable-to {
     display: flex;
     justify-content: center;
     margin: 0.6rem 0;
@@ -344,6 +358,10 @@ h5 {
     max-width: 20rem;
     background-color: var(--color-error-dark);
     border-radius: 6px;
+}
+
+.system-goals {
+    margin-bottom: 5rem;
 }
 
 
@@ -1484,6 +1502,7 @@ h5 {
         margin: 0 auto;
         align-content: flex-start;
     }
+
     /*Header*/  
     .main-header {
         display: flex;
@@ -1625,6 +1644,56 @@ h5 {
         width: 252.75px;
         height: 176.25px;
     }
+    /*About*/
+    .about-container h2 {
+        text-align: center;
+    }
+    .about-container .infos {
+        margin: 0 auto;
+     }
+    .about-container .content.show {
+        padding-top: 2rem;
+    }
+    .system-user-permissions .tab-title h3{
+        display: none;
+    }
+    .user-type strong{
+        display: flex;
+        margin: 1rem 0;
+    }
+    .system-user-permissions .enable-to  {
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    .system-user-permissions .disable-to  {
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    .list-permissions li{
+        margin-bottom: 1rem;
+    }
+    .who-created {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+    .who-created .text {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+    .about-image-container img {
+        width: 30rem;
+    }
+    .list li{
+        margin-bottom: 2rem;
+    }
+    .line{
+       width: 100%;
+    }
+    .tab-buttons .i-users {
+        margin-right: 0;
+    }
+
 
     /*Login page*/
     .body-blue{
@@ -1831,6 +1900,57 @@ h5 {
         width: 252.75px;
         height: 176.25px;
     }
+
+    /*About*/
+    .about-container h2 {
+        text-align: center;
+    }
+    .about-container .infos {
+        margin: 0 auto;
+     }
+    .about-container .content.show {
+        padding-top: 2rem;
+    }
+    .system-user-permissions .tab-title h3{
+        display: none;
+    }
+    .user-type strong{
+        display: flex;
+        margin: 1rem 0;
+    }
+    .system-user-permissions .enable-to  {
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    .system-user-permissions .disable-to  {
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    .list-permissions li{
+        margin-bottom: 1rem;
+    }
+    .who-created {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+    .who-created .text {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+    .about-image-container img {
+        width: 25rem;
+    }
+    .list li{
+        margin-bottom: 2rem;
+    }
+    .line{
+       width: 100%;
+    }
+    .tab-buttons .i-users {
+        margin-right: 0;
+    }
+
 
     /*Pesquisa de laudo*/
     .search-form {
