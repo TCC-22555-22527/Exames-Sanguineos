@@ -1,0 +1,138 @@
+<p>No sistema existem 4 tipos de usuários que podem ser criados e utilizados:</p><br>
+<div class="system-user-permissions">
+    <div class="tab-buttons">
+        <button class="tab-btn active" content-id="permissions_patient">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Paciente</h3>
+            </div>
+        </button>
+
+        <button class="tab-btn" content-id="permissions_recpt">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Recepcionista</h3>
+            </div>
+        </button>
+
+        <button class="tab-btn" content-id="permissions_tec">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Técnicos</h3>
+            </div>
+        </button>
+        <button class="tab-btn" content-id="permissions_adm">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3>Administradores</h3>
+            </div>
+        </button>
+    </div>
+    
+    <div class="tab-contents">
+        <div class="content" id="permissions_patient"> 
+            <div class="infos">
+                <div class="abt-patient-permissions">
+                    <div class="user-type"> 
+                        
+                        <strong>Pacientes</strong>
+                        
+                    </div>
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Consulta de laudos que foram criados com seu CPF ou nome de cadastro</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Alteração de senha do perfil</li>
+                    </div>
+            
+                    <p class="enable-to"> O que não é liberado:</p>
+                    <li>Visualização de qualquer outro perfil, desde dados, laudos, etc</li>
+                    <li>Tudo aquilo que os usuários abaixo tem permissão</li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-contents">
+        <div class="content" id="permissions_recpt"> 
+            <div class="infos">
+                <div class="abt-recpt-permissions">
+                    <div class="user-type"> 
+                       
+                        <strong>Recepcionistas</strong>
+                        
+                    </div>
+                
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Cadastro de usuários pacientes</li>
+                        <li>Alterações de dados pessoais de pacientes (mediante a solicitação do mesmo, tal como endereço, por exemplo)</li>
+                        <li>Consulta de laudos já existentes no sistema</li>
+                        <li>Visualização dos detalhes de laudos criados no sistema</li>
+                        <li>Pesquisa de pacientes</li>
+                        <li>Visualização geral de qualquer perfil do tipo 'paciente'</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Alteração de senha do seu perfil</li>
+                        <li>Visualização de pacientes cadastrados pelo seu perfil</li>
+                    </div>
+            
+                    <p class="enable-to"> O que não é liberado:</p> 
+                    <div class="list-permissions">
+                        <li>Cadastro de usuários técnicos e administradores</li>
+                        <li>Envio de imagens para geração de laudo de hemograma</li>
+                        <li>Alteração de senhas de qualquer outro perfil</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-contents">
+        <div class="content" id="permissions_tec"> 
+            <div class="infos">
+                <div class="abt-tec-permissions">
+                    <div class="user-type"> 
+                       
+                        <strong>Técnicos</strong>
+                       
+                    </div>
+                
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Envio de imagens para serem analisadas</li>                    
+                        <li>Consulta de laudos já existentes no sistema</li>
+                        <li>Visualização dos detalhes de laudos criados no sistema</li>
+                        <li>Pesquisa de pacientes</li>
+                        <li>Visualização geral de qualquer perfil do tipo 'paciente'</li>
+                        <li>Alteração de senha próprio</li>
+                        <li>Visualização de seus dados pessoais</li>
+                        <li>Visualização de laudos gerados pelo seu perfil</li>
+                    </div>
+            
+                    <p class="enable-to"> O que não é liberado:</p> 
+                    <div class="list-permissions">
+                        <li>Cadastro de qualquer tipo de usuário</li>
+                        <li>Alteração de dados de pacientes</li>
+                        <li>Alteração de senhas de qualquer outro perfil</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-contents">
+        <div class="content" id="permissions_adm"> 
+            <div class="infos">
+                <div class="abt-adm-permissions">
+                    <div class="user-type"> 
+                        
+                        <strong>Administradores</strong>
+                        
+                    </div>
+                
+                    <p class="able-to"> O que é liberado:</p>
+                    <div class="list-permissions">
+                        <li>Todas as funcionalidades do sistema</li>    
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

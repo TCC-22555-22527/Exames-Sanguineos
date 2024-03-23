@@ -291,12 +291,36 @@ h5 {
 .system-user-permissions {
     margin-bottom: 5rem;
 }
+.system-user-permissions .user-type {
+    display: flex;
+    align-items: center;
+}
+.system-user-permissions .user-type .line{
+    flex: 1;
+    height: 1px;
+    background-color: #c7c7c7;
+    margin: 0 10px; 
+}
+.subtitle-about {
+    display: flex;
+}
+.line{
+  flex-grow: 1;
+    height: 1px;
+    background-color: #c7c7c7;
+    margin-top: 15px;   
+    margin-left: 2rem;
+}
 .system-user-permissions .list-permissions {
     margin-bottom: 2rem;
+    max-width: 60rem;
 }
 .system-user-permissions li{
     margin-left: 3rem;
     margin-bottom: 0.3rem;
+}
+.system-user-permissions strong{
+    font-size: 18px;
 }
 .system-user-permissions .pms-space {
     margin-bottom: 4rem;
