@@ -260,11 +260,12 @@ h5 {
 .about-container {
     margin: 0 auto;
     margin-top: 5rem;
+    margin-bottom: 3rem;
     max-width: 80rem;
 }
 .about-container h2 {
     margin-bottom: 2rem;
-    color: #8c74c7
+    color: #7e53e7;
 }
 .about-container .infos {
     margin-left: 5rem;
@@ -1502,6 +1503,75 @@ h5 {
         margin: 0 auto;
         align-content: flex-start;
     }
+    /*About*/
+    .about-container h2 {
+        text-align: center;
+    }
+    .about-image-container {
+        margin: 0 auto;
+    }
+    .about-image-container img {
+        width: 40rem;
+    }
+    .about-container .infos {
+        margin: 0 auto;
+     }
+     .about-container .content.show {
+        padding-top: 2rem;
+    }
+    .user-type strong{
+        display: flex;
+        margin: 1rem 0;
+    }
+    .who-created {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+    .who-created .text {
+        margin: 0 auto;
+        margin-top: 2rem;
+        margin-left: 0;
+        max-width: none;
+    }
+    .system-funcionality .list{
+        margin-left: 2rem;
+    }
+    .system-funcionality p {
+        margin-left: 0;
+    }
+    .system-user-permissions p{
+        text-align: center;
+     }
+    .system-user-permissions .tab-title h3{
+        display: none;
+    }
+    .system-user-permissions .enable-to  {
+        margin-bottom: 2rem;
+        min-width: 47rem;
+    }
+    .system-user-permissions .disable-to  {
+        margin-bottom: 2rem;
+        min-width: 47rem;
+    }
+    .list-permissions li{
+        margin-bottom: 1rem;
+    }
+    .system-goals {
+        margin-left: 1rem;
+    }
+    .system-tecs {
+        margin-left: 1rem;
+    }
+    .list li{
+        margin-bottom: 2rem;
+    }
+    .line{
+       width: 100%;
+    }
+    .tab-buttons .i-users {
+        margin-right: 0;
+    }
 
     /*Header*/  
     .main-header {
@@ -1648,18 +1718,40 @@ h5 {
     .about-container h2 {
         text-align: center;
     }
+    .about-image-container img {
+        width: 30rem;
+        margin-left: 3px;
+    }
     .about-container .infos {
         margin: 0 auto;
      }
-    .about-container .content.show {
+     .about-container .content.show {
         padding-top: 2rem;
-    }
-    .system-user-permissions .tab-title h3{
-        display: none;
     }
     .user-type strong{
         display: flex;
         margin: 1rem 0;
+    }
+    .who-created {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+    .who-created .text {
+        margin-left: 1rem;
+        margin-top: 2rem;
+    }
+    .system-funcionality .list{
+        margin-left: 1rem;
+    }
+    .system-funcionality p {
+        margin-left: 1rem;
+    }
+    .system-user-permissions p{
+        text-align: center;
+     }
+    .system-user-permissions .tab-title h3{
+        display: none;
     }
     .system-user-permissions .enable-to  {
         margin-bottom: 2rem;
@@ -1672,17 +1764,11 @@ h5 {
     .list-permissions li{
         margin-bottom: 1rem;
     }
-    .who-created {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5rem;
+    .system-goals {
+        margin-left: 1rem;
     }
-    .who-created .text {
-        margin-left: 0;
-        margin-top: 2rem;
-    }
-    .about-image-container img {
-        width: 30rem;
+    .system-tecs {
+        margin-left: 1rem;
     }
     .list li{
         margin-bottom: 2rem;
@@ -1905,18 +1991,39 @@ h5 {
     .about-container h2 {
         text-align: center;
     }
+    .about-image-container img {
+        width: 25rem;
+    }
     .about-container .infos {
         margin: 0 auto;
      }
     .about-container .content.show {
         padding-top: 2rem;
     }
-    .system-user-permissions .tab-title h3{
-        display: none;
-    }
     .user-type strong{
         display: flex;
         margin: 1rem 0;
+    }
+    .who-created {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+    }
+    .who-created .text {
+        margin-left: 1rem;
+        margin-top: 2rem;
+    }
+    .system-funcionality .list{
+        margin-left: 1.5rem;
+    }
+    .system-funcionality p {
+        margin-left: 1rem;
+    }
+    .system-user-permissions p{
+       text-align: center;
+    }
+    .system-user-permissions .tab-title h3{
+        display: none;
     }
     .system-user-permissions .enable-to  {
         margin-bottom: 2rem;
@@ -1929,18 +2036,13 @@ h5 {
     .list-permissions li{
         margin-bottom: 1rem;
     }
-    .who-created {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5rem;
+    .system-goals {
+        margin-left: 1rem;
     }
-    .who-created .text {
-        margin-left: 0;
-        margin-top: 2rem;
+    .system-tecs {
+        margin-left: 1rem;
     }
-    .about-image-container img {
-        width: 25rem;
-    }
+    
     .list li{
         margin-bottom: 2rem;
     }
