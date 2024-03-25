@@ -5,7 +5,7 @@ import subprocess
 from math import pi
 
 from authors.forms import AuthorReportForm, EditProfileForm
-from authors.models import Patient, Tec
+from authors.models import Patient, Recpt, Tec
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -28,7 +28,35 @@ def register_custom_user(request):
 # funções de usuários comuns
 @login_required(login_url='authors:login', redirect_field_name='next')
 def home(request):
-    return render(request, 'lab/pages/home.html')
+    if request.user.is_superuser:
+        adm_instance = request.user.is_superuser
+        return render(request, 'lab/pages/home.html', {
+            'adm': adm_instance
+        })
+    else:
+        try:
+            recpt_instance = request.user.recpt_profile
+            return render(request, 'lab/pages/home.html', {
+                'recpt': recpt_instance,
+            })
+        except Recpt.DoesNotExist:
+            pass
+
+        try:
+            tec_instance = request.user.tec_profile
+            return render(request, 'lab/pages/home.html', {
+                'tec': tec_instance,
+            })
+        except Tec.DoesNotExist:
+            pass
+
+        try:
+            patient_instance = request.user.patient_profile
+            return render(request, 'lab/pages/home.html', {
+                'patient': patient_instance,
+            })
+        except Patient.DoesNotExist:
+            pass
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')

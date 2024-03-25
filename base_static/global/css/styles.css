@@ -250,22 +250,49 @@ h5 {
     font-size: 3rem;
     margin: 0 0.3rem;
 }
-
 .personal-p-tag {
     margin-bottom: 4rem;
 }
+.home-icon{
+    margin-right: 1rem;
+    font-size: 20px;
+    color: var(--color-error-dark);
+}
+.home-icon-info {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+.home-profile-func p {
+    color: var(--color-gray-7);
+}
+.home-profile-func strong {
+    color: var(--color-dark-text);
+}
+.home-func-sub p{
+    margin-top: 0.5rem;
+}
+.home-funcionalities {
+    max-width: 100rem;
+    margin: 0 auto;    
+    margin-bottom: 5rem;
+}
+.home-profile-func span{
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
 
 
                 /*ABOUT PAGE*/
 .about-container {
     margin: 0 auto;
     margin-top: 5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     max-width: 80rem;
 }
 .about-container h2 {
     margin-bottom: 2rem;
-    color: #7e53e7;
+    color: var(--color-debug-dark);
 }
 .about-container .infos {
     margin-left: 5rem;
@@ -1402,7 +1429,7 @@ h5 {
     display: flex;
     justify-content: center;
     color: var(--color-error-dark);
-    margin-top: 18rem;
+    margin-top: 16rem;
 }
 
 .blurred-content-hidden {
@@ -1497,12 +1524,7 @@ h5 {
         padding-bottom: 3rem;
     }
     /*Home*/
-    .home-image-container{
-        display: flex;
-        max-width: 50rem;
-        margin: 0 auto;
-        align-content: flex-start;
-    }
+    
     /*About*/
     .about-container h2 {
         text-align: center;
@@ -1704,16 +1726,7 @@ h5 {
     }
 
     /*Home*/
-    .home-image-container{
-        display: flex;
-        max-width: 30rem;
-        margin: 0 auto;
-    }
-    .home-image-container img{
-        margin: 0 auto;
-        width: 252.75px;
-        height: 176.25px;
-    }
+    
     /*About*/
     .about-container h2 {
         text-align: center;
@@ -1976,15 +1989,9 @@ h5 {
     }
 
     /*Home*/
-    .home-image-container{
-        display: flex;
-        max-width: 24rem;
-        margin: 0 auto;
-    }
-    .home-image-container img{
-        margin: 0 auto;
-        width: 252.75px;
-        height: 176.25px;
+    
+    .home-funcionalities {
+        margin-left: 1rem;
     }
 
     /*About*/

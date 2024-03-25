@@ -53,7 +53,7 @@ def my_profile(request):
                 'lab': lab_instances,
 
             })
-        except Tec.DoesNotExist:
+        except Patient.DoesNotExist:
             pass
 
 

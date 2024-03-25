@@ -5,62 +5,122 @@
 {% block content %}
 {% include 'global/partials/messages.html' %}
     <div class="main-content container">
-        <div class="home-text-container">
-            <h1 class="personal-heading">Olá,  {{ user.username }} </h1>
-            <p class="center personal-p-tag">Seja bem vindo(a), sinta se a vontade</p>
-            
-            <h2>O que é esse sistema e para quê serve?</h2>
-            <br>
-                <p>Esse sistema é pra ser usado em laboratório, tendo várias funcionalidades, como cadastro, login, alteração de dados e o principal: <strong>Geração de laudo hematológicos
-                    após processamento de imagens sanguíneas microscópicas</strong>.
-                    Essa geração ocorre por meio de diversos algoritmos treinados e complexos que oferecem ao usuário, a oportunidade de ter um primeiro contato com as especificades do sangue 
-                    que está sendo analisado, sendo possível optmizar o tempo e automação dentro de um ambiente laboratorial.
-                </p>
-            <br>
-            <br>
-            <h2>Quem desenvolveu o sistema?</h2>
-            <br>
-        </div>
+        
+        <h1 class="personal-heading">Olá,  {{ user.username }} </h1>
+        <p class="center personal-p-tag">Sinta-se a vontade</p>
+        
+        <div class="home-funcionalities">
+            <div class="home-func-sub">
+                <h3>Funcionalidades básicas de acordo com o seu perfil</h3>
+                <p>Para melhor compreensão do sistema, você a seguir irá ver uma breve instrução de uso do sistema</p>
+            </div>    
+            <div class="home-profile-func">
+                {% if tec %}
+                    <p class="home-icon-info"><i class="fas fa-bars home-icon"></i><strong>Menu</strong></p>
+                    <p>No canto superior à esquerda, você encontrará este ícone que te permite acessar uma série de opções que serão explicadas abaixo</p>
 
+                    <p class="home-icon-info"><i class="fa-solid fa-house home-icon"></i><strong>Página inicial</strong></p>
+                    <p>Aqui você será redirecionado para página inicial (essa que você está), onde você pode obter instruções de uso</p>
+                    
+                    <p class="home-icon-info"><i class="fa-solid fa-magnifying-glass home-icon"></i><strong>Pesquisar paciente</strong></p>
+                    <p>Aqui você pode localizar pacientes cadastrados no sistema, para visualizar seus dados pessoais, alterá-los se for o caso 
+                    (exclusivos para administradores e recepcionistas) e também visualizar todos os laudos cadastrados em seu respectivo CPF</p>
 
-        <div class="home-image-container">
-            <img src="/media/lab/logo/heliel.png" alt="titulo">  
-        </div>
+                    <p class="home-icon-info"><i class="fa-solid fa-share home-icon"> </i><strong>Enviar imagem</strong></p>
+                    <p>Página exclusiva para administradores e usuários do tipo técnico, que possibilita o envio de imagens sanguíneas microscópicas
+                    de acordo com o usuário que teve o sangue coletado, que em seguida serão processadas através de um algoritmo de detecção e gerará um laudo com dados premiliares para uma avaliação mais precisa. 
+                    </p>
 
+                    <p class="home-icon-info"><i class="fa-solid fa-flask home-icon"></i><strong>Consultar laudo</strong></p>
+                    <p>Apenas o usuário do tipo paciente não tem acesso, essa página possui um campo de busca que permite você filtrar laudos
+                    já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente</p>
 
-        <div class="home-text-container">
-            <br>
-            <br>
-                <p>Esse sistema foi desenvolvido pelo jovem estudante de análise e desenlvovimento de sistemas <strong>Heliel Souza Lima</strong> de 22 anos, na instituição de ensino COTUCA.</p>
-                <p>O projeto que está prestes a ser apresentado, consiste em um Trabalho de Conclusão de Curso (TCC), onde no qual, a idéia surgiu por conta de seu ex-colega de sala, <strong>Anderson</strong>.
-                Anderson, por sua vez, acabou saindo do curso, por conta disso todo o trabalho de desenvolvimento foi atribuído ao Heliel.
-                </p>
-            <br>
-            <br>
-            <h2>Como o projeto foi desenvolvido?</h2>
-            <br>
-                <p>O projeto majoritariamente foi desenvolvido no Framework <strong>Django</strong>, framework desenvolvido em python que permite a criação de sistemas rápidos e escaláveis.
-                Além disso, foram usadas tecnologias como <strong> HTML5, CSS3 e JavaScript</strong> para algumas estilizações e detalhes da estrutura da página. outros frameworks, linguagens e algoritmos
-                também fora utilizados nesse sistema, mas logo adiante serão explicados em detalhes. 
-                </p>
-            <br>
-            <br>
-            <h2>
-                Como funciona esse sistema?
-            </h2>
-            <br>
-            Esse sistema tem 3 tipos de usuários a serem cadastrados: <br><br>
-            <strong>Técnico</strong>: responsável por enviar imagens ao sistema e realizar a geração dos laudos de imagens sanguíneas. <br>
-            <strong>Recepcionista</strong>: Responsável pelo cadastro de pacientes, alteração de dados, consulta de laudos gerados. <br>
-            <strong>Paciente</strong>: Paciente é o usuário que terá seus dados pessoais coletados para seu cadastro e terá um laudo gerado por conta de seu sangue.
-            <br>
-            <br>
-            <p>Existe uma inteligência artificial de detecção de objetos por trás desse sistema, onde um há um peso treinado com mais de 400 imagens sanguíneas
-            de um data-set, com um algoritmo de visão computacional de rede neural convolucional (RNN) chamado <strong> YOLO </strong>(You Once Look Once).
-            <br>
-            <br>
-            Esse modelo levou mais de 14 horas para ser trainado no google Colab, onde todas as imagens do data-set foram rotuladas manualmente, para que a máquina aprendesse
-            a identificar padrões e buscar melhor sua taxa de confiança, até gerar o melhor peso pré-trainado para ser ajustado e utilizado como inferência nesse sistema.
+                    <p class="home-icon-info"><i class="fa-solid fa-circle-info home-icon"></i><strong>Sobre</strong></p>
+                    <p>Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user home-icon"></i><strong>Meu perfil</strong></p>
+                    <p>Aqui você pode visualizar informações relacionados ao seu perfil, como movimentações de acordo com sua especificidade 
+                    e seus dados pessoais</p> 
+                {% endif %}
+
+                {% if recpt %}
+                    <p class="home-icon-info"><i class="fas fa-bars home-icon"></i><strong>Menu</strong></p>
+                    <p>No canto superior à esquerda, você encontrará este ícone que te permite acessar uma série de opções que serão explicadas abaixo</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-house home-icon"></i><strong>Página inicial</strong></p>
+                    <p>Aqui você será redirecionado para página inicial (essa que você está), onde você pode obter instruções de uso</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user-plus home-icon"></i><strong>Cadastro de paciente</strong></p>
+                    <p>Página que permite o acesso ao formulário de cadastro de pacientes no sistema, exclusiva para administradores
+                    e recepcionistas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-magnifying-glass home-icon"></i><strong>Pesquisar paciente</strong></p>
+                    <p>Aqui você pode localizar pacientes cadastrados no sistema, para visualizar seus dados pessoais, alterá-los se for o caso 
+                    (exclusivos para administradores e recepcionistas) e também visualizar todos os laudos cadastrados em seu respectivo CPF</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-flask home-icon"></i><strong>Consultar laudo</strong></p>
+                    <p>Apenas o usuário do tipo paciente não tem acesso, essa página possui um campo de busca que permite você filtrar laudos
+                    já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-circle-info home-icon"></i><strong>Sobre</strong></p>
+                    <p>Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user home-icon"></i><strong>Meu perfil</strong></p>
+                    <p>Aqui você pode visualizar informações relacionados ao seu perfil, como movimentações de acordo com sua especificidade 
+                    e seus dados pessoais</p> 
+                {% endif %}
+
+                {% if patient %}
+                    <p class="home-icon-info"><i class="fas fa-bars home-icon"></i><strong>Menu</strong></p>
+                    <p>No canto superior à esquerda, você encontrará este ícone que te permite acessar uma série de opções que serão explicadas abaixo</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-house home-icon"></i><strong>Página inicial</strong></p>
+                    <p>Aqui você será redirecionado para página inicial (essa que você está), onde você pode obter instruções de uso</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-circle-info home-icon"></i><strong>Sobre</strong></p>
+                    <p>Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user home-icon"></i><strong>Meu perfil</strong></p>
+                    <p>Aqui você pode visualizar informações relacionados ao seu perfil, como movimentações de acordo com sua especificidade 
+                    e seus dados pessoais</p> 
+                {% endif %}         
+
+                {% if adm %}
+                    <p class="home-icon-info"><i class="fas fa-bars home-icon"></i><strong>Menu</strong></p>
+                    <p>No canto superior à esquerda, você encontrará este ícone que te permite acessar uma série de opções que serão explicadas abaixo</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-house home-icon"></i><strong>Página inicial</strong></p>
+                    <p>Aqui você será redirecionado para página inicial (essa que você está), onde você pode obter instruções de uso</p>
+                    
+                    <p class="home-icon-info"><i class="fa-solid fa-user-plus home-icon"></i><strong>Cadastro de paciente</strong></p>
+                    <p>Página que permite o acesso ao formulário de cadastro de pacientes no sistema, exclusiva para administradores
+                    e recepcionistas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user-plus home-icon"></i><strong>Cadastro de usuário</strong></p>
+                    <p>Somente usuários administradores tem acesso à essa página, ela permite que você possa
+                    cadastrar um dos três tipos de usuários permitidos, preenchendo o formulário de acordo com a especificidade de cada perfil</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-magnifying-glass home-icon"></i><strong>Pesquisar paciente</strong></p>
+                    <p>Aqui você pode localizar pacientes cadastrados no sistema, para visualizar seus dados pessoais, alterá-los se for o caso 
+                    (exclusivos para administradores e recepcionistas) e também visualizar todos os laudos cadastrados em seu respectivo CPF</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-share home-icon"> </i><strong>Enviar imagem</strong></p>
+                    <p>Página exclusiva para administradores e usuários do tipo técnico, que possibilita o envio de imagens sanguíneas microscópicas
+                    de acordo com o usuário que teve o sangue coletado, que em seguida serão processadas através de um algoritmo de detecção e gerará um laudo com dados premiliares para uma avaliação mais precisa. 
+                    </p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-flask home-icon"></i><strong>Consultar laudo</strong></p>
+                    <p>Apenas o usuário do tipo paciente não tem acesso, essa página possui um campo de busca que permite você filtrar laudos
+                    já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-circle-info home-icon"></i><strong>Sobre</strong></p>
+                    <p>Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas</p>
+
+                    <p class="home-icon-info"><i class="fa-solid fa-user home-icon"></i><strong>Meu perfil</strong></p>
+                    <p>Aqui você pode visualizar informações relacionados ao seu perfil, como movimentações de acordo com sua especificidade 
+                    e seus dados pessoais</p> 
+                {% endif %}  
+            </div>
         </div>
     </div>
    
