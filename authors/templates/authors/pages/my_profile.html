@@ -9,6 +9,11 @@
             <div class="personal-heading">
                 <h2>Meu perfil</h2>
             </div>
+ <!-- Recepcionista-->            
+            {% if adm %}
+                {% include "authors/partials/profiles/admin_profile_tabs.html" %}
+
+            {% endif %}
 <!-- Recepcionista-->            
             {% if recpt %}
                 {% include "authors/partials/profiles/recpt_profile_tabs.html" %}

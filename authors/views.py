@@ -20,7 +20,14 @@ from .models import Patient, Recpt, Tec
 def my_profile(request):
 
     if request.user.is_superuser:
-        return render(request, 'authors/pages/my_profile.html')
+        adm_instance = request.user.is_superuser
+        recpts = Recpt.objects.all()
+        tecs = Tec.objects.all()
+        return render(request, 'authors/pages/my_profile.html', {
+            'adm': adm_instance,
+            'recpts': recpts,
+            'tecs': tecs,
+        })
     else:
         try:
             recpt_instance = request.user.recpt_profile

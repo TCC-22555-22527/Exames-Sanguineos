@@ -334,7 +334,7 @@ def search_patient(request):
     patients = []
 
     if search_term:
-        patients = Patient.objects.filter(  # trocar customuser
+        patients = Patient.objects.filter(
             Q(first_name__icontains=search_term) |
             Q(last_name__icontains=search_term) |
             Q(cpf__icontains=search_term)

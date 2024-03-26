@@ -202,6 +202,34 @@ h5 {
     margin-left: 0.5rem;
     text-align: left;
 }
+/* admin profile*/
+.admin-all-users {
+    color: var(--color-success-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.user-content-paragrah-adm {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+.user-content-paragrah-adm p{
+    margin-bottom: 0.8rem;
+    padding: 0.7rem;
+    border-radius: 0.6rem;
+    background: #d4c8ff;
+    color: var(--color-primary-dark);
+    min-width: 100%;
+}
+.user-content-adm {
+    padding: var(--spacing-gutter-medium);
+    padding-top: 2rem;
+}
+.infos .responsive-title {
+    display: none;
+}
 /* Tabs da direita do recpct*/
 .patients-created-list {
     display: grid;
@@ -1910,6 +1938,14 @@ h5 {
     .field {
         flex-direction: column;
     }
+    .tab-title .headings{
+        display: none;
+    }
+    .infos .responsive-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
     .tab-data-right {
         min-width: 20rem;
         margin-top: 0.5rem;
@@ -1927,6 +1963,9 @@ h5 {
     }
     .patients-created-list {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .admin-all-users {
+        text-align: center;
     }
 
     /*Footer*/
@@ -2216,6 +2255,14 @@ h5 {
     .field {
         flex-direction: column;
     }
+    .tab-title .headings{
+        display: none;
+    }
+    .infos .responsive-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
     .tab-data-right {
         min-width: 18rem;
         margin-top: 0.5rem;
@@ -2240,6 +2287,7 @@ h5 {
     .patients-created-list {
         grid-template-columns: repeat(1, 1fr);
     }
+    
 }
  
 

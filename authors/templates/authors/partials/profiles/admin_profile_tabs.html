@@ -1,0 +1,87 @@
+{% load static %}
+<h3 class="admin-all-users">Todos os usuários que você cadastrou:</h3>
+<div id="container">
+    <div class="tab-buttons">
+        <button class="tab-btn active" content-id="recpt-registered">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3 class="headings">Recepcionistas</h3>
+            </div>
+        </button>
+
+        <button class="tab-btn" content-id="tecs-registered">
+            <div class="tab-title">
+                <i class="fa-solid fa-person"></i>
+                <h3 class="headings">Técnicos</h3>
+            </div>
+        </button>
+    </div>
+
+    <div class="tab-contents">
+        <div class="content" id="recpt-registered">
+           
+            <div class="infos">
+                {% if recpts %}
+                <h4 class="responsive-title">Recepcionistas</h4>
+                    <div class="patients-created-list">
+                        {% for recpt in recpts %}
+                            <div class="user-profile-details">
+                                <div class="patient-content">
+                                    <div class="user-content-paragrah-adm">   
+                                        <p><strong> Nome: </strong> {{ recpt.user.first_name }} {{ recpt.last_name }}</p>                                                            
+                                        <p><strong> ID: </strong> {{ recpt.user_id }}</p>        
+                                    </div> 
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}                    
+                    </div>
+                {% else %}
+                    <h2 class="no-report-msg center no-rep-resp">
+                        Você ainda não cadastrou nenhum recepcionista               
+                        <h4>Para cadastrar, 
+                            <a href="{% url "authors:register_recpt" %}" class="send-img-href-tab">
+                                acesse aqui 
+                                <i class="fa-solid fa-share "></i>
+                            </a>
+                        </h4>
+                    </h2>
+                {% endif %}
+                
+            </div>
+        </div>
+
+        <div class="content" id="tecs-registered">
+            <div class="infos"> 
+                {% if tecs %}
+                <h4 class="responsive-title">Técnicos</h4>
+                    <div class="patients-created-list">
+                        {% for tec in tecs %}
+                            <div class="user-profile-details">
+                                <div class="user-content-adm">
+                                    <div class="user-content-paragrah-adm">   
+                                        <p><strong> Nome: </strong> {{ tec.user.first_name }} {{ tec.last_name }}</p>                                   
+                                        <p><strong> CRM: </strong> {{ tec.crm }}</p>                                                         
+                                        <p><strong> ID: </strong> {{ tec.user_id }}</p>        
+                                    </div> 
+                                </div>
+                            </div>
+                        {% endfor %}                    
+                    </div>
+                {% else %}
+                    <h2 class="no-report-msg center no-rep-resp">
+                        Você ainda não cadastrou nenhum técnico               
+                        <h4>Para cadastrar, 
+                            <a href="{% url "authors:register_tec" %}" class="send-img-href-tab">
+                                acesse aqui 
+                                <i class="fa-solid fa-share "></i>
+                            </a>
+                        </h4>
+                    </h2>
+                {% endif %}
+
+            </div>
+        </div>        
+    </div>
+</div>
+<script src="{% static 'global/js/profile_tab.js' %}"></script>
