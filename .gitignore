@@ -32,6 +32,8 @@ lab_results
 .idea/**/libraries
 *.iws /out/
 
+#other
+
 # Python #
 *.py[cod]
 *$py.class

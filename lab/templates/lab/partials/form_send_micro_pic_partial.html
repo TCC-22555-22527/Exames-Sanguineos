@@ -26,6 +26,8 @@
                          {{ patient.cpf }}
                       </li>
                   {% endfor %}
+                {% else %}
+                <p>Não existe nenhum paciente cadastrado</p>
                  
                 {% endif %}
               </ul>
