@@ -789,6 +789,14 @@ h5 {
     background-color: var(--color-primary-dark);
     color: #fff;
 }
+.cell-black .patient-link{
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: color 150ms ease;
+}
+.cell-black .patient-link:hover{
+    color: var(--color-primary-hover);
+}
 
 
                 /* REPORT SEARCH - PESQUISA DE LAUDO */

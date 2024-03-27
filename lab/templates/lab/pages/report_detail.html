@@ -20,7 +20,11 @@
                         </tr>
                         <tr>
                             <td class="cell-white"><strong>Nome do paciente:</strong></td>
-                            <td class="cell-black">{{ report.name }} </td>
+                            <td class="cell-black">
+                                <a class="patient-link" href="{% url 'lab:patient_detail' user_id=report.patient.user_id %}">
+                                    {{ report.name }} 
+                                </a>
+                            </td>
                         </tr>   
                         {% for detected_image in detected_images %}
                             <tr>

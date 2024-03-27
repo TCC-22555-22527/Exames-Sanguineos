@@ -31,7 +31,7 @@ urlpatterns = [
          views.search_patient,
          name='search_patient'
          ),
-    path('patient/<int:user_id>/',
+    path('patient-detail/<int:user_id>/',
          views.patient_detail,
          name='patient_detail'
          ),
