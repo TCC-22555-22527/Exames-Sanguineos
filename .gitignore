@@ -4,18 +4,12 @@
 *.pyc
 __pycache__
 db.sqlite3
+media
 
 # Backup files #
 *.bak
 
-# Contains image data from send_img form (project root)
-media/lab/reports/
-media/lab/detects/
-media/lab/backup_imgs/
-
-# Txt file generated after detection script (project root)
-output.txt
-lab_results
+# Contains image data from send_img form (project root) *altered
 
 # If you are using PyCharm #
 .idea/**/workspace.xml
