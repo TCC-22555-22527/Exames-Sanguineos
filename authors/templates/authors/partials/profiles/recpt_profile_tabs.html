@@ -47,38 +47,38 @@
 
                 {% if patients %}
 
-                <div class="patients-created-list">
-                    {% for patient in patients %}
-                        <div class="user-profile-details">
-                            <div class="patient-content">
-                                <div class="patient-content-paragrah">   
-                                    <p><strong> Nome: </strong> {{ patient.user.first_name }} {{ patient.last_name }}</p>                                   
-                                    <p><strong> CPF: </strong> {{ patient.cpf }}</p>                                   
-                                    <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>                                 
-                                    <p><strong> ID: </strong> {{ patient.user_id }}</p>        
-                                </div> 
-                                <div class="button-access-user-space">
-                                    <a href="{% url 'lab:patient_detail' user_id=patient.user_id %}" class="btn-access">
-                                        <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
-                                        Visualizar perfil
-                                    </a>
+                    <div class="patients-created-list">
+                        {% for patient in patients %}
+                            <div class="user-profile-details">
+                                <div class="patient-content">
+                                    <div class="patient-content-paragrah">   
+                                        <p><strong> Nome: </strong> {{ patient.user.first_name }} {{ patient.last_name }}</p>                                   
+                                        <p><strong> CPF: </strong> {{ patient.cpf }}</p>                                   
+                                        <p><strong> Nascimento: </strong>{{ patient.birthday }} </p>                                 
+                                        <p><strong> ID: </strong> {{ patient.user_id }}</p>        
+                                    </div> 
+                                    <div class="button-access-user-space">
+                                        <a href="{% url 'lab:patient_detail' user_id=patient.user_id %}" class="btn-access">
+                                            <i class="fas fa-user"></i>‎ ‎ ‎‎‎‎
+                                            Visualizar perfil
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}                    
-                </div>
+                        {% endfor %}   
+                    </div>
 
                 {% else %}
 
-                <h2 class="no-report-msg center no-rep-resp">
-                    Você ainda não cadastrou nenhum paciente               
-                    <h4>Para cadastrar, 
-                        <a href="{% url "authors:register_patient" %}" class="send-img-href-tab">
-                            acesse aqui 
-                            <i class="fa-solid fa-share "></i>
-                        </a>
-                    </h4>
-                </h2>
+                    <h2 class="no-report-msg center no-rep-resp">
+                        Você ainda não cadastrou nenhum paciente               
+                        <h4>Para cadastrar, 
+                            <a href="{% url "authors:register_patient" %}" class="send-img-href-tab">
+                                acesse aqui 
+                                <i class="fa-solid fa-share "></i>
+                            </a>
+                        </h4>
+                    </h2>
 
                 {% endif %}
                 

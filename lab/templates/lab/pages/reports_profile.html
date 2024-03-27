@@ -10,7 +10,6 @@
                     {{ profile_user.first_name }} {{ profile_user.last_name}}: 
                 </span> 
             </h1>
-            
         <div class="report-list-container">
                 {% for report in reports %}
                     {% include 'lab/partials/report_profile_partial.html' %}
@@ -19,6 +18,5 @@
                 <img src="/media/lab/others/sem-laudo.png" alt="Logo" class="image-no-report">
             {% endif %}
         </div>
-        {% include 'global/partials/pagination.html' %}
     </div>
 {% endblock content %}

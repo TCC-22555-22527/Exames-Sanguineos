@@ -341,10 +341,10 @@ def search_patient(request):
         ).order_by('-user_id')
 
     page_obj, pagination_range = make_pagination(
-        request, patients, 6)
+        request, patients, 9)
 
     page_obj_all, pagination_range_all = make_pagination(
-        request, all_patients, 6)
+        request, all_patients, 9)
 
     has_search_results = bool(patients)
 
