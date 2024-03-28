@@ -1,0 +1,76 @@
+###############################################################################
+# Replace
+# gunicorn_lab to the name of the gunicorn file you want
+# root to your user name
+# app_repo to the folder name of your project
+# project to the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo gunicorn_lab.socket
+sudo nano /etc/systemd/system/gunicorn_lab.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn blog socket
+
+[Socket]
+ListenStream=/run/gunicorn_lab.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo gunicorn_lab.service
+sudo nano /etc/systemd/system/gunicorn_lab.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=gunicorn_lab.socket
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+Restart=on-failure
+EnvironmentFile=/home/root/app_repo/.env
+WorkingDirectory=/home/root/app_repo
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/root/app_repo/venv/bin/gunicorn \
+          --error-logfile /home/root/app_repo/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/gunicorn_lab.socket \
+          project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start gunicorn_lab.socket
+sudo systemctl enable gunicorn_lab.socket
+
+# Checando
+sudo systemctl status gunicorn_lab.socket
+sudo systemctl status gunicorn_lab.service
+curl --unix-socket /run/gunicorn_lab.socket localhost
+sudo systemctl status gunicorn_lab
+
+# Restarting
+sudo systemctl restart gunicorn_lab.service
+sudo systemctl restart gunicorn_lab.socket
+sudo systemctl restart gunicorn_lab
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u gunicorn_lab.service
+sudo journalctl -u gunicorn_lab.socket
