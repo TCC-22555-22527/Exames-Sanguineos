@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')  # noqa: E501
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
-ALLOWED_HOSTS = ['diagnose.helielsouza.com.br']  # type:ignore
+ALLOWED_HOSTS: list[str] = ['diagnose.helielsouza.com.br']
 
 
 # Application definition
