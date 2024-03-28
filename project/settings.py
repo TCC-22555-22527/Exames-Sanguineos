@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')  # noqa: E501
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
-ALLOWED_HOSTS = list[str] = []  # type:ignore
+ALLOWED_HOSTS = list[str] = ['diagnose.helielsouza.com.br']  # type:ignore
 
 
 # Application definition
@@ -118,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa: E501
     },
+
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa: E501
     },
