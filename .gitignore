@@ -9,8 +9,6 @@ db.sqlite3
 # Backup files #
 *.bak
 
-# Contains image data from send_img form (project root) *altered
-
 # If you are using PyCharm #
 .idea/**/workspace.xml
 .idea/**/tasks.xml
