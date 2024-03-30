@@ -5,7 +5,7 @@
 ## Sistema de Gerenciamento de Laboratório de Sangue
 
 ### Visão Geral
-Este é um aplicação web desenvolvida em Django projetada para um laboratório de sangue, com o objetivo de acelerar informações preliminares de um exame de sangue e ter uma asseguridade maior no controle e gerenciamento de todos os tipos de funcionários
+Esta é uma aplicação web desenvolvida em Django projetada para um laboratório de sangue, com o objetivo de acelerar informações preliminares de um exame de sangue e ter uma asseguridade maior no controle e gerenciamento de todos os tipos de funcionários
 
 
 #### Funcionalidades
@@ -13,7 +13,7 @@ Este é um aplicação web desenvolvida em Django projetada para um laboratório
 - Página inicial onde você pode obter instruções de uso;
 - Página exclusiva para administradores e usuários do tipo técnico, que possibilita o envio de imagens sanguíneas microscópicas de acordo com o usuário que teve o sangue coletado, que em seguida serão processadas através de um modelo de rede neural que ira gerar um laudo hematológico com dados premiliares para uma avaliação mais precisa;
 - Localizar pacientes cadastrados no sistema, para visualizar seus dados pessoais, alterá-los se for o caso (exclusivos para administradores e recepcionistas) e também visualizar todos os laudos cadastrados em seu respectivo CPF;
-- Apenas o usuário do tipo paciente não tem acesso, essa página possui um campo de busca que permite você filtrar laudos já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente;
+- Apenas o usuário do tipo paciente não tem acesso, há uma página que possui um campo de busca que permite você filtrar laudos já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente;
 - Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas;
 - Página que permite o acesso ao formulário de cadastro de pacientes no sistema, exclusiva para administradores e recepcionistas;
 - Página de cadastro de todos os tipos de funcionários (somente usuários administradores tem acesso à essa página);
