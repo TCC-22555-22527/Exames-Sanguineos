@@ -60,7 +60,7 @@ This is a web application developed in Django designed for a blood laboratory, a
 - Homepage where you can get usage instructions;
 - Exclusive page for administrators and technician-type users, which allows the submission of microscopic blood images according to the user who had the blood collected, which will then be processed through a neural network model that will generate a hematological report with preliminary data for a more accurate evaluation;
 - Find registered patients in the system, to view their personal data, modify them if necessary (exclusive to administrators and receptionists), and also view all reports registered under their respective CPF;
-- Only the patient-type user does not have access, this page has a search field that allows you to filter already submitted reports according to the CPF of a particular patient, as well as a list of the most recently registered reports;
+- Only the patient-type user does not have access, there is one page has a search field that allows you to filter already submitted reports according to the CPF of a particular patient, as well as a list of the most recently registered reports;
 - Page that explains more about how the system was created and by whom, in addition to better explaining the objective and technologies used;
 - Page that allows access to the patient registration form in the system, exclusive to administrators and receptionists;
 - Page for registering all types of employees (only administrators have access to this page);
