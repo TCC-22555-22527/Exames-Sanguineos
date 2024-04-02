@@ -5,7 +5,7 @@
 ## Sistema de Gerenciamento de Laboratório de Sangue
 
 ### Visão Geral
-Este é um aplicação web desenvolvida em Django projetada para um laboratório de sangue, com o objetivo de acelerar informações preliminares de um exame de sangue e ter uma asseguridade maior no controle e gerenciamento de todos os tipos de funcionários
+Esta é uma aplicação web desenvolvida em Django projetada para um laboratório de sangue, com o objetivo de acelerar informações preliminares de um exame de sangue e ter uma asseguridade maior no controle e gerenciamento de todos os tipos de funcionários
 
 
 #### Funcionalidades
@@ -13,7 +13,7 @@ Este é um aplicação web desenvolvida em Django projetada para um laboratório
 - Página inicial onde você pode obter instruções de uso;
 - Página exclusiva para administradores e usuários do tipo técnico, que possibilita o envio de imagens sanguíneas microscópicas de acordo com o usuário que teve o sangue coletado, que em seguida serão processadas através de um modelo de rede neural que ira gerar um laudo hematológico com dados premiliares para uma avaliação mais precisa;
 - Localizar pacientes cadastrados no sistema, para visualizar seus dados pessoais, alterá-los se for o caso (exclusivos para administradores e recepcionistas) e também visualizar todos os laudos cadastrados em seu respectivo CPF;
-- Apenas o usuário do tipo paciente não tem acesso, essa página possui um campo de busca que permite você filtrar laudos já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente;
+- Apenas o usuário do tipo paciente não tem acesso, há uma página que possui um campo de busca que permite você filtrar laudos já enviados de acordo com o cpf de determinado paciente, além de uma lista dos laudos cadastrados mais recentemente;
 - Página que conta melhor sobre como o sistema foi criado e por quem, além de explicar melhor o objetivo e tecnologias utilizadas;
 - Página que permite o acesso ao formulário de cadastro de pacientes no sistema, exclusiva para administradores e recepcionistas;
 - Página de cadastro de todos os tipos de funcionários (somente usuários administradores tem acesso à essa página);
@@ -60,7 +60,7 @@ This is a web application developed in Django designed for a blood laboratory, a
 - Homepage where you can get usage instructions;
 - Exclusive page for administrators and technician-type users, which allows the submission of microscopic blood images according to the user who had the blood collected, which will then be processed through a neural network model that will generate a hematological report with preliminary data for a more accurate evaluation;
 - Find registered patients in the system, to view their personal data, modify them if necessary (exclusive to administrators and receptionists), and also view all reports registered under their respective CPF;
-- Only the patient-type user does not have access, this page has a search field that allows you to filter already submitted reports according to the CPF of a particular patient, as well as a list of the most recently registered reports;
+- Only the patient-type user does not have access, there is one page has a search field that allows you to filter already submitted reports according to the CPF of a particular patient, as well as a list of the most recently registered reports;
 - Page that explains more about how the system was created and by whom, in addition to better explaining the objective and technologies used;
 - Page that allows access to the patient registration form in the system, exclusive to administrators and receptionists;
 - Page for registering all types of employees (only administrators have access to this page);
