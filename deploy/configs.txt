@@ -1,4 +1,4 @@
-INSTALANDO PACOTES ---------------------------------------------------------
+INSTALANDO PACOTES -------------------------------------------------------
 
     sudo apt update -y
     sudo apt upgrade -y
