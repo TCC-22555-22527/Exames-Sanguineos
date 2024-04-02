@@ -5,6 +5,10 @@
 __pycache__
 db.sqlite3
 
+#production
+media/lab/backup_imgs/
+media/lab/detects/
+media/lab/reports/
 
 # Backup files #
 *.bak

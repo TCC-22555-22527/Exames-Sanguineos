@@ -109,9 +109,9 @@ def send_img(request):
                 print(f"Caminho da imagem: {image_path}")
                 # comando para detectar objetos na imagem
                 detect_command = (
-                    "python yolo/Inference_files/detect.py "
+                    "python yolov5/Inference_files/detect.py "
                     f"--source {image_path} "
-                    "--weights yolo/Inference_files/best_BCCM.pt "
+                    "--weights yolov5/Inference_files/best_BCCM.pt "
                     "--output lab_results/ --save-txt"
                 )
 

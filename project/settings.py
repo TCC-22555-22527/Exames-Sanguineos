@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import mimetypes
 import os
 from pathlib import Path
-from django.contrib.messages import constants
 
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,13 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')  # noqa: E501
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ.get('DEBUG') == '1' else False
+if os.environ.get('DEBUG_VALUE') == '1':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS: list[str] = ['diagnose.helielsouza.com.br']
-
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
