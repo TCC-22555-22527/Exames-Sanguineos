@@ -54,8 +54,10 @@ WantedBy=multi-user.target
 
 ###############################################################################
 # Ativando
-sudo systemctl start gunicorn_lab.socket
+sudo systemctl start gunicorn_lab.socket 
 sudo systemctl enable gunicorn_lab.socket
+sudo systemctl start gunicorn_lab.service 
+sudo systemctl enable gunicorn_lab.service
 
 # Checando
 sudo systemctl status gunicorn_lab.socket

@@ -31,6 +31,7 @@ if os.environ.get('DEBUG_VALUE') == '1':
 else:
     DEBUG = False
 
+print(os.environ.get('ALLOWED_HOSTS_VALUE'))
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
 
 # Application definition
