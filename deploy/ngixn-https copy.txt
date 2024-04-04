@@ -18,6 +18,7 @@
 # Add contents of this file
 # sudo ln -s /etc/nginx/sites-available/diagnose.helielsouza.com.br /etc/nginx/sites-enabled/diagnose.helielsouza.com.br
 # sudo nginx -t (testar sintaxe)
+# sudo systemctl restart nginx (para restartar)
 # Set timezone
 # List - timedatectl list-timezones
 # sudo timedatectl set-timezone America/Sao_Paulo

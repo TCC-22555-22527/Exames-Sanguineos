@@ -35,10 +35,10 @@ print(os.environ.get('ALLOWED_HOSTS_VALUE'))
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://diagnose.helielsouza.com",
-    "http://www.diagnose.helielsouza.com",
-    "https://diagnose.helielsouza.com",
-    "https://www.diagnose.helielsouza.com",
+    "http://diagnose.helielsouza.com.br",
+    "http://www.diagnose.helielsouza.com.br",
+    "https://diagnose.helielsouza.com.br",
+    "https://www.diagnose.helielsouza.com.br",
 ]
 
 # Application definition
