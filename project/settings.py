@@ -34,6 +34,13 @@ else:
 print(os.environ.get('ALLOWED_HOSTS_VALUE'))
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://diagnose.helielsouza.com",
+    "http://www.diagnose.helielsouza.com",
+    "https://diagnose.helielsouza.com",
+    "https://www.diagnose.helielsouza.com",
+]
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',

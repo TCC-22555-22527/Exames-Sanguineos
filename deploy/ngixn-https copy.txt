@@ -17,7 +17,7 @@
 # sudo nano /etc/nginx/sites-available/diagnose.helielsouza.com.br
 # Add contents of this file
 # sudo ln -s /etc/nginx/sites-available/diagnose.helielsouza.com.br /etc/nginx/sites-enabled/diagnose.helielsouza.com.br
-#
+# sudo nginx -t (testar sintaxe)
 # Set timezone
 # List - timedatectl list-timezones
 # sudo timedatectl set-timezone America/Sao_Paulo
@@ -88,6 +88,7 @@ server {
     proxy_set_header Connection 'upgrade';
     proxy_set_header Host $host;
     proxy_cache_bypass $http_upgrade;
+    #  proxy_set_header X-CSRFToken $http_x_csrftoken; proxy_set_header Host $host; //adicional
   }
 
   # deny access to .htaccess files, if Apache's document root

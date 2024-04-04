@@ -35,12 +35,12 @@ After=network.target
 User=root
 Group=www-data
 Restart=on-failure
-EnvironmentFile=/home/root/app_repo/.env
-WorkingDirectory=/home/root/app_repo
+EnvironmentFile=/root/app_repo/.env
+WorkingDirectory=/root/app_repo
 # --error-logfile --enable-stdio-inheritance --log-level and --capture-output
 # are all for debugging purposes.
-ExecStart=/home/root/app_repo/venv/bin/gunicorn \
-          --error-logfile /home/root/app_repo/gunicorn-error-log \
+ExecStart=/root/app_repo/venv/bin/gunicorn \
+          --error-logfile /root/app_repo/gunicorn-error-log \
           --enable-stdio-inheritance \
           --log-level "debug" \
           --capture-output \
@@ -54,15 +54,15 @@ WantedBy=multi-user.target
 
 ###############################################################################
 # Ativando
-sudo systemctl start gunicorn_lab.socket 
 sudo systemctl enable gunicorn_lab.socket
-sudo systemctl start gunicorn_lab.service 
+sudo systemctl start gunicorn_lab.socket 
 sudo systemctl enable gunicorn_lab.service
+sudo systemctl start gunicorn_lab.service 
 
 # Checando
 sudo systemctl status gunicorn_lab.socket
 sudo systemctl status gunicorn_lab.service
-curl --unix-socket /run/gunicorn_lab.socket localhost
+curl --unix-socket /run/gunicorn_lab.socket diagnose.helielsouza.com.br
 sudo systemctl status gunicorn_lab
 
 # Restarting
@@ -74,5 +74,5 @@ sudo systemctl restart gunicorn_lab
 sudo systemctl daemon-reload
 
 # Debugging
-sudo journalctl -u gunicorn_lab.service
-sudo journalctl -u gunicorn_lab.socket
+sudo journalctl -u gunicorn_lab.service -e
+sudo journalctl -u gunicorn_lab.socket -e
