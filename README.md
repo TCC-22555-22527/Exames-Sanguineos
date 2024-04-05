@@ -1,11 +1,16 @@
 # Diagnose
-
+Site - https://www.diagnose.helielsouza.com.br/
+Linkedin post - 
+ 
 ## Português (pt-br)
 
 ## Sistema de Gerenciamento de Laboratório de Sangue
 
 ### Visão Geral
 Esta é uma aplicação web desenvolvida em Django projetada para um laboratório de sangue, com o objetivo de acelerar informações preliminares de um exame de sangue e ter uma asseguridade maior no controle e gerenciamento de todos os tipos de funcionários
+
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/41b8c2ce-d847-4a20-8716-3aa59cfcc327)
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/1c5d7750-23da-48f8-909b-ae3ce7bc709f)
 
 
 #### Funcionalidades
@@ -28,6 +33,8 @@ Esta é uma aplicação web desenvolvida em Django projetada para um laboratóri
   
 #### Processamento de Imagens:
 O laudo hematológico (ou hemograma) é gerado quando o usuário técnico realiza o upload de uma imagem sanguínea microscópica, onde uma rede neural convolucional (CNN), que foi treinada através de um algoritmo de detecção de objetos chamado YOLO e também um dataset de mais de 400 imagens sanguíneas microscópicas, irá detectar, contar e calcular todos os parâmetros a partir das células sanguíneas detectadas (leucócitos, hemácias e plaquetas), gerando o laudo. O algoritmo YOLO foi treinado com o framework Darknet, no Google Colab. Foram utilizadas bibliotecas como o OpenCV e Pillow neste treinamento.  
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/ad701301-e406-4199-8416-1bee7848a4be)
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/25f9e602-f15e-4c05-bbe5-9ebf71c7c90b)
 
 
 #### Tecnologias de desenvolvimento utilizadas:
@@ -38,14 +45,14 @@ O laudo hematológico (ou hemograma) é gerado quando o usuário técnico realiz
 
 
 #### Tecnologias usadas na implatação (Deploy):
-- VPS ubuntu 23.04 64 bit: Servidor utilizado para hospedagem;
+- VPS ubuntu 23.04 64 bit: Servidor utilizado para hospedagem, acessada por chave SSH;
 - Nginx: Servidor web utilizado para configuração de uploads e de roteamento das requisições HTTP para o diretório dentro do servidor;
 - Gunicorn: um servidor HTTP WSGI (Web Server Gateway Interface), como camada intermediária da aplicação Django com o Nginx;
 - PostgreSQL: Banco de dados utilizado;
 - GIT: Versionamento de código;
 - Repositório Bare: repositório remoto e transitório que atuou no meio de campo entre o desenvolvimento local e a aplicação em produção para o versionamento de código;
 - Socket.unix: comunicação interprocessual (IPC) entre processos em sistemas Unix-like;
-
+- Certificado SSL para proteção;
 
 ## English (en-us)
 
@@ -54,6 +61,8 @@ O laudo hematológico (ou hemograma) é gerado quando o usuário técnico realiz
 ### Overview
 This is a web application developed in Django designed for a blood laboratory, aiming to accelerate preliminary blood test information and provide greater assurance in the control and management of all types of employees.
 
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/41b8c2ce-d847-4a20-8716-3aa59cfcc327)
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/1c5d7750-23da-48f8-909b-ae3ce7bc709f)
 
 #### Features
 - "My Profile" page to view all your operations and personal data;
@@ -75,7 +84,8 @@ This is a web application developed in Django designed for a blood laboratory, a
 
 #### Image Processing:
 The hematological report (or hematogram) is generated when the technician user uploads a microscopic blood image, where a Convolutional Neural Network (CNN), which was trained through an object detection algorithm called YOLO and also a dataset of over 400 microscopic blood images, will detect, count, and calculate all parameters from the detected blood cells (leukocytes, erythrocytes, and platelets), generating the report. The YOLO algorithm was trained with the Darknet framework, on Google Colab. Libraries such as OpenCV and Pillow were used in this training.
-
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/ad701301-e406-4199-8416-1bee7848a4be)
+![image](https://github.com/TCC-22555-22527/Exames-Sanguineos/assets/127799256/25f9e602-f15e-4c05-bbe5-9ebf71c7c90b)
 
 #### Development Technologies Used:
 - Django: Full-stack web framework, working on the MTV architecture;
@@ -85,14 +95,14 @@ The hematological report (or hematogram) is generated when the technician user u
 
 
 #### Deployment Technologies Used:
-- VPS ubuntu 23.04 64 bit: Server used for hosting;
+- VPS ubuntu 23.04 64 bit: Server used for hosting accessed by SSH key;
 - Nginx: Web server used for upload configuration and routing HTTP requests to the directory within the server;
 - Gunicorn: a WSGI (Web Server Gateway Interface) HTTP server, as an intermediate layer of the Django application with Nginx;
 - PostgreSQL: Database used;
 - GIT: Code versioning;
 - Bare Repository: remote and transitory repository that acted in the midfield between local development and application in production for code versioning;
 - Socket.unix: interprocess communication (IPC) between processes in Unix-like systems;
-
+- SSL certificate for protection;
 
 
 
