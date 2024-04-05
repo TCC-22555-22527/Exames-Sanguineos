@@ -12,6 +12,7 @@ media/lab/reports/
 deploy/
 lab_results/
 project/
+project/settings.py
 
 # Backup files #
 *.bak
