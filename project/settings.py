@@ -13,7 +13,6 @@ import mimetypes
 import os
 from pathlib import Path
 
-import environ
 from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,18 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')  # noqa: E501
 
 # SECURITY WARNING: don't run with debug turned on in production!
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+if os.environ.get('DEBUG_VALUE') == '1':
+    DEBUG = True
+else:
+    DEBUG = False
 
-DEBUG = False
-
-ALLOWED_HOSTS = [
-    "localhost",
-    "diagnose.helielsouza.com.br",
-    "www.diagnose.helielsouza.com.br",
-]
-
+print(os.environ.get('ALLOWED_HOSTS_VALUE'))
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://diagnose.helielsouza.com.br",
