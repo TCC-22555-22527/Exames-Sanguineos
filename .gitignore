@@ -10,6 +10,7 @@ media/lab/backup_imgs/
 media/lab/detects/
 media/lab/reports/
 deploy/
+deploy/ngixn-https copy.txt
 lab_results/
 
 # Backup files #
@@ -142,3 +143,4 @@ static/
 
 
 
+deploy/ngixn-https copy.txt
