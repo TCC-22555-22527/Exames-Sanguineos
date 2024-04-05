@@ -2,7 +2,7 @@
     <div class="report-content">
 
             <p> <strong> CPF do paciente: </strong> <br>{{ report.cpf }}  </p>
-            <p> <strong> nome do paciente: </strong> <br> {{ report.name }} </p>
+            <p> <strong> nome do paciente: </strong> <br> {{ report.patient.first_name }} {{ report.patient.last_name}} </p>
             <p><strong>Data do Envio:</strong> <br> {{ report.created_at }} </p>
         <div class="report-user-access-container">
             <a href= {% url "lab:report_detail" report_id=report.id  %} class="report-user-access-btn"> <!-- link para report_detail, provavelmente irá precisar de id -->

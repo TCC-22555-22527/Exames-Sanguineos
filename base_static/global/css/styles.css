@@ -828,6 +828,9 @@ h5 {
     border: 1px solid var(--color-primary-dark);
     border-radius: 0.4rem;
 } 
+.date-search-form {
+    margin-bottom: 1rem;
+}
 #search-date:focus-within {
     border-color: var(--color-primary);
     background: var(--color-white);
@@ -1520,6 +1523,11 @@ h5 {
         max-height: 100%;
     }
 
+    /*Pesquisa laudo*/
+    #combined-search-button {
+        max-width: 14rem;
+    }
+
      /*Detalhes perfil de paciente*/
      .patient-content-profile-detail{
         margin: 0 auto;
@@ -1691,7 +1699,10 @@ h5 {
         margin-bottom: 1rem;
         font-size: 1.6rem;
     }
-
+    /*Pesquisa laudo*/
+    #combined-search-button {
+        max-width: 14rem;
+    }
 
     /*Menu*/
     .menu-nav a {
@@ -1762,8 +1773,6 @@ h5 {
     .hello-user a {
         display: none;
     }
-
-    /*Home*/
     
     /*About*/
     .about-container h2 {
@@ -1886,6 +1895,11 @@ h5 {
     /* Pesquisa de paciente */
     .btn-access {
         width: 100%;
+    }
+
+    /* Pesquisa de laudo */
+    .date-search-form {
+        margin-bottom: 0rem;
     }
 
     /*Pesquisa de laudo*/
@@ -2120,6 +2134,9 @@ h5 {
     }
     .search-button-report {
         margin-top: 3rem;
+    }
+    .date-search-form {
+        margin-bottom: 0rem;
     }
 
      /*Cadastro de tipo de usuário*/
