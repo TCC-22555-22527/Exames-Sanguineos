@@ -815,7 +815,9 @@ h5 {
     justify-content: space-between;
     align-items: center;
 }
-
+.date-search-form label {
+    font-size: 13px;
+}
 #search_date {
     color: var(--color-primary-dark);
     font-size: 1.5rem;

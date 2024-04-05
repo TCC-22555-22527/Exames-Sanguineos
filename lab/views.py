@@ -102,14 +102,15 @@ def send_img(request):
                     image=image
                 )
                 backup_img.save()
-                # Defina o caminho do arquivo de saída que vai ter rbc, etc.
+                yolo_command = os.environ.get('DETECT_COMMAND')
+                print(f'Comando de detecção yolo {yolo_command}')
 
                 # Obtem o caminho da imagem que foi enviada e salva
                 image_path = os.path.join('media/' + backup_img.image.name)
                 print(f"Caminho da imagem: {image_path}")
                 # comando para detectar objetos na imagem
                 detect_command = (
-                    "python yolo5/Inference_files/detect.py "
+                    f"{yolo_command} "
                     f"--source {image_path} "
                     "--weights yolo5/Inference_files/best_BCCM.pt "
                     "--output lab_results/ --save-txt"
