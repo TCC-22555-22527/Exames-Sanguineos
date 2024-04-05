@@ -26,13 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE')  # noqa: E501
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('DEBUG_VALUE') == '1':
-    DEBUG = True
-else:
-    DEBUG = False
+DEBUG = os.environ['DEBUG_VALUE'] == 'TRUE'
 
-print(os.environ.get('ALLOWED_HOSTS_VALUE'))
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS_VALUE')]
+# HOSTS
+ALLOWED_HOSTS = ['localhost',
+                 'www.diagnose.helielsouza.com.br',
+                 'diagnose.helielsouza.com.br']
 
 CSRF_TRUSTED_ORIGINS = [
     "http://diagnose.helielsouza.com.br",
