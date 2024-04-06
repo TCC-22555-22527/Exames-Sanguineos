@@ -1,6 +1,7 @@
 # Diagnose
 Site - https://www.diagnose.helielsouza.com.br/
-Linkedin post - 
+
+Linkedin post - https://www.linkedin.com/posts/heliel-souza_aplica%C3%A7%C3%A3o-web-online-ol%C3%A1-rede-venho-atrav%C3%A9s-activity-7182150015765671936-4uzp?utm_source=share&utm_medium=member_ios
  
 ## Português (pt-br)
 
