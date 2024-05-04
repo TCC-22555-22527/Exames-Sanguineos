@@ -1182,7 +1182,7 @@ h5 {
 }
 .card-intro {
     color: white;
-    font-weight: 600;
+    font-weight: 600;   
     margin-top: 3rem;
     margin-left: 1rem;
 }
@@ -1191,6 +1191,16 @@ h5 {
     font-weight: 600;
     margin-top: 3rem;
     margin-left: 1rem;
+}
+.card-info a {
+    color: var(--color-white);
+    transition: all .1s ease-in-out;
+}
+.card-info a:hover {
+    color: rgb(216, 214, 214);
+}
+.card-info a i{ 
+    margin-left: .3rem;
 }
 .image-logo-login{
     width: 143.5px;
@@ -1495,6 +1505,16 @@ h5 {
 }
 
                     /**********************RESPONSIVIDADE 1200px*****************/
+@media(min-width:300px) and (max-width: 1300px) {
+    .card-intro {
+        margin-left: 0rem;
+        text-align: center;
+    }
+    .card-info {
+        margin-left: 0rem;
+        text-align: center;
+    }
+}
 /*Home*/
 @media(min-width: 950px) and (max-width: 1300px) {
     .report-list-container {
